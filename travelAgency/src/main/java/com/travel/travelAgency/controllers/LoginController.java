@@ -7,22 +7,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.travel.travelAgency.dao.UserAuthDAO;
+import com.travel.travelAgency.interfaces.LoginInterface;
 import com.travel.travelAgency.models.UserAuth;
+import com.travel.travelAgency.repository.UserAuthRepository;
 
 @RestController
 public class LoginController {
-	
-	@Autowired
-	UserAuthDAO userDAO;
 
-	@RequestMapping(value="/login")
-	public ResponseEntity<Object> login(@RequestParam(defaultValue = "admin") String username, @RequestParam(defaultValue = "admin") String password){
-		int user_id = userDAO.validateUsernamePassword(username, password);
-		if(user_id != 0) {
-			return new ResponseEntity<Object>("Success",HttpStatus.OK);
-		}
-		else {
-			return new ResponseEntity<Object>("Login Failed!",HttpStatus.INTERNAL_SERVER_ERROR);
-		}
+	@Autowired
+	LoginInterface loginObj;
+
+	@RequestMapping(value = "/login")
+	public ResponseEntity<Object> login(@RequestParam(defaultValue = "admin") String username,
+			@RequestParam(defaultValue = "admin") String password) {
+		String message = loginObj.login(username, password);
+		return new ResponseEntity<Object>(message, HttpStatus.OK);
+
 	}
 }
