@@ -8,7 +8,7 @@ public class ForgotPasswordDaoImpl implements ForgotPasswordDao {
 	@Override
 	public Boolean isEmailValid(String email) throws Exception {
 
-		return Boolean.FALSE;
+		return Boolean.TRUE;
 	}
 
 	@Override
@@ -17,4 +17,15 @@ public class ForgotPasswordDaoImpl implements ForgotPasswordDao {
 		return "Some question!";
 	}
 
+	@Override
+	public Boolean isSecurityAnswerValid(String security_answer, String email) throws Exception {
+
+		return Boolean.TRUE;
+	}
+
+	@Override
+	public void updatePassword(String email, String newPassword) throws Exception {
+		
+		
+	}
 }

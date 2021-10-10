@@ -6,4 +6,8 @@ public interface ForgotPasswordDao {
 
 	public String getSecurityQues(String email) throws Exception;
 
+	public Boolean isSecurityAnswerValid(String security_answer, String email) throws Exception;
+	
+	public void updatePassword(String email, String newPassword) throws Exception;
+
 }
