@@ -17,9 +17,8 @@ public class LoginController {
 
 	@RequestMapping(value="/login")
 	public ResponseEntity<Object> login(@RequestParam(defaultValue = "admin") String username, @RequestParam(defaultValue = "admin") String password){
-		UserAuth user = new UserAuth();
 		int user_id = userDAO.validateUsernamePassword(username, password);
-		if(user != null) {
+		if(user_id != 0) {
 			return new ResponseEntity<Object>("Success",HttpStatus.OK);
 		}
 		else {

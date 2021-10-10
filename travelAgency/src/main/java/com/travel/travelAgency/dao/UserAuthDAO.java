@@ -16,10 +16,9 @@ public class UserAuthDAO implements UserAuthRepository{
 	
 	@Override
 	public int validateUsernamePassword(String username, String password) {
-
-		UserAuth user = new UserAuth();
+		int user_id = 0;
 		String queryStr = "select user_id from user_auth where username='"+username+"'"+" and password='"+password+"'";
-		int user_id = jdbcTemplate.queryForObject(queryStr, Integer.class);
+		user_id = jdbcTemplate.queryForObject(queryStr, Integer.class);
 		return user_id;
 	}
 
