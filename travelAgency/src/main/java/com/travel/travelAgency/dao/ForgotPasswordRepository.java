@@ -1,9 +1,11 @@
 package com.travel.travelAgency.dao;
 
+
 import org.springframework.stereotype.Repository;
 
+
 @Repository
-public class ForgotPasswordDaoImpl implements ForgotPasswordDao {
+public class ForgotPasswordRepository  implements ForgotPasswordDao{
 
 	@Override
 	public Boolean isEmailValid(String email) throws Exception {
@@ -28,4 +30,6 @@ public class ForgotPasswordDaoImpl implements ForgotPasswordDao {
 		
 		
 	}
+
+
 }

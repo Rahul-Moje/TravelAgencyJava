@@ -10,7 +10,7 @@ import com.travel.travelAgency.model.SecurityAnswerRequest;
 import com.travel.travelAgency.model.UpdatePasswordReponse;
 
 @Service
-public class ForgotPasswordManagerImpl implements ForgotPasswordManager {
+public class ForgotPasswordImplementation implements ForgotPasswordInterface {
 
 	@Autowired
 	ForgotPasswordDao forgotPasswordDao;

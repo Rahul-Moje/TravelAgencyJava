@@ -5,7 +5,7 @@ import com.travel.travelAgency.model.ForgotPassGetEmailResp;
 import com.travel.travelAgency.model.SecurityAnswerRequest;
 import com.travel.travelAgency.model.UpdatePasswordReponse;
 
-public interface ForgotPasswordManager {
+public interface ForgotPasswordInterface {
 
 	public ForgotPassGetEmailResp verifyEmailAndGetSecurityQues(ForgotPassGetEmailRequest request) throws Exception;
 	
