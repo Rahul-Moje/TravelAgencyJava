@@ -1,6 +1,6 @@
-package com.travel.travelAgency.dao;
+package com.travel.travelAgency.repository;
 
-public interface ForgotPasswordDao {
+public interface ForgotPasswordRepository {
 
 	public Boolean isEmailValid(String email) throws Exception;
 

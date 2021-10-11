@@ -3,27 +3,28 @@ package com.travel.travelAgency.manager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.travel.travelAgency.dao.ForgotPasswordDao;
-import com.travel.travelAgency.model.ForgotPassGetEmailRequest;
-import com.travel.travelAgency.model.ForgotPassGetEmailResp;
-import com.travel.travelAgency.model.SecurityAnswerRequest;
-import com.travel.travelAgency.model.UpdatePasswordReponse;
+import com.travel.travelAgency.interfaces.ForgotPasswordInterface;
+import com.travel.travelAgency.models.ForgotPassGetEmailRequest;
+import com.travel.travelAgency.models.ForgotPassGetEmailResp;
+import com.travel.travelAgency.models.SecurityAnswerRequest;
+import com.travel.travelAgency.models.UpdatePasswordReponse;
+import com.travel.travelAgency.repository.ForgotPasswordRepository;
 
 @Service
 public class ForgotPasswordImplementation implements ForgotPasswordInterface {
 
 	@Autowired
-	ForgotPasswordDao forgotPasswordDao;
+	ForgotPasswordRepository forgotPasswordRepository;
 
 	@Override
 	public ForgotPassGetEmailResp verifyEmailAndGetSecurityQues(ForgotPassGetEmailRequest request) throws Exception {
 
 		String email = request.getEmail();
 
-		if (forgotPasswordDao.isEmailValid(email)) {
+		if (forgotPasswordRepository.isEmailValid(email)) {
 
 			// Email is valid - Fetch the security question
-			String securityQues = forgotPasswordDao.getSecurityQues(email);
+			String securityQues = forgotPasswordRepository.getSecurityQues(email);
 
 			ForgotPassGetEmailResp resp = new ForgotPassGetEmailResp();
 			resp.setSecurity_question(securityQues);
@@ -44,7 +45,7 @@ public class ForgotPasswordImplementation implements ForgotPasswordInterface {
 		String security_answer = request.getSecurity_answer();
 		String email = request.getEmail();
 		
-		if(forgotPasswordDao.isSecurityAnswerValid(security_answer, email))
+		if(forgotPasswordRepository.isSecurityAnswerValid(security_answer, email))
 		{
 			//Security Answer is Valid;
 			//Update the new pass in database;
@@ -52,7 +53,7 @@ public class ForgotPasswordImplementation implements ForgotPasswordInterface {
 			{
 				throw new Exception("check if the password are same");
 			}
-			forgotPasswordDao.updatePassword(email, request.getNew_password());
+			forgotPasswordRepository.updatePassword(email, request.getNew_password());
 			
 			UpdatePasswordReponse response = new UpdatePasswordReponse();
 			response.setStatus("ok");

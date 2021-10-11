@@ -1,4 +1,4 @@
-package com.travel.travelAgency.model;
+package com.travel.travelAgency.models;
 
 public class UpdatePasswordReponse {
 

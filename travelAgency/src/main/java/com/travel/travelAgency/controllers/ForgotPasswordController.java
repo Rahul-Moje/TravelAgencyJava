@@ -5,11 +5,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.travel.travelAgency.manager.ForgotPasswordInterface;
-import com.travel.travelAgency.model.ForgotPassGetEmailRequest;
-import com.travel.travelAgency.model.ForgotPassGetEmailResp;
-import com.travel.travelAgency.model.SecurityAnswerRequest;
-import com.travel.travelAgency.model.UpdatePasswordReponse;
+import com.travel.travelAgency.interfaces.ForgotPasswordInterface;
+import com.travel.travelAgency.models.ForgotPassGetEmailRequest;
+import com.travel.travelAgency.models.ForgotPassGetEmailResp;
+import com.travel.travelAgency.models.SecurityAnswerRequest;
+import com.travel.travelAgency.models.UpdatePasswordReponse;
 
 @RestController
 public class ForgotPasswordController {
