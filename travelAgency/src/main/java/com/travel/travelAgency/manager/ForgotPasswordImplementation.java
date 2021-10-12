@@ -44,19 +44,20 @@ public class ForgotPasswordImplementation implements ForgotPasswordInterface {
 		
 		String security_answer = request.getSecurity_answer();
 		String email = request.getEmail();
-		
+		//check if the Security Answer is Valid;
 		if(forgotPasswordRepository.isSecurityAnswerValid(security_answer, email))
 		{
-			//Security Answer is Valid;
-			//Update the new pass in database;
+			
+			
 			if(!request.getNew_password().equalsIgnoreCase(request.getUpdate_password()))
 			{
 				throw new Exception("check if the password are same");
 			}
+			//Update the new password in database;
 			forgotPasswordRepository.updatePassword(email, request.getNew_password());
 			
 			UpdatePasswordReponse response = new UpdatePasswordReponse();
-			response.setStatus("ok");
+			response.setStatus("Password Updated");
 			return response;
 		}
 		
