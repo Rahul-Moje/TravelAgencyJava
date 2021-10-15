@@ -1,4 +1,4 @@
-package com.travel.travelAgency.controllers;
+package com.travel.travelAgency.authentication.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -6,10 +6,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import com.travel.travelAgency.dao.UserAuthDAO;
-import com.travel.travelAgency.interfaces.LoginInterface;
-import com.travel.travelAgency.models.UserAuth;
-import com.travel.travelAgency.repository.UserAuthRepository;
+
+import com.travel.travelAgency.authentication.dao.UserAuthDAO;
+import com.travel.travelAgency.authentication.interfaces.LoginInterface;
+import com.travel.travelAgency.authentication.models.UserAuth;
+import com.travel.travelAgency.authentication.repository.UserAuthRepository;
 
 @RestController
 public class LoginController {
