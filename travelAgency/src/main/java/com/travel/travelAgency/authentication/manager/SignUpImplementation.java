@@ -1,9 +1,10 @@
-package com.travel.travelAgency.manager;
+package com.travel.travelAgency.authentication.manager;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import com.travel.travelAgency.interfaces.SignUpInterface;
-import com.travel.travelAgency.repository.SignUpRepository;
+
+import com.travel.travelAgency.authentication.interfaces.SignUpInterface;
+import com.travel.travelAgency.authentication.repository.SignUpRepository;
 
 @Component
 public class SignUpImplementation implements SignUpInterface{

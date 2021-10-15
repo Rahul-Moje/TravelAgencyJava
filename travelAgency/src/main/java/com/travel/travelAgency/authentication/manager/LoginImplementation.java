@@ -1,13 +1,13 @@
-package com.travel.travelAgency.manager;
+package com.travel.travelAgency.authentication.manager;
 
 import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.travel.travelAgency.dao.UserAuthDAO;
-import com.travel.travelAgency.interfaces.LoginInterface;
-import com.travel.travelAgency.models.UserAuth;
-import com.travel.travelAgency.repository.UserAuthRepository;
+import com.travel.travelAgency.authentication.dao.UserAuthDAO;
+import com.travel.travelAgency.authentication.interfaces.LoginInterface;
+import com.travel.travelAgency.authentication.models.UserAuth;
+import com.travel.travelAgency.authentication.repository.UserAuthRepository;
 
 @Component
 public class LoginImplementation implements LoginInterface{

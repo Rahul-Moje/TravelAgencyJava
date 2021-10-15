@@ -1,15 +1,14 @@
-package com.travel.travelAgency.controllers;
-
+package com.travel.travelAgency.authentication.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.travel.travelAgency.interfaces.ForgotPasswordInterface;
-import com.travel.travelAgency.models.ForgotPassGetEmailRequest;
-import com.travel.travelAgency.models.ForgotPassGetEmailResp;
-import com.travel.travelAgency.models.SecurityAnswerRequest;
-import com.travel.travelAgency.models.UpdatePasswordReponse;
+import com.travel.travelAgency.authentication.interfaces.ForgotPasswordInterface;
+import com.travel.travelAgency.authentication.models.ForgotPassGetEmailRequest;
+import com.travel.travelAgency.authentication.models.ForgotPassGetEmailResp;
+import com.travel.travelAgency.authentication.models.SecurityAnswerRequest;
+import com.travel.travelAgency.authentication.models.UpdatePasswordReponse;
 
 @RestController
 public class ForgotPasswordController {

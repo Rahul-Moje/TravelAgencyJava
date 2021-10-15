@@ -1,4 +1,4 @@
-package com.travel.travelAgency.repository;
+package com.travel.travelAgency.authentication.repository;
 
 public interface SignUpRepository {
 

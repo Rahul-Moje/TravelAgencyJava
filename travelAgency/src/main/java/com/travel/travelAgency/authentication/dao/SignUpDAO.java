@@ -1,9 +1,10 @@
-package com.travel.travelAgency.dao;
+package com.travel.travelAgency.authentication.dao;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-import com.travel.travelAgency.repository.SignUpRepository;
+
+import com.travel.travelAgency.authentication.repository.SignUpRepository;
 
 
 @Repository

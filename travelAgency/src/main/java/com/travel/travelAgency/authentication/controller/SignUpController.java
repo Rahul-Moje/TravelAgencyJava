@@ -1,12 +1,14 @@
-package com.travel.travelAgency.controllers;
+package com.travel.travelAgency.authentication.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.travel.travelAgency.authentication.interfaces.SignUpInterface;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import com.travel.travelAgency.interfaces.SignUpInterface;
 
 @RestController
 public class SignUpController {

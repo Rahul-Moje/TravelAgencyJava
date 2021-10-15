@@ -1,4 +1,4 @@
-package com.travel.travelAgency.interfaces;
+package com.travel.travelAgency.authentication.interfaces;
 
 public interface SignUpInterface {
 	

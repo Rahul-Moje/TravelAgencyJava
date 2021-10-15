@@ -1,12 +1,13 @@
-package com.travel.travelAgency.dao;
+package com.travel.travelAgency.authentication.dao;
 
-import com.travel.travelAgency.repository.UserAuthRepository;
+import com.travel.travelAgency.authentication.models.UserAuth;
+import com.travel.travelAgency.authentication.repository.UserAuthRepository;
+
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import org.springframework.beans.factory.annotation.Autowired;
-import com.travel.travelAgency.models.UserAuth;
 
 @Repository
 public class UserAuthDAO implements UserAuthRepository{

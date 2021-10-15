@@ -1,14 +1,14 @@
-package com.travel.travelAgency.manager;
+package com.travel.travelAgency.authentication.manager;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.travel.travelAgency.interfaces.ForgotPasswordInterface;
-import com.travel.travelAgency.models.ForgotPassGetEmailRequest;
-import com.travel.travelAgency.models.ForgotPassGetEmailResp;
-import com.travel.travelAgency.models.SecurityAnswerRequest;
-import com.travel.travelAgency.models.UpdatePasswordReponse;
-import com.travel.travelAgency.repository.ForgotPasswordRepository;
+import com.travel.travelAgency.authentication.interfaces.ForgotPasswordInterface;
+import com.travel.travelAgency.authentication.models.ForgotPassGetEmailRequest;
+import com.travel.travelAgency.authentication.models.ForgotPassGetEmailResp;
+import com.travel.travelAgency.authentication.models.SecurityAnswerRequest;
+import com.travel.travelAgency.authentication.models.UpdatePasswordReponse;
+import com.travel.travelAgency.authentication.repository.ForgotPasswordRepository;
 
 @Service
 public class ForgotPasswordImplementation implements ForgotPasswordInterface {
