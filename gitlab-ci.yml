@@ -29,7 +29,7 @@ test-travel-agency-job:
     when: always
     reports:
       junit:
-        - travelAgency/target/surefire-reports/TEST-*.xml #surefire plugin generates reports in target folder.
-        - travelAgency/target/failsafe-reports/TEST-*.xml #surefire plugin generates reports in target folder.
+        - travelAgency/target/surefire-reports/TEST-*.xml #Reports are generated in target folder by surefire plugin.
+        - travelAgency/target/failsafe-reports/TEST-*.xml #Reports are generated in target folder by surefire plugin.
   tags:
     - ugrad
