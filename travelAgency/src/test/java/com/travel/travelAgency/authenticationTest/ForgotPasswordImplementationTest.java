@@ -58,7 +58,6 @@ public class ForgotPasswordImplementationTest {
 		Mockito.when(repo.isSecurityAnswerValid(req.getSecurity_answer(), req.getEmail())).thenReturn(Boolean.TRUE);
 		doNothing().when(repo).updatePassword(req.getEmail(), req.getNew_password());
 		response = forgotPasswordService.verifySecurityAnswerandUpdatePass(req, repo);
-		Mockito.when(req.getNew_password().equalsIgnoreCase(req.getUpdate_password())).equals(response);
 		assertEquals("Password Updated", response.getStatus());
 
 	}
