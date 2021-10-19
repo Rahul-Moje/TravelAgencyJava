@@ -54,7 +54,9 @@ public class ForgotPasswordDAO implements ForgotPasswordRepository {
 			parameterSource.addValue("email", email);
 
 			String answer = namedParameterJdbcTemplate.queryForObject(SQL, parameterSource, String.class);
-			if (!(answer == security_answer)) {
+			if (!(answer.equalsIgnoreCase(security_answer))) {
+				
+				throw new Exception("Check the answer");
 
 			}
 
@@ -66,14 +68,14 @@ public class ForgotPasswordDAO implements ForgotPasswordRepository {
 	}
 
 	@Override
-	public int updatePassword(String email, String newPassword) throws Exception {
+	public void updatePassword(String email, String newPassword) throws Exception {
 		String SQL = "UPDATE user_auth SET password = :newPassword where email_id= :email";
 
 		MapSqlParameterSource parameterSource = new MapSqlParameterSource();
 		parameterSource.addValue("email", email);
 		parameterSource.addValue("newPassword", newPassword);
 
-		return namedParameterJdbcTemplate.update(SQL, parameterSource);
+		namedParameterJdbcTemplate.update(SQL, parameterSource);
 
 	}
 
