@@ -17,7 +17,7 @@ public class SignUpDAO implements SignUpRepository{
 	public void signUpUser(String username, String password, String email, int securityQuestionId, String securityAnswer, String roleName)
 	{
 		String queryStr = "Insert into user_auth(username, password , email_id, security_question_id, security_answer) values ('"+username+"','"+password+"','"+email+"',"+securityQuestionId+",'"+securityAnswer+"')";
-		System.out.println(queryStr);
+		
 		jdbcTemplate.update(queryStr);
 		
 					
