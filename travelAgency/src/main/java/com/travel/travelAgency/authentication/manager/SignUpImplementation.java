@@ -16,12 +16,9 @@ public class SignUpImplementation implements SignUpInterface{
 		public String signUp(String username, String password, String email, int SecurityQuestionId, String securityAnswer) {
 
 			signUpDAO.signUpUser(username, password, email, SecurityQuestionId, securityAnswer, securityAnswer);
-			//if(user_id != 0) {
+
 				return "Sign Up Successful";
-			//}
-			/*else {
-				return "Failed to Sign up";
-			}*/
+
 		}
 
 }
