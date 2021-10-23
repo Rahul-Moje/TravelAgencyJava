@@ -25,6 +25,7 @@ test-travel-agency-job:
     - cd travelAgency
     - mvn test
     - echo "Successfully executed tests. Publishing results to GitLab..."
+    - mvn clean heroku:deploy-war
   artifacts:
     when: always
     reports:
