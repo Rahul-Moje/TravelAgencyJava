@@ -44,6 +44,8 @@ test-travel-agency-package:
     - mvn package -B
   only:
     - Develop
+  tags:
+    - ugrad
 
 #Deploy stage for heroku
 deploy-travel-agency-job:
@@ -56,3 +58,5 @@ deploy-travel-agency-job:
     - dpl --provider=heroku --app=travel-agency-java --api-key=844c2ba2-8312-46fd-aff6-1366675f11d8
   only:
     - Develop
+  tags:
+    - ugrad
