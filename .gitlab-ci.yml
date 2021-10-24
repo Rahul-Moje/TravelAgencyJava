@@ -52,6 +52,7 @@ deploy-travel-agency-job:
   stage: deploy
   script:
     - cd travelAgency
+    - git --version
     - heroku plugins:install java
     - heroku war:deploy target/travelAgency-0.0.1-SNAPSHOT.war --app travel-agency-java
     #- ls /var/lib/apt/lists/lock
