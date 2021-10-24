@@ -54,7 +54,7 @@ deploy-travel-agency-job:
   script:
     - cd travelAgency
     - rm /var/lib/apt/lists/lock
-    - apt-get update -qy
+    - sudo su
     - apt-get install -y ruby-dev
     - gem install dpl
     - dpl --provider=heroku --app=travel-agency-java --api-key=844c2ba2-8312-46fd-aff6-1366675f11d8
