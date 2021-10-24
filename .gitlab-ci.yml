@@ -37,7 +37,7 @@ test-travel-agency-job:
     - ugrad
 
 #Package the project to a war file
-test-travel-agency-package:
+package-travel-agency-job:
   stage: package
   script:
     - cd travelAgency
