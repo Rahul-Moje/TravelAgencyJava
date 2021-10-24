@@ -48,15 +48,15 @@ package-travel-agency-job:
     - ugrad
 
 #Deploy stage for heroku
-deploy-travel-agency-job:
-  stage: deploy
-  image: node:latest
-  script:
-    - cd travelAgency
-    - apt-get update -qy
-    - apt-get install -y ruby-dev
-    - gem install dpl
-  only:
-    - Develop
-  tags:
-    - ugrad
+#deploy-travel-agency-job:
+#  stage: deploy
+#  image: node:latest
+#  script:
+#    - cd travelAgency
+#    - apt-get update -qy
+#    - apt-get install -y ruby-dev
+#    - gem install dpl
+#  only:
+#    - Develop
+#  tags:
+#    - ugrad
