@@ -5,6 +5,7 @@ image: maven:3.3.9-jdk-8
 stages:          
   - build
   - test
+  - deploy
 
 #Build stage to check for issues during compilation
 compile-travel-agency-job:
@@ -25,7 +26,6 @@ test-travel-agency-job:
     - cd travelAgency
     - mvn test
     - echo "Successfully executed tests. Publishing results to GitLab..."
-    #- mvn clean heroku:deploy-war
   artifacts:
     when: always
     reports:
@@ -34,3 +34,15 @@ test-travel-agency-job:
         - travelAgency/target/failsafe-reports/TEST-*.xml #Reports are generated in target folder by surefire plugin.
   tags:
     - ugrad
+
+#Deploy stage for heroku
+deploy-travel-agency-job:
+  stage: deploy
+  image: ruby:latest
+  script:
+    - apt-get update -qy
+    - apt-get install -y ruby-dev
+    - gem install dpl
+    - dpl --provider=heroku --app=travel-agency-java --api-key=844c2ba2-8312-46fd-aff6-1366675f11d8
+  only:
+    - Develop
