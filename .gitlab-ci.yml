@@ -53,7 +53,7 @@ deploy-travel-agency-job:
   image: ruby:latest
   script:
     - cd travelAgency
-    - chmod 700 /var/lib/apt/lists/lock
+    - ls /var/lib/apt/lists/lock
     - apt-get install -y ruby-dev
     - gem install dpl
     - dpl --provider=heroku --app=travel-agency-java --api-key=844c2ba2-8312-46fd-aff6-1366675f11d8
