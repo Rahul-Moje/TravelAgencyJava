@@ -53,6 +53,7 @@ deploy-travel-agency-job:
   #image: ruby:latest
   script:
     - cd travelAgency
+    - sudo su gitlab-runner
     - apt-get update -qy
     - apt-get install -y ruby-dev
     - gem install dpl
