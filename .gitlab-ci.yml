@@ -48,16 +48,17 @@ package-travel-agency-job:
     - ugrad
 
 #Deploy stage for heroku
-#deploy-travel-agency-job:
-#  stage: deploy
-#  image: ruby:latest
-#  script:
-#    - cd travelAgency
-#    - ls /var/lib/apt/lists/lock
-#    - apt-get install -y ruby-dev
-#    - gem install dpl
-#    - dpl --provider=heroku --app=travel-agency-java --api-key=844c2ba2-8312-46fd-aff6-1366675f11d8
-#  only:
-#    - Develop
-#  tags:
-#    - ugrad
+deploy-travel-agency-job:
+  stage: deploy
+  script:
+    - cd travelAgency
+    - heroku plugins:install java
+    - heroku war:deploy target/travelAgency-0.0.1-SNAPSHOT.war --app travel-agency-java
+    #- ls /var/lib/apt/lists/lock
+    #- apt-get install -y ruby-dev
+    #- gem install dpl
+    #- dpl --provider=heroku --app=travel-agency-java --api-key=844c2ba2-8312-46fd-aff6-1366675f11d8
+  only:
+    - Develop
+  tags:
+    - ugrad
