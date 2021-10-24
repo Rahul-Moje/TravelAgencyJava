@@ -53,8 +53,9 @@ deploy-travel-agency-job:
   script:
     - cd travelAgency
     - git --version
-    - heroku plugins:install java
-    - heroku war:deploy target/travelAgency-0.0.1-SNAPSHOT.war --app travel-agency-java
+    - git push https://git.heroku.com/travel-agency-java.git Develop
+    #- heroku plugins:install java
+    #- heroku war:deploy target/travelAgency-0.0.1-SNAPSHOT.war --app travel-agency-java
     #- ls /var/lib/apt/lists/lock
     #- apt-get install -y ruby-dev
     #- gem install dpl
