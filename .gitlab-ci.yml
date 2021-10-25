@@ -5,6 +5,8 @@ image: maven:3.3.9-jdk-8
 stages:          
   - build
   - test
+  - package
+  - deploy
 
 #Build stage to check for issues during compilation
 compile-travel-agency-job:
@@ -33,3 +35,28 @@ test-travel-agency-job:
         - travelAgency/target/failsafe-reports/TEST-*.xml #Reports are generated in target folder by surefire plugin.
   tags:
     - ugrad
+
+#Package the project to a war file
+package-travel-agency-job:
+  stage: package
+  script:
+    - cd travelAgency
+    - mvn package -B
+  only:
+    - Develop
+  tags:
+    - ugrad
+
+#Deploy stage for heroku
+#deploy-travel-agency-job:
+#  stage: deploy
+#  image: node:latest
+#  script:
+#    - cd travelAgency
+#    - apt-get update -qy
+#    - apt-get install -y ruby-dev
+#    - gem install dpl
+#  only:
+#    - Develop
+#  tags:
+#    - ugrad
