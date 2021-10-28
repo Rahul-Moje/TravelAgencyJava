@@ -56,7 +56,7 @@ deploy-travel-agency-job:
     - apt-get update -qy
     - apt-get install -y ruby-dev
     - gem install dpl
-    - dpl --provider=heroku --app=travel-agency-java --api-key=844c2ba2-8312-46fd-aff6-1366675f11d8
+    - dpl --provider=heroku --app=$HEROKU_APP_NAME --api-key=$HEROKU_API_KEY
   only:
     - Develop
   tags:
