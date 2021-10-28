@@ -17,7 +17,7 @@ compile-travel-agency-job:
     - mvn clean compile
     - echo "Compilation successfully complete."
   tags:
-    - grad
+    - ugrad
 
 #Test stage to run tests and upload reports for analysis
 test-travel-agency-job:
@@ -34,7 +34,7 @@ test-travel-agency-job:
         - travelAgency/target/surefire-reports/TEST-*.xml #Reports are generated in target folder by surefire plugin.
         - travelAgency/target/failsafe-reports/TEST-*.xml #Reports are generated in target folder by surefire plugin.
   tags:
-    - grad
+    - ugrad
 
 #Package the project to a war file
 package-travel-agency-job:
@@ -45,7 +45,7 @@ package-travel-agency-job:
   only:
     - Develop
   tags:
-    - grad
+    - ugrad
 
 #Deploy stage for heroku
 deploy-travel-agency-job:
