@@ -1,7 +1,7 @@
 #Using java8
 image: maven:3.3.9-jdk-8
 
-#Currently only two stages configured for pipeline
+#Four stages configured for pipeline
 stages:          
   - build
   - test
@@ -17,7 +17,7 @@ compile-travel-agency-job:
     - mvn clean compile
     - echo "Compilation successfully complete."
   tags:
-    - ugrad
+    - dalfcs_gitlab_docker_ci
 
 #Test stage to run tests and upload reports for analysis
 test-travel-agency-job:
@@ -34,7 +34,7 @@ test-travel-agency-job:
         - travelAgency/target/surefire-reports/TEST-*.xml #Reports are generated in target folder by surefire plugin.
         - travelAgency/target/failsafe-reports/TEST-*.xml #Reports are generated in target folder by surefire plugin.
   tags:
-    - ugrad
+    - dalfcs_gitlab_docker_ci
 
 #Package the project to a war file
 package-travel-agency-job:
@@ -45,18 +45,19 @@ package-travel-agency-job:
   only:
     - Develop
   tags:
-    - ugrad
+    - dalfcs_gitlab_docker_ci
 
 #Deploy stage for heroku
-#deploy-travel-agency-job:
-#  stage: deploy
-#  image: node:latest
-#  script:
-#    - cd travelAgency
-#    - apt-get update -qy
-#    - apt-get install -y ruby-dev
-#    - gem install dpl
-#  only:
-#    - Develop
-#  tags:
-#    - ugrad
+deploy-travel-agency-job:
+  stage: deploy
+  image: ruby:2.6
+  script:
+    - cd travelAgency
+    - apt-get update -qy
+    - apt-get install -y ruby-dev
+    - gem install dpl
+    - dpl --provider=heroku --app=travel-agency-java --api-key=844c2ba2-8312-46fd-aff6-1366675f11d8
+  only:
+    - Develop
+  tags:
+    - dalfcs_gitlab_docker_ci
