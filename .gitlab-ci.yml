@@ -36,18 +36,18 @@ test-travel-agency-job:
   tags:
     - ugrad
 
-#Package the project to a war file
+#Package the project to an executable jar file
 package-travel-agency-job:
   stage: package
   script:
     - cd travelAgency
     - mvn package -B
   only:
-    - Develop
+    - Develop #Only triggered for Develop branch
   tags:
     - ugrad
 
-#Deploy stage for heroku
+#Deploy stage for the application to heroku
 deploy-travel-agency-job:
   stage: deploy
   image: ruby:2.6
