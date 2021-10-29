@@ -58,6 +58,6 @@ deploy-travel-agency-job:
     - gem install dpl
     - dpl --provider=heroku --app=$HEROKU_APP_NAME --api-key=$HEROKU_API_KEY
   only:
-    - DeployAsJar
+    - Develop
   tags:
     - dalfcs_gitlab_docker_ci
