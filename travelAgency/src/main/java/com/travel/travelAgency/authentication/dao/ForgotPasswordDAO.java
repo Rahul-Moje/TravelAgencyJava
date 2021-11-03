@@ -41,7 +41,7 @@ public class ForgotPasswordDAO implements ForgotPasswordRepository {
 		parameterSource.addValue("email", email);
 
 		String question = namedParameterJdbcTemplate.queryForObject(SQL, parameterSource, String.class);
-
+       
 		return question;
 	}
 
