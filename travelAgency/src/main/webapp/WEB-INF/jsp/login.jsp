@@ -11,6 +11,9 @@
 	<form method="post">
 		Username : <input type="text" name="username" /> Password : <input
 			type="password" name="password" /> <input type="submit" />
+		<a href="/@{/forgot-pass-get-email}">Forgot your password?</a>
+		<form th:action="@{/forgot-pass-get-email}" method="post" style="max-width: 420px; margin: 0 auto;">
+		
 	</form>
 </body>
 </html>
