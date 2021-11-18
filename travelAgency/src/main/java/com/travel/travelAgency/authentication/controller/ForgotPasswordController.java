@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.travel.travelAgency.authentication.interfaces.ForgotPasswordInterface;
@@ -30,6 +31,21 @@ public class ForgotPasswordController {
 		return forgotPasswordInterface.verifyEmailAndGetSecurityQues(request, forgotPasswordRepository);
 
 	}
+	
+//	@RequestMapping(value = "/forgot-pass-get-email", method = RequestMethod.POST)
+//	public String login(ModelMap model, @RequestParam ForgotPassGetEmailRequest email) throws Exception {
+//		ForgotPassGetEmailResp getEmailResp = forgotPasswordInterface.verifyEmailAndGetSecurityQues(email, forgotPasswordRepository);
+//		if(!getEmailResp.equals(getEmailResp.getSecurity_question())) {
+//			model.addAttribute("errorMessage", "Login Failed. Please check your credentials and try again");
+//			return "forgot-pass-get-email";
+//		}
+//		model.put("email", email);
+//		return getEmailResp.getSecurity_question();
+//
+//	}
+//	
+	
+	
 
 	@PostMapping(path = "/updatepass")
 	public UpdatePasswordReponse getSecurityAnswer(@RequestBody SecurityAnswerRequest request) throws Exception {

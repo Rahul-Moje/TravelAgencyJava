@@ -4,8 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
-import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.travel.travelAgency.proMembership.repository.ProMembershipRegistrationRepository;
@@ -14,16 +13,23 @@ import com.travel.travelAgency.proMembership.repository.ProMembershipRegistratio
 public class ProMembershipRegistrationDAO implements ProMembershipRegistrationRepository {
 
 	@Autowired
-	NamedParameterJdbcTemplate namedParameterJdbcTemplate;
-	 //System.out.println(namedParameterJdbcTemplate.queryForList("select * from pro_membership;", parameterSource));
+	JdbcTemplate jdbctemplate;
+
+	@Override
 	public List<Map<String, Object>> getListofMembership() throws Exception {
 
-		String SQL = "select * from pro_membership ";
+		String SQL = "select * from pro_membership";
 
-		MapSqlParameterSource parameterSource = new MapSqlParameterSource();
-
-		return namedParameterJdbcTemplate.queryForList(SQL, parameterSource);
+		return jdbctemplate.queryForList(SQL);
 
 	}
 
+	@Override
+	public void updateMembership(String email, String plan_name, String date) throws Exception {
+
+		String SQL = "INSERT INTO subscriptions_works (user_email_id,plan_name,date_of_purchase) VALUES ('" + email
+				+ "','" + plan_name + "','" + date + "')";
+		jdbctemplate.update(SQL);
+
+	}
 }

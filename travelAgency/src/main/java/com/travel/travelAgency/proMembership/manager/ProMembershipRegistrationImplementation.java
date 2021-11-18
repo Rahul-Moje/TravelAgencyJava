@@ -1,7 +1,42 @@
 package com.travel.travelAgency.proMembership.manager;
 
-public class ProMembershipRegistrationImplementation{
+import java.util.List;
+import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.travel.travelAgency.proMembership.interfaces.ProMembershipRegistrationInterface;
+import com.travel.travelAgency.proMembership.models.promembershipregistrationrequest;
+import com.travel.travelAgency.proMembership.repository.ProMembershipRegistrationRepository;
+
+@Service
+public class ProMembershipRegistrationImplementation implements ProMembershipRegistrationInterface {
 	
-	
+    @Autowired
+	ProMembershipRegistrationRepository repo;
+
+	@Override
+	public List<Map<String, Object>> verifyPlans() throws Exception {
+
+		List<Map<String, Object>> list = repo.getListofMembership();
+
+		return list;
+		
+
+	}
+
+	@Override
+	public String verifyEmailandUpdatePlan(promembershipregistrationrequest request,
+			ProMembershipRegistrationRepository repo) throws Exception {
+
+		String plan_name = request.getPlan_name();
+		String email = request.getEmail();
+		String date = request.getDate();
+		repo.updateMembership(email, plan_name, date);
+		String status = "updated";
+		return status;
+
+	}
+
 }
