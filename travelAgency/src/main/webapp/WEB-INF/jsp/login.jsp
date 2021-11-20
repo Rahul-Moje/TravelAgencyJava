@@ -8,12 +8,12 @@
 </head>
 <body>
 	<font color="red">${errorMessage}</font>
-	<form method="post">
+	<form action="login" method="post">
 		Username : <input type="text" name="username" /> Password : <input
 			type="password" name="password" /> <input type="submit" />
-		<a href="/@{/forgot-pass-get-email}">Forgot your password?</a>
-		email :  <input type="text" name="email" />
+		<a href="/forgotpassword">Forgot your password?</a>
 		
+
 		
 	</form>
 </body>
