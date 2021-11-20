@@ -8,20 +8,14 @@
 </head>
 <body>
 	<div>
-	<label>
-	Amount: 
-	</label>
-	<label name="displayAmount">
-	${displayAmount}
-	</label>
+
 		<form method="post">
-			Enter your Credit Card Number: <input type="text" name="creditCardNumber" />
-			</br>
-			Expiry date: <input type="text" name="cardExpiryDate" placeholder="DD/MM/YYYY"/>
-			</br>
-			Enter your CVV Number: <input type="password" name="cvv" /> 
-			</br>
-			<input type="submit" />
+			<input name="userId" hidden=true value="1" /> <label> Amount:
+			</label> <input name="displayAmount" /> </br> Enter your Credit Card Number: <input
+				type="text" name="creditCardNumber" /> </br> Expiry date: <input
+				type="text" name="cardExpiryDate" placeholder="YYYY/MM/DD" /> </br> Enter
+			your CVV Number: <input type="password" name="cvv" /> </br> <input
+				type="submit" />
 		</form>
 	</div>
 </body>

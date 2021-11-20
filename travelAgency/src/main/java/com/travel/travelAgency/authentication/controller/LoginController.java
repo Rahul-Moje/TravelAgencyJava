@@ -29,8 +29,7 @@ public class LoginController {
 			model.addAttribute("errorMessage", "Login Failed. Please check your credentials and try again");
 			return "login";
 		}
-		model.put("name", username);
-        model.put("password", password);
+		
 		return "welcome";
 
 	}

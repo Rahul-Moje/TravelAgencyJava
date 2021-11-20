@@ -1,22 +1,38 @@
 package com.travel.travelAgency.authentication.dao;
 
-import com.travel.travelAgency.authentication.repository.UserAuthRepository;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-import org.springframework.beans.factory.annotation.Autowired;
+
+import com.travel.travelAgency.authentication.repository.UserAuthRepository;
+import com.travel.travelAgency.util.DatabaseConnection;
 
 @Repository
 public class UserAuthDAO implements UserAuthRepository{
 
-	@Autowired
-    private JdbcTemplate jdbcTemplate;
+	Connection con = DatabaseConnection.getSQLConnection();
 	
 	@Override
 	public int validateUsernamePassword(String username, String password) {
 		int user_id = 0;
-		String queryStr = "select count(*) from user_auth where username='"+username+"'"+" and password='"+password+"'";
-		user_id = jdbcTemplate.queryForObject(queryStr, Integer.class);
+		String queryStr = "select count(*) as total from user_auth where username='"+username+"'"+" and password='"+password+"'";
+		Statement stmt;
+		try {
+			PreparedStatement ps = con.prepareStatement(queryStr);
+			ResultSet rs = ps.executeQuery(queryStr);
+			while(rs.next()) {
+				user_id = rs.getInt(1);
+
+			}
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 		return user_id;
 	}
 
