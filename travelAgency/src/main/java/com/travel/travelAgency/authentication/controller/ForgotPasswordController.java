@@ -53,12 +53,14 @@ public class ForgotPasswordController {
 		UpdatePasswordReponse getSecurityansResp = forgotPasswordInterface.verifySecurityAnswerandUpdatePass(request,
 				forgotPasswordRepository);
 		String value1 = getSecurityansResp.getStatus();
-		if (value1 == "Password not Updated") {
-			model.addAttribute("errorMessage", "Invalid security answer!!");
-			return "welcome";
+		if (value1 != "Password Updated") {
+			model.addAttribute("errorMessage", "check if your security answer is correct or new and confirm password are same");
+			model.put("email", request.getEmail());
+			model.put("securityquestion", request.getSecurity_question());
+			return "verifysecurityandupdatepass";
 		}
 		model.put("status", value1);
 		return "login";
-
+		
 	}
 }

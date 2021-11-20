@@ -8,10 +8,10 @@
 </head>
 <body>
      <font color="red">${errorMessage}</font>
-	 <form action="verifysecurityandupdatepass" method="post">
+	 <form action="verifysecurityandupdatepass" method="post" name="myform">
      <h1>${securityquestion}</h1>
      <br>
-     
+     <input type="text" name="security_question" value ="${securityquestion}" hidden />
      Email : <input type="text" name="email" value ="${email}" readonly />
      SecurityAnswer :  <input type="text" name="security_answer" /> 
      NewPassword :  <input type="text" name="new_password" /> 
@@ -19,5 +19,6 @@
      <input type="submit" />
      
      </form>
+ 
 </body>
 </html>

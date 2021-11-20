@@ -13,7 +13,7 @@
 		<br>
 		<a href="/grievance">File a Grievance!!</a>
 		
-		 <input type="text" name="setemail" value="<%= session.getAttribute("name") %>" >
+		 
 		
 	</form>
 </body>

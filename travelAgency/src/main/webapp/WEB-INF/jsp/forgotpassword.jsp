@@ -10,7 +10,7 @@
      <font color="red">${errorMessage}</font>
 	 <form action="forgotpassword" method="post">
      Email :  <input type="text" name="email" /> <input type="submit" />
-     <!--<a href="/showMemberShipDetails">Show Membership Details</a>-->
+     
      
      </form>
 </body>

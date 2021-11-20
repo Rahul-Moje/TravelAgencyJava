@@ -39,7 +39,8 @@ public class ProMembershipRegistrationController {
 
 	@RequestMapping(value = "/registerMemberShipDetails", method = RequestMethod.GET)
 	public String show(ModelMap model) throws Exception {
-		
+		List<Map<String, Object>> list = promembershipregistrationinterface.verifyPlans();
+		model.put("list", list);
 		return "registerMemberShipDetails";
 
 	}
@@ -49,9 +50,9 @@ public class ProMembershipRegistrationController {
 
 		String value = promembershipregistrationinterface.verifyEmailandUpdatePlan(request,
 				promembershipregistrationrepository);
-		if (!(value == "updated")) {
-			model.addAttribute("errorMessage", "error");
-			return "welcome";
+		if (!(value == "Updated")) {
+			model.addAttribute("errorMessage", "Input field should not be empty");
+			return "registerMemberShipDetails";
 
 		}
 

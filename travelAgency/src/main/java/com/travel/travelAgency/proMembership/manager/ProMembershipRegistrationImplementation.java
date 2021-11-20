@@ -33,8 +33,15 @@ public class ProMembershipRegistrationImplementation implements ProMembershipReg
 		String plan_name = request.getPlan_name();
 		String email = request.getEmail();
 		String date = request.getDate();
+		String status = "";
+		if(plan_name!="" && date!="") {
 		repo.updateMembership(email, plan_name, date);
-		String status = "updated";
+		status="Updated";
+		
+		}else {
+			status="Not Updated";
+		}
+		
 		return status;
 
 	}

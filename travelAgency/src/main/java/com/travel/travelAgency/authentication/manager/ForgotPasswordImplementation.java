@@ -57,7 +57,7 @@ public class ForgotPasswordImplementation implements ForgotPasswordInterface {
 				if (request.checkPassword(new_password)) {
 
 					if (!request.getNew_password().equalsIgnoreCase(request.getUpdate_password())) {
-						throw new Exception("check if the password are same");
+						response.setStatus("check if the password are same");
 					}
 
 					repo.updatePassword(email, request.getNew_password());
@@ -65,10 +65,10 @@ public class ForgotPasswordImplementation implements ForgotPasswordInterface {
 					response.setStatus("Password Updated");
 					return response;
 				} else {
-					throw new Exception("The password must have atlest one character, integer and special character");
+					response.setStatus("The password must have atlest one character, number and special character");
 				}
 			}else {
-			throw new Exception("Invalid answer");
+				response.setStatus("Invalid answer");
 			}
 		} catch (Exception e) {
 
