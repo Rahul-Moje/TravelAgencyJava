@@ -1,6 +1,5 @@
 package com.travel.travelAgency.paymentTest;
 
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
 
 import java.sql.Connection;
@@ -11,7 +10,6 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

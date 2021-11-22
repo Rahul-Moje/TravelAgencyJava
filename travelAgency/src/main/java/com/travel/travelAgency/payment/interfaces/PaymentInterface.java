@@ -5,8 +5,8 @@ import java.sql.Date;
 public interface PaymentInterface {
 
 	public void setUserId(int userId);
-	public void setAmount(float amount);
+	public void setDisplayAmount(float amount);
 	public int getUserId();
-	public float getAmount();
+	public float getDisplayAmount();
 	public String processPayment(float displayAmount, int userId);
 }

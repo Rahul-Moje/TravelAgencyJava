@@ -10,8 +10,8 @@
 	<div>
 
 		<form method="post">
-			<input name="userId" hidden=true value="1" /> <label> Amount:
-			</label> <input name="displayAmount" /> </br> Enter your Credit Card Number: <input
+			<input name="userId" hidden=true value= ${userId} /> <label> Amount:
+			</label> <input name="displayAmount" value = ${displayAmount} }/> </br> Enter your Credit Card Number: <input
 				type="text" name="creditCardNumber" /> </br> Expiry date: <input
 				type="text" name="cardExpiryDate" placeholder="YYYY/MM/DD" /> </br> Enter
 			your CVV Number: <input type="password" name="cvv" /> </br> <input

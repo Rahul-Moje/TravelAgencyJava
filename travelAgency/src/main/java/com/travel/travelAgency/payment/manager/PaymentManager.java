@@ -30,12 +30,12 @@ public class PaymentManager implements PaymentInterface {
 
 	
 	@Override
-	public void setAmount(float amount) {
+	public void setDisplayAmount(float amount) {
 		this.displayAmount = amount;
 	}
 	
 	@Override
-	public float getAmount() {
+	public float getDisplayAmount() {
 		return this.displayAmount;
 	}
 
