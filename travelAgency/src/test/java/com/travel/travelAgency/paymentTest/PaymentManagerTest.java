@@ -35,7 +35,7 @@ public class PaymentManagerTest {
 	    ResultSet resultSet = Mockito.mock(ResultSet.class);
 	    PreparedStatement statement = Mockito.mock(PreparedStatement.class);
 	    try {
-			Mockito.when(statement.executeUpdate(query)).thenReturn(anyInt());
+			Mockito.when(statement.executeUpdate(query)).thenReturn(1);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
