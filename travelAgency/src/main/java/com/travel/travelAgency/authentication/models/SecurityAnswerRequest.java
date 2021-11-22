@@ -1,15 +1,16 @@
 package com.travel.travelAgency.authentication.models;
 
 import java.io.Serializable;
+import java.util.regex.Pattern;
 
 public class SecurityAnswerRequest implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	private String email;
-	 
+
 	private String security_answer;
-	
+
 	private String new_password;
 	private String update_password;
 
@@ -43,7 +44,11 @@ public class SecurityAnswerRequest implements Serializable {
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-	
 
+	}
+
+	public Boolean checkPassword(String new_password) {
+
+		return new_password.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$");
+	}
 }

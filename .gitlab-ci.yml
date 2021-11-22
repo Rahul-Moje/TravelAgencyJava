@@ -1,0 +1,63 @@
+#Using java8
+image: maven:3.3.9-jdk-8
+
+#Four stages configured for pipeline
+stages:          
+  - build
+  - test
+  - package
+  - deploy
+
+#Build stage to check for issues during compilation
+compile-travel-agency-job:
+  stage: build
+  script:
+    - echo "Compiling travel agency application..."
+    - cd travelAgency
+    - mvn clean compile
+    - echo "Compilation successfully complete."
+  tags:
+    - ugrad
+
+#Test stage to run tests and upload reports for analysis
+test-travel-agency-job:
+  stage: test
+  script:
+    - echo "Running tests...."
+    - cd travelAgency
+    - mvn test
+    - echo "Successfully executed tests. Publishing results to GitLab..."
+  artifacts:
+    when: always
+    reports:
+      junit:
+        - travelAgency/target/surefire-reports/TEST-*.xml #Reports are generated in target folder by surefire plugin.
+        - travelAgency/target/failsafe-reports/TEST-*.xml #Reports are generated in target folder by surefire plugin.
+  tags:
+    - ugrad
+
+#Package the project to an executable jar file
+package-travel-agency-job:
+  stage: package
+  script:
+    - cd travelAgency
+    - mvn package -B
+  only:
+    - Develop #Only triggered for Develop branch
+  tags:
+    - ugrad
+
+#Deploy stage for the application to heroku
+deploy-travel-agency-job:
+  stage: deploy
+  image: ruby:2.6
+  script:
+    - cd travelAgency
+    - apt-get update -qy
+    - apt-get install -y ruby-dev
+    - gem install dpl
+    - dpl --provider=heroku --app=$HEROKU_APP_NAME --api-key=$HEROKU_API_KEY
+  only:
+    - Develop
+  tags:
+    - dalfcs_gitlab_docker_ci

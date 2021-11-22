@@ -49,8 +49,8 @@ public class ForgotPasswordImplementationTest {
 		SecurityAnswerRequest req = new SecurityAnswerRequest();
 		req.setEmail("user1@dal.ca");
 		req.setSecurity_answer("Some Answer");
-		req.setNew_password("Some Password");
-		req.setUpdate_password("Some Password");
+		req.setNew_password("Albetros@9");
+		req.setUpdate_password("Albetros@9");
 
 		UpdatePasswordReponse response = new UpdatePasswordReponse();
 		response.setStatus("Password Updated");

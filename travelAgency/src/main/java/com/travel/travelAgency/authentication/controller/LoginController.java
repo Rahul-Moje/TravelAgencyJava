@@ -1,28 +1,36 @@
 package com.travel.travelAgency.authentication.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.travel.travelAgency.authentication.dao.UserAuthDAO;
 import com.travel.travelAgency.authentication.interfaces.LoginInterface;
-import com.travel.travelAgency.authentication.models.UserAuth;
-import com.travel.travelAgency.authentication.repository.UserAuthRepository;
 
-@RestController
+@Controller
 public class LoginController {
 
 	@Autowired
 	LoginInterface loginObj;
+	
+	@RequestMapping(value="/login", method = RequestMethod.GET)
+    public String showLoginPage(ModelMap model){
+        return "login";
+    }
 
-	@RequestMapping(value = "/login")
-	public ResponseEntity<Object> login(@RequestParam(defaultValue = "admin") String username,
-			@RequestParam(defaultValue = "admin") String password) {
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	public String login(ModelMap model, @RequestParam String username,
+			@RequestParam String password) {
 		String message = loginObj.login(username, password);
-		return new ResponseEntity<Object>(message, HttpStatus.OK);
+		if(message.equals("Failed to login")) {
+			model.addAttribute("errorMessage", "Login Failed. Please check your credentials and try again");
+			return "login";
+		}
+		
+		return "welcome";
 
 	}
 }
