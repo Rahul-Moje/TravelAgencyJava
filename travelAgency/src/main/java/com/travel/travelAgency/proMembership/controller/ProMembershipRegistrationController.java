@@ -50,13 +50,14 @@ public class ProMembershipRegistrationController {
 
 		String value = promembershipregistrationinterface.verifyEmailandUpdatePlan(request,
 				promembershipregistrationrepository);
-		if (!(value == "Updated")) {
+		if (value == "") {
 			model.addAttribute("errorMessage", "Input field should not be empty");
+		   
 			return "registerMemberShipDetails";
 
 		}
-
-		return "welcome";
+        model.put("amount", value);
+		return "payment";
 
 	}
 

@@ -1,22 +1,17 @@
-package com.travel.travelAgency.authenticationTest;
+package com.travel.travelAgency.promembershipTest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.doNothing;
 
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
 
 import com.travel.travelAgency.proMembership.interfaces.ProMembershipRegistrationInterface;
 import com.travel.travelAgency.proMembership.models.promembershipregistrationrequest;
 import com.travel.travelAgency.proMembership.repository.ProMembershipRegistrationRepository;
 
-@RunWith(MockitoJUnitRunner.class)
-@SpringBootTest
-public class PromembershipImplementationTest {
+public class ProMembershipRegistrationImplementationTest {
 	@Autowired
 	ProMembershipRegistrationInterface promembershipregistration;
 
@@ -36,10 +31,5 @@ public class PromembershipImplementationTest {
 	
 	
 	}
-	
-	
-	
-	
-	
 	
 }

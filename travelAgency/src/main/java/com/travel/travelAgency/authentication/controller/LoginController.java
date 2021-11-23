@@ -40,6 +40,7 @@ public class LoginController {
         model.put("setusername", setusername);
         HttpSession session=request.getSession();  
         session.setAttribute("name",setusername);
+        session.setAttribute("currentdate", java.time.LocalDate.now());
 		return "user";
  
 	}

@@ -45,34 +45,33 @@ public class ForgotPasswordImplementation implements ForgotPasswordInterface {
 	public UpdatePasswordReponse verifySecurityAnswerandUpdatePass(SecurityAnswerRequest request,
 			ForgotPasswordRepository repo) throws Exception {
 		UpdatePasswordReponse response = new UpdatePasswordReponse();
-
 		try {
-			String email = request.getEmail();
-			String security_answer = request.getSecurity_answer();
-			String new_password = request.getNew_password();
-			String update_password = request.getUpdate_password();
 
+			String security_answer = request.getSecurity_answer();
+			String email = request.getEmail();
+			String newPassword = request.getNew_password();
+			// check if the Security Answer is Valid;
 			if (repo.isSecurityAnswerValid(security_answer, email)) {
 
-				if (request.checkPassword(new_password)) {
+				if (request.checkPassword(newPassword)) {
 
 					if (!request.getNew_password().equalsIgnoreCase(request.getUpdate_password())) {
-						response.setStatus("check if the password are same");
+						throw new Exception("check if the password are same");
 					}
-
+					// Update the new password in database;
 					repo.updatePassword(email, request.getNew_password());
 
 					response.setStatus("Password Updated");
 					return response;
 				} else {
-					response.setStatus("The password must have atlest one character, number and special character");
+					throw new Exception("The password must have atlest one character, integer and special character");
 				}
-			}else {
-				response.setStatus("Invalid answer");
 			}
+			throw new Exception("Invalid answer");
 		} catch (Exception e) {
 
 		}
 		return response;
 	}
+
 }

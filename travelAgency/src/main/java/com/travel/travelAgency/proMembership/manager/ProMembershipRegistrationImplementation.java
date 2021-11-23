@@ -2,18 +2,16 @@ package com.travel.travelAgency.proMembership.manager;
 
 import java.util.List;
 import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import com.travel.travelAgency.proMembership.interfaces.ProMembershipRegistrationInterface;
 import com.travel.travelAgency.proMembership.models.promembershipregistrationrequest;
 import com.travel.travelAgency.proMembership.repository.ProMembershipRegistrationRepository;
 
 @Service
 public class ProMembershipRegistrationImplementation implements ProMembershipRegistrationInterface {
-	
-    @Autowired
+
+	@Autowired
 	ProMembershipRegistrationRepository repo;
 
 	@Override
@@ -22,7 +20,6 @@ public class ProMembershipRegistrationImplementation implements ProMembershipReg
 		List<Map<String, Object>> list = repo.getListofMembership();
 
 		return list;
-		
 
 	}
 
@@ -33,16 +30,13 @@ public class ProMembershipRegistrationImplementation implements ProMembershipReg
 		String plan_name = request.getPlan_name();
 		String email = request.getEmail();
 		String date = request.getDate();
-		String status = "";
-		if(plan_name!="" && date!="") {
-		repo.updateMembership(email, plan_name, date);
-		status="Updated";
-		
-		}else {
-			status="Not Updated";
+		String amount = "";
+		if (plan_name != "" && date != "") {
+			repo.updateMembership(email, plan_name, date);
+			amount = repo.returnPlanAmount(plan_name);
 		}
-		
-		return status;
+
+		return amount;
 
 	}
 

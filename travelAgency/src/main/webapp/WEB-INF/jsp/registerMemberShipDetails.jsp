@@ -21,10 +21,11 @@
 </select>
      <br>
      <br>
-     date :  <input type="text" name="date" /> 
+     date :  <input type="text" name="date" value="<%= session.getAttribute("currentdate") %>" readonly /> 
      <br>
      <br>
      <input type="submit" />
      </form>
 </body>
 </html>
+

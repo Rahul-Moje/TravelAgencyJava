@@ -3,11 +3,8 @@ package com.travel.travelAgency.authentication.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.travel.travelAgency.authentication.interfaces.ForgotPasswordInterface;
 import com.travel.travelAgency.authentication.models.ForgotPassGetEmailRequest;
@@ -47,6 +44,15 @@ public class ForgotPasswordController {
 		return "verifysecurityandupdatepass";
 
 	}
+	
+//	@PostMapping(path = "/updatepass")
+//	public UpdatePasswordReponse getSecurityAnswer(@RequestBody SecurityAnswerRequest request) throws Exception {
+//
+//		return forgotPasswordInterface.verifySecurityAnswerandUpdatePass(request, forgotPasswordRepository);
+//	}
+
+
+
 
 	@RequestMapping(value = "/verifysecurityandupdatepass", method = RequestMethod.POST)
 	public String getSecurityAnswer(ModelMap model, SecurityAnswerRequest request) throws Exception {

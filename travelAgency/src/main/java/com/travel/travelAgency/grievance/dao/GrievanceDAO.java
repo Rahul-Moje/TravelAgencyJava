@@ -1,26 +1,33 @@
 package com.travel.travelAgency.grievance.dao;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
-
 import com.travel.travelAgency.grievance.repository.GrievanceRepository;
+import com.travel.travelAgency.util.DatabaseConnection;
 
 @Repository
 public class GrievanceDAO implements GrievanceRepository{
 
+	Connection con = DatabaseConnection.getSQLConnection();
 	
 	
-	@Autowired
-	JdbcTemplate jdbctemplate;
 
 	@Override
 	public void registerGrievance(String email, String complaint) throws Exception {
 
 		String SQL = "INSERT INTO grievance (user_email_id,complaint) VALUES ('" + email
 				+ "','" + complaint + "')";
-		jdbctemplate.setQueryTimeout(10000);
-		jdbctemplate.update(SQL);
+		try {
+			PreparedStatement ps = con.prepareStatement(SQL);
+			ps.executeUpdate();
+			// con.close();
+		} catch (DataAccessException e) {
+			e.printStackTrace();
+		}
+		
+	}
 
 	}
-}
+

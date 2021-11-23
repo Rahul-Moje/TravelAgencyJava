@@ -28,7 +28,7 @@ public class UserAuthDAO implements UserAuthRepository{
 				user_id = rs.getInt(1);
 
 			}
-			con.close();
+			//con.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
