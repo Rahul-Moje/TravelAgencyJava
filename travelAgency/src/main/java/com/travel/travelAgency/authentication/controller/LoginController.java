@@ -40,6 +40,6 @@ public class LoginController {
         HttpSession session=request.getSession();  
         session.setAttribute("name",setusername);
 		return "user";
-        //return "redirect:/showMemberShipDetails";
+        
 	}
 }
