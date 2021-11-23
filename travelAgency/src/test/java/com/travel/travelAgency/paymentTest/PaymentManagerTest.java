@@ -26,7 +26,7 @@ public class PaymentManagerTest {
 	public void processTransactionTest() {
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 		LocalDateTime now = LocalDateTime.now();
-		int userId =1;
+		int userId = 1;
 		float displayAmount = 1000.0f;
 		String datetime = now.toString();
 		String query = "insert into user_payments (user_id, date_of_payment, paid_amt) values (" + userId + ",'"
@@ -35,7 +35,7 @@ public class PaymentManagerTest {
 	    ResultSet resultSet = Mockito.mock(ResultSet.class);
 	    PreparedStatement statement = Mockito.mock(PreparedStatement.class);
 	    try {
-			Mockito.when(statement.executeUpdate(query)).thenReturn(anyInt());
+			Mockito.when(statement.executeUpdate(query)).thenReturn(1);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

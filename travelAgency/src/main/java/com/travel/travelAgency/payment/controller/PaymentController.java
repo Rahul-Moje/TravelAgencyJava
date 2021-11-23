@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.travel.travelAgency.payment.interfaces.PaymentInterface;
 import com.travel.travelAgency.payment.manager.PaymentManager;
@@ -16,7 +17,8 @@ public class PaymentController {
 	PaymentInterface paymentManager;
 		
 	@RequestMapping(value = "/payment", method = RequestMethod.GET)
-	public String showPaymentsPage(Model model) {
+	public String showPaymentsPage(Model model, float displayAmount) {
+		model.addAttribute("displayAmount", displayAmount);
 		return "payment";
 	}
 

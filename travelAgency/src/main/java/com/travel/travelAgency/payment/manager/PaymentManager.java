@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.travel.travelAgency.payment.dao.PaymentDAO;
 import com.travel.travelAgency.payment.interfaces.PaymentInterface;
+import com.travel.travelAgency.payment.repository.PaymentRepository;
 
 @Service
 public class PaymentManager implements PaymentInterface {
@@ -15,7 +16,7 @@ public class PaymentManager implements PaymentInterface {
 	int userId;
 
 	@Autowired
-	PaymentDAO paymentDao;
+	PaymentRepository paymentDao;
 
 	@Override
 	public void setUserId(int userId) {
