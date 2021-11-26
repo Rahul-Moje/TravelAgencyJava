@@ -1,7 +1,9 @@
 package com.travel.travelAgency.grievanceTest;
 
 import static org.junit.Assert.assertNotNull;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.ArgumentMatchers.anyObject;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -36,11 +38,11 @@ public class grievanceImplementationTest {
 		String complaint = "clean the flight";
 		String SQL = "INSERT INTO grievance (user_email_id,complaint) VALUES ('" + email
 				+ "','" + complaint + "')";
-		//Connection conn = Mockito.mock(Connection.class);
+		Connection conn = Mockito.mock(Connection.class);
 		ResultSet resultSet = Mockito.mock(ResultSet.class);
 		PreparedStatement statement = Mockito.mock(PreparedStatement.class);
 		try {
-			Mockito.when(statement.executeUpdate(SQL)).thenReturn(anyInt());
+			Mockito.when(statement.executeUpdate(SQL)).thenReturn(Mockito.anyInt());
 			} catch (SQLException e) {
 			
 			e.printStackTrace();
