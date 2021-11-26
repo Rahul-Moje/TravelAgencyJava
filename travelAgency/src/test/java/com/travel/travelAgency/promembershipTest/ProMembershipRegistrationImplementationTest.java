@@ -2,12 +2,15 @@ package com.travel.travelAgency.promembershipTest;
 
 import static org.junit.Assert.assertNotNull;
 import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.Mockito.doNothing;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -15,11 +18,16 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.travel.travelAgency.proMembership.interfaces.ProMembershipRegistrationInterface;
 import com.travel.travelAgency.proMembership.manager.ProMembershipRegistrationImplementation;
+import com.travel.travelAgency.proMembership.models.promembershipregistrationrequest;
+import com.travel.travelAgency.proMembership.repository.ProMembershipRegistrationRepository;
 @SpringBootTest
 public class ProMembershipRegistrationImplementationTest {
 	
 	@Autowired
-	ProMembershipRegistrationInterface promembershipregistration;
+	ProMembershipRegistrationInterface promembershipService;
+	
+	@Mock
+	ProMembershipRegistrationRepository repo;
 
 	@Test
 	public void proMembershipClassExistClassExist() {
@@ -27,6 +35,33 @@ public class ProMembershipRegistrationImplementationTest {
 	assertNotNull(promembershipregistrationimplementation);
 
 	}
+	
+	
+	@Test
+	public void verifyEmailandUpdatePlanTest1() throws Exception {
+		LocalDateTime now = LocalDateTime.now();
+		String plan_name = "Gold";
+		String email = "user1@dal.ca";
+		String date = now.toString();
+		doNothing().when(repo).updateMembership(email, plan_name, date);
+	}
+
+	
+	@Test
+	public void verifyEmailandUpdatePlanTest2() throws Exception {
+		LocalDateTime now = LocalDateTime.now();
+		String plan_name = "Gold";
+		String email = "user1@dal.ca";
+		String date = now.toString();
+		String amount = "1000";
+		promembershipregistrationrequest request = new promembershipregistrationrequest();
+		promembershipService.verifyEmailandUpdatePlan(request, repo);
+		doNothing().when(repo).updateMembership(email, plan_name, date);
+		
+	}
+	
+	
+	
 	
 //	@Test
 //	public void verifyEmailandUpdatePlanTest() throws Exception {
