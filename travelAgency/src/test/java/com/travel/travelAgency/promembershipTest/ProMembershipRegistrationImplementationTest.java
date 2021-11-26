@@ -29,7 +29,7 @@ public class ProMembershipRegistrationImplementationTest {
 		String SQL1 = "insert into subscriptions_works (user_email_id,plan_name,date_of_purchase) VALUES ('" + email
 				+ "','" + plan_name + "','" + date + ")";
 		String SQL2 = "select plan_cost from pro_membership where plan_name='" + plan_name + "'";
-		 Connection conn = Mockito.mock(Connection.class);
+		 //Connection conn = Mockito.mock(Connection.class);
 		
 		ResultSet resultSet = Mockito.mock(ResultSet.class);
 		PreparedStatement statement = Mockito.mock(PreparedStatement.class);
@@ -46,7 +46,7 @@ public class ProMembershipRegistrationImplementationTest {
 	@Test
 	public void verifyPlansTest() throws Exception {
 		String SQL = "select * from pro_membership";
-		Connection conn = Mockito.mock(Connection.class);
+		//Connection conn = Mockito.mock(Connection.class);
 		
 		ResultSet resultSet = Mockito.mock(ResultSet.class);
 		PreparedStatement statement = Mockito.mock(PreparedStatement.class);
