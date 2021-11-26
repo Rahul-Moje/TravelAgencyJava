@@ -40,7 +40,7 @@ public class grievanceImplementationTest {
 		ResultSet resultSet = Mockito.mock(ResultSet.class);
 		PreparedStatement statement = Mockito.mock(PreparedStatement.class);
 		try {
-			Mockito.when(statement.executeUpdate(SQL));
+			Mockito.when(statement.executeUpdate(SQL)).thenReturn(anyInt());
 			} catch (SQLException e) {
 			
 			e.printStackTrace();
