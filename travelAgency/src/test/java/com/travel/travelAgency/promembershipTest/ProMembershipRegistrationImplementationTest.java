@@ -26,8 +26,8 @@ public class ProMembershipRegistrationImplementationTest {
 	@Autowired
 	ProMembershipRegistrationInterface promembershipService;
 	
-	@Mock
-	ProMembershipRegistrationRepository repo;
+//	@Mock
+//	ProMembershipRegistrationRepository repo;
 
 	@Test
 	public void proMembershipClassExistClassExist() {
@@ -37,54 +37,54 @@ public class ProMembershipRegistrationImplementationTest {
 	}
 	
 	
-	@Test
-	public void verifyEmailandUpdatePlanTest1() throws Exception {
-		LocalDateTime now = LocalDateTime.now();
-		String plan_name = "Gold";
-		String email = "user1@dal.ca";
-		String date = now.toString();
-		doNothing().when(repo).updateMembership(email, plan_name, date);
-	}
-
-	
-	@Test
-	public void verifyEmailandUpdatePlanTest2() throws Exception {
-		LocalDateTime now = LocalDateTime.now();
-		String plan_name = "Gold";
-		String email = "user1@dal.ca";
-		String date = now.toString();
-		String amount = "1000";
-		promembershipregistrationrequest request = new promembershipregistrationrequest();
-		promembershipService.verifyEmailandUpdatePlan(request, repo);
-		doNothing().when(repo).updateMembership(email, plan_name, date);
-		
-	}
-	
-	
-	
-	
 //	@Test
-//	public void verifyEmailandUpdatePlanTest() throws Exception {
+//	public void verifyEmailandUpdatePlanTest1() throws Exception {
 //		LocalDateTime now = LocalDateTime.now();
 //		String plan_name = "Gold";
 //		String email = "user1@dal.ca";
 //		String date = now.toString();
-//		String SQL1 = "insert into subscriptions_works (user_email_id,plan_name,date_of_purchase) VALUES ('" + email
-//				+ "','" + plan_name + "','" + date + ")";
-//		String SQL2 = "select plan_cost from pro_membership where plan_name='" + plan_name + "'";
-//		 //Connection conn = Mockito.mock(Connection.class);
-//		
-//		ResultSet resultSet = Mockito.mock(ResultSet.class);
-//		PreparedStatement statement = Mockito.mock(PreparedStatement.class);
-//		try {
-//			Mockito.when(statement.executeUpdate(SQL1)).thenReturn(anyInt());
-//			Mockito.when(statement.executeQuery(SQL2)).thenReturn(resultSet);
-//			} catch (SQLException e) {
-//			
-//			e.printStackTrace();
-//		}
-//
+//		doNothing().when(repo).updateMembership(email, plan_name, date);
 //	}
+
+	
+//	@Test
+//	public void verifyEmailandUpdatePlanTest2() throws Exception {
+//		LocalDateTime now = LocalDateTime.now();
+//		String plan_name = "Gold";
+//		String email = "user1@dal.ca";
+//		String date = now.toString();
+//		String amount = "1000";
+//		promembershipregistrationrequest request = new promembershipregistrationrequest();
+//		promembershipService.verifyEmailandUpdatePlan(request, repo);
+//		doNothing().when(repo).updateMembership(email, plan_name, date);
+//		
+//	}
+	
+	
+	
+	
+	@Test
+	public void verifyEmailandUpdatePlanTest() throws Exception {
+		LocalDateTime now = LocalDateTime.now();
+		String plan_name = "Gold";
+		String email = "user1@dal.ca";
+		String date = now.toString();
+		String SQL1 = "insert into subscriptions_works (user_email_id,plan_name,date_of_purchase) VALUES ('" + email
+				+ "','" + plan_name + "','" + date + ")";
+		String SQL2 = "select plan_cost from pro_membership where plan_name='" + plan_name + "'";
+		 //Connection conn = Mockito.mock(Connection.class);
+		
+		ResultSet resultSet = Mockito.mock(ResultSet.class);
+		PreparedStatement statement = Mockito.mock(PreparedStatement.class);
+		try {
+			Mockito.when(statement.executeUpdate(SQL1)).thenReturn(1);
+			Mockito.when(statement.executeQuery(SQL2)).thenReturn(resultSet);
+			} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+
+	}
 //	
 //	@Test
 //	public void verifyPlansTest() throws Exception {

@@ -1,7 +1,6 @@
 package com.travel.travelAgency.paymentTest;
 
 import static org.junit.Assert.assertNotNull;
-import static org.mockito.ArgumentMatchers.anyInt;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -17,7 +16,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.travel.travelAgency.payment.interfaces.PaymentInterface;
 import com.travel.travelAgency.payment.manager.PaymentManager;
-import com.travel.travelAgency.proMembership.manager.ProMembershipRegistrationImplementation;
 
 @SpringBootTest
 public class PaymentManagerTest {
