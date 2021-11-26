@@ -7,8 +7,11 @@
 <title>Welcome after login</title>
 </head>
 <body>
-
-Hello CSCI 5308!
-
+     <font color="red">${errorMessage}</font>
+	 <form action="forgotpassword" method="post">
+     Email :  <input type="text" name="email" /> <input type="submit" />
+     
+     
+     </form>
 </body>
 </html>
