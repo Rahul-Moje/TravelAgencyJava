@@ -7,7 +7,7 @@ import com.travel.travelAgency.grievance.model.Grievancerequest;
 import com.travel.travelAgency.grievance.repository.GrievanceRepository;
 
 @Service
-public class GrievanceManager implements GrievanceInterface {
+public class GrievanceImplementation implements GrievanceInterface {
 
 	@Override
 	public String RegisterGrievanceComplaint(Grievancerequest request, GrievanceRepository repo) throws Exception {
