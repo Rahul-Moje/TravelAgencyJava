@@ -1,5 +1,6 @@
 package com.travel.travelAgency.paymentTest;
 
+import static org.junit.Assert.assertNotNull;
 import static org.mockito.ArgumentMatchers.anyInt;
 
 import java.sql.Connection;
@@ -15,6 +16,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.travel.travelAgency.payment.interfaces.PaymentInterface;
+import com.travel.travelAgency.payment.manager.PaymentManager;
+import com.travel.travelAgency.proMembership.manager.ProMembershipRegistrationImplementation;
 
 @SpringBootTest
 public class PaymentManagerTest {
@@ -23,23 +26,30 @@ public class PaymentManagerTest {
 	PaymentInterface paymentManager;
 	
 	@Test
-	public void processTransactionTest() {
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-		LocalDateTime now = LocalDateTime.now();
-		int userId =1;
-		float displayAmount = 1000.0f;
-		String datetime = now.toString();
-		String query = "insert into user_payments (user_id, date_of_payment, paid_amt) values (" + userId + ",'"
-				+ datetime + "', " + displayAmount + ")";
-		Connection conn = Mockito.mock(Connection.class);
-	    ResultSet resultSet = Mockito.mock(ResultSet.class);
-	    PreparedStatement statement = Mockito.mock(PreparedStatement.class);
-	    try {
-			Mockito.when(statement.executeUpdate(query)).thenReturn(anyInt());
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	public void paymentExistClassExist() {
+		PaymentManager paymentmanager = new PaymentManager(); 
+		assertNotNull(paymentmanager);
 
-	}
+		}
+	
+//	@Test
+//	public void processTransactionTest() {
+//		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+//		LocalDateTime now = LocalDateTime.now();
+//		int userId =1;
+//		float displayAmount = 1000.0f;
+//		String datetime = now.toString();
+//		String query = "insert into user_payments (user_id, date_of_payment, paid_amt) values (" + userId + ",'"
+//				+ datetime + "', " + displayAmount + ")";
+//		Connection conn = Mockito.mock(Connection.class);
+//	    ResultSet resultSet = Mockito.mock(ResultSet.class);
+//	    PreparedStatement statement = Mockito.mock(PreparedStatement.class);
+//	    try {
+//			Mockito.when(statement.executeUpdate(query)).thenReturn(anyInt());
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//
+//	}
 }
