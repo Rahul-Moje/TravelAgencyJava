@@ -1,6 +1,7 @@
 package com.travel.travelAgency.authenticationTest;
 
-import com.travel.travelAgency.authentication.interfaces.LoginInterface;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -8,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import com.travel.travelAgency.authentication.interfaces.LoginInterface;
 
 
 @SpringBootTest

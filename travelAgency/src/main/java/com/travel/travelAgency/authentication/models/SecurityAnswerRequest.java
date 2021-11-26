@@ -1,7 +1,6 @@
 package com.travel.travelAgency.authentication.models;
 
 import java.io.Serializable;
-import java.util.regex.Pattern;
 
 public class SecurityAnswerRequest implements Serializable {
 
