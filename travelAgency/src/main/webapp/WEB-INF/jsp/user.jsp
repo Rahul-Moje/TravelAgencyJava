@@ -10,6 +10,7 @@
 
 		<a href="/showMemberShipDetails">Show ProMembership Options!</a>
 		<br>
+		<a href="/searchFlights">Search Flights</a>
 		<br>
 		<a href="/grievance">File a Grievance!!</a>
 		
