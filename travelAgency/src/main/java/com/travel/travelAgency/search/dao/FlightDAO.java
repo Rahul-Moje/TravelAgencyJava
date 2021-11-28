@@ -53,7 +53,7 @@ public class FlightDAO implements FlightRepository {
     @Override
     public List<OneWayFlightResults> findOneWayFlights(SearchFlightForm searchFlightForm) throws SQLException, ParseException {
         String query = "SELECT \n" +
-                "FL.FLIGHTCODE,FL.AIRLINE, FL.SOURCE, FL.DESTINATION,\n" +
+                "FL.FLIGHTCODE,FL.AIRLINE, FLSCH.ID, FL.SOURCE, FL.DESTINATION,\n" +
                 "FLSCH.DEPARTURETIME, FLSCH.ARRIVALTIME,FLSCH.TOTALHOURS,FLSCH.TICKETPRICE,FLSCH.SEATSBOOKED,FLSCH.CAPACITY\n" +
                 "FROM FLIGHTS FL,\n" +
                 "FLIGHTSCHEDULES FLSCH\n" +
@@ -72,6 +72,7 @@ public class FlightDAO implements FlightRepository {
             OneWayFlightResults oneWayFlightResults = new OneWayFlightResults();
             oneWayFlightResults.setFlightCode(rs.getString("FLIGHTCODE"));
             oneWayFlightResults.setAirLine(rs.getString("AIRLINE"));
+            oneWayFlightResults.setFlightScheduleId(rs.getInt("ID"));
             oneWayFlightResults.setSource(rs.getString("SOURCE"));
             oneWayFlightResults.setDestination(rs.getString("DESTINATION"));
             oneWayFlightResults.setDepartureTime(DATE_FORMATTER.parse(rs.getString("DEPARTURETIME")));

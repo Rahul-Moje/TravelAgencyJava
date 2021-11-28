@@ -9,6 +9,8 @@ public class OneWayFlightResults {
 
     private String airLine;
 
+    private Integer flightScheduleId;
+
     private String source;
 
     private String destination;
@@ -39,6 +41,14 @@ public class OneWayFlightResults {
 
     public void setAirLine(String airLine) {
         this.airLine = airLine;
+    }
+
+    public Integer getFlightScheduleId() {
+        return flightScheduleId;
+    }
+
+    public void setFlightScheduleId(Integer flightScheduleId) {
+        this.flightScheduleId = flightScheduleId;
     }
 
     public String getSource() {

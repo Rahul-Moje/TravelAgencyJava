@@ -46,7 +46,6 @@ public class SearchFlightsImplementation implements SearchFlightsInterface {
 
     @Override
     public List<OneWayFlightResults> retrieveOneWayFlightResults(SearchFlightForm searchFlightForm) throws SQLException, ParseException {
-        List<OneWayFlightResults> returnFlightsResults = flightRepository.findOneWayFlights(searchFlightForm);
-        return null;
+        return flightRepository.findOneWayFlights(searchFlightForm);
     }
 }

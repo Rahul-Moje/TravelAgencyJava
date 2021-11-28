@@ -49,9 +49,14 @@ public class SearchFlightsController {
             validateSearchRequest(searchFlightForm);
             if(isOneWayRequest(searchFlightForm)) {
                 List<OneWayFlightResults> oneWayFlightResultsList = retrieveOneWayFlightResults(searchFlightForm);
+                model.put("flights", oneWayFlightResultsList);
+                request.getSession().setAttribute("numOfPassengers", searchFlightForm.getNumOfPassengers());
+                request.getSession().setAttribute("journeyType", JourneyType.ONE_WAY.getDescription());
                 return "oneWayFlightsResults";
             } else {
                 List<ReturnFlightsResults> returnFlightsResultsList = retrieveReturnFlightResults(searchFlightForm);
+                request.getSession().setAttribute("numOfPassengers", searchFlightForm.getNumOfPassengers());
+                request.getSession().setAttribute("journeyType", JourneyType.RETURN.getDescription());
                 return "returnFlightsResults";
             }
 

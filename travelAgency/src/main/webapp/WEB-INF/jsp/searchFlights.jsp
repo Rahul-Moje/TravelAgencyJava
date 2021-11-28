@@ -26,14 +26,14 @@
     <br>
     Select From Date
     <input type="date" id="fromDate" name="fromDate"
-           value="2021-01-01"
-           min="2021-01-01" max="2023-12-31">
+           value="2021-11-01"
+           min="2021-11-01" max="2023-12-31">
     <br>
     <div id="toDateDiv">
     Select To Date
     <input type="date" id="toDate" name="toDate"
-           value="2021-01-01"
-           min="2021-01-01" max="2023-12-31">
+           value="2021-11-01"
+           min="2021-11-01" max="2023-12-31">
     <br>
     </div>
     One Way or a Return Flight ?
