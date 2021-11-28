@@ -5,7 +5,7 @@
 <html>
 <head>
     <meta charset="ISO-8859-1">
-    <title>Login</title>
+    <title>Search Flights</title>
 </head>
 <body>
 <span style="color: red; ">${errorMessage}</span>

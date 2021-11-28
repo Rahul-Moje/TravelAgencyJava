@@ -29,16 +29,15 @@ public class SearchFlightsController {
 
     @RequestMapping(value="/searchFlights", method = RequestMethod.GET)
     public String initialisePage(ModelMap model, HttpServletRequest request){
-        String errorMessage = "";
         try {
             model.put("sources", searchFlightsInterface.findSourceAirports());
             model.put("destinations", searchFlightsInterface.findDestinationAirports());
+            return "searchFlights";
         } catch (Exception e) {
-            errorMessage = errorMessage.concat("Error occurred while displaying search flights page");
             e.printStackTrace();
+            model.addAttribute("errorMessage", "Error occurred while displaying search flights page");
+            return "searchFlightsErrors";
         }
-        model.addAttribute("errorMessage", errorMessage);
-        return "searchFlights";
     }
 
     @RequestMapping(value = "/searchFlights", method = RequestMethod.POST)
@@ -55,6 +54,7 @@ public class SearchFlightsController {
                 return "oneWayFlightsResults";
             } else {
                 List<ReturnFlightsResults> returnFlightsResultsList = retrieveReturnFlightResults(searchFlightForm);
+                model.put("flights", returnFlightsResultsList);
                 request.getSession().setAttribute("numOfPassengers", searchFlightForm.getNumOfPassengers());
                 request.getSession().setAttribute("journeyType", JourneyType.RETURN.getDescription());
                 return "returnFlightsResults";

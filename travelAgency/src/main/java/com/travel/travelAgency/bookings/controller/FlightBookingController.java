@@ -11,8 +11,14 @@ import javax.servlet.http.HttpServletResponse;
 @Controller
 public class FlightBookingController {
 
-    @RequestMapping(value = "/bookFlights", method = RequestMethod.POST)
+    @RequestMapping(value = "/bookFlight", method = RequestMethod.GET)
+    public String initialiseFlightBooking(ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) {
+        return "flightBooking";
+    }
+
+    @RequestMapping(value = "/bookFlight", method = RequestMethod.POST)
     public String bookFlights(ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) {
-        return "payment";
+
+        return "flightBooking";
     }
 }

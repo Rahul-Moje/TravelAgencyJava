@@ -5,7 +5,7 @@
 <html>
 <head>
     <meta charset="ISO-8859-1">
-    <title>Login</title>
+    <title>Search Results</title>
 </head>
 <body>
 <table border="1" cellpadding="5" style="width:100%">
@@ -33,7 +33,7 @@
             <td><c:out value="${flight.totalHours}" /></td>
             <td><c:out value="${flight.ticketPrice}" /></td>
             <td>
-                <form action="bookFlights" method="post">
+                <form action="bookFlight" method="post">
                 <input type="hidden" id="flightScheduleId" name="flightScheduleId" value="${flight.flightScheduleId}">
                 <input type="submit" value="Book"/>
                 </form>
