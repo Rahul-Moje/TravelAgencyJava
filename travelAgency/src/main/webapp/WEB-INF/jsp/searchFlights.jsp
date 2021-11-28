@@ -17,7 +17,6 @@
         </c:forEach>
     </select>
     <br>
-    <div id="destinationDiv">
     Select Destination
     <select name="destinations" id="destinationId">
         <c:forEach items="${destinations}" var="destination">
@@ -25,7 +24,6 @@
         </c:forEach>
     </select>
     <br>
-    </div>
     Select From Date
     <input type="date" id="fromDate" name="fromDate"
            value="2021-01-01"
@@ -41,8 +39,11 @@
     One Way or a Return Flight ?
     <select name="oneWayOrReturn" id="oneWayOrReturn" onchange="myFunction()">
         <option value="OneWay">One Way</option>
-        <option value="Return">Return</option>
+        <option value="Return" selected>Return</option>
     </select>
+    <br>
+    Enter number of passengers
+    <input type="text" name="numPassengers" id="numPassengers">
     <input type="submit" />
 
 
@@ -52,10 +53,8 @@
     function myFunction() {
         if(document.getElementById("oneWayOrReturn").value == "Return") {
             document.getElementById("toDateDiv").style.display = "block"
-            document.getElementById("destinationDiv").style.display = "block"
         } else {
             document.getElementById("toDateDiv").style.display = "none"
-            document.getElementById("destinationDiv").style.display = "none"
         }
     }
 </script>

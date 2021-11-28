@@ -8,9 +8,8 @@
     <title>Login</title>
 </head>
 <body>
-<span style="color: red;">${errorMessage}</span>
-<c:if test="${errorMessage.length()==0}">
-Displays search results
-</c:if>
+Displays one way results
+<br>
+<a href="/searchFlights">Back to Search Flights</a>
 </body>
 </html>

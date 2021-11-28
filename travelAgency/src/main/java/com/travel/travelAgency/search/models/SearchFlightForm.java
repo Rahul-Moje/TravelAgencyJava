@@ -14,6 +14,8 @@ public class SearchFlightForm {
 
     private JourneyType journeyType;
 
+    private Integer numOfPassengers;
+
     public String getSource() {
         return source;
     }
@@ -52,5 +54,13 @@ public class SearchFlightForm {
 
     public void setJourneyType(JourneyType journeyType) {
         this.journeyType = journeyType;
+    }
+
+    public Integer getNumOfPassengers() {
+        return numOfPassengers;
+    }
+
+    public void setNumOfPassengers(Integer numOfPassengers) {
+        this.numOfPassengers = numOfPassengers;
     }
 }
