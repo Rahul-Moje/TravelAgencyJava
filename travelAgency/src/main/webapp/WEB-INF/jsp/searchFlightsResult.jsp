@@ -8,10 +8,9 @@
     <title>Login</title>
 </head>
 <body>
-<span style="color: red; ">${errorMessage}</span>
-
+<span style="color: red;">${errorMessage}</span>
+<c:if test="${errorMessage.length()==0}">
 Displays search results
-
-</form>
+</c:if>
 </body>
 </html>

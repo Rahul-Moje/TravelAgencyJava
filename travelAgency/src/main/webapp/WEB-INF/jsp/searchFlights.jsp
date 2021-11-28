@@ -17,6 +17,7 @@
         </c:forEach>
     </select>
     <br>
+    <div id="destinationDiv">
     Select Destination
     <select name="destinations" id="destinationId">
         <c:forEach items="${destinations}" var="destination">
@@ -24,18 +25,21 @@
         </c:forEach>
     </select>
     <br>
+    </div>
     Select From Date
     <input type="date" id="fromDate" name="fromDate"
            value="2021-01-01"
            min="2021-01-01" max="2023-12-31">
     <br>
+    <div id="toDateDiv">
     Select To Date
     <input type="date" id="toDate" name="toDate"
            value="2021-01-01"
            min="2021-01-01" max="2023-12-31">
     <br>
+    </div>
     One Way or a Return Flight ?
-    <select name="oneWayOrReturn" id="oneWayOrReturn">
+    <select name="oneWayOrReturn" id="oneWayOrReturn" onchange="myFunction()">
         <option value="OneWay">One Way</option>
         <option value="Return">Return</option>
     </select>
@@ -44,5 +48,16 @@
 
 
 </form>
+<script>
+    function myFunction() {
+        if(document.getElementById("oneWayOrReturn").value == "Return") {
+            document.getElementById("toDateDiv").style.display = "block"
+            document.getElementById("destinationDiv").style.display = "block"
+        } else {
+            document.getElementById("toDateDiv").style.display = "none"
+            document.getElementById("destinationDiv").style.display = "none"
+        }
+    }
+</script>
 </body>
 </html>

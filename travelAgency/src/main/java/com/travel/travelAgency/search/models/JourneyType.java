@@ -5,7 +5,7 @@ import java.util.EnumSet;
 public enum JourneyType {
 
     ONE_WAY("OneWay"),
-    DIRECT("Direct");
+    RETURN("Return");
 
     private String description;
 

@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 
 @Controller
 public class SearchFlightsController {
@@ -42,13 +41,12 @@ public class SearchFlightsController {
             response.setContentType("text/html");
             SearchFlightForm searchFlightForm = mapFormData(request);
             validateSearchRequest(searchFlightForm);
+            model.addAttribute("errorMessage", "");
         } catch (Exception e) {
             model.addAttribute("errorMessage", e.getMessage());
             e.printStackTrace();
         }
-
-
-        return "searchFlighstResult";
+        return "searchFlightsResult";
 
     }
 
