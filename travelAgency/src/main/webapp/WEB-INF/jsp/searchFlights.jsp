@@ -25,12 +25,12 @@
     </select>
     <br>
     Select From Date
-    <input type="date" id="fromDate" name="From Date"
+    <input type="date" id="fromDate" name="fromDate"
            value="2021-01-01"
            min="2021-01-01" max="2023-12-31">
     <br>
     Select To Date
-    <input type="date" id="toDate" name="To Date"
+    <input type="date" id="toDate" name="toDate"
            value="2021-01-01"
            min="2021-01-01" max="2023-12-31">
     <br>
