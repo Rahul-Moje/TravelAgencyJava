@@ -2,6 +2,8 @@ package com.travel.travelAgency.bookings.model;
 
 import com.travel.travelAgency.search.models.JourneyType;
 
+import java.math.BigDecimal;
+
 public class FlightBookingRequest {
 
     private JourneyType journeyType;
@@ -15,6 +17,10 @@ public class FlightBookingRequest {
     private Integer numOfBaggages;
 
     private MealType mealType;
+
+    private Integer numOfPassengers;
+
+    private BigDecimal totalCost;
 
     public JourneyType getJourneyType() {
         return journeyType;
@@ -62,5 +68,21 @@ public class FlightBookingRequest {
 
     public void setMealType(MealType mealType) {
         this.mealType = mealType;
+    }
+
+    public Integer getNumOfPassengers() {
+        return numOfPassengers;
+    }
+
+    public void setNumOfPassengers(Integer numOfPassengers) {
+        this.numOfPassengers = numOfPassengers;
+    }
+
+    public BigDecimal getTotalCost() {
+        return totalCost;
+    }
+
+    public void setTotalCost(BigDecimal totalCost) {
+        this.totalCost = totalCost;
     }
 }

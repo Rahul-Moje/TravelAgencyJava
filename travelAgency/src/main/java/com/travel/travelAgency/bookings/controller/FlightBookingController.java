@@ -1,6 +1,11 @@
 package com.travel.travelAgency.bookings.controller;
 
+import com.travel.travelAgency.bookings.interfaces.FlightBookingInterface;
+import com.travel.travelAgency.bookings.model.FlightBookingRequest;
+import com.travel.travelAgency.bookings.model.MealType;
 import com.travel.travelAgency.search.exceptions.SearchFlightsException;
+import com.travel.travelAgency.search.models.JourneyType;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -8,26 +13,44 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.math.BigDecimal;
+import java.sql.SQLException;
 
 @Controller
 public class FlightBookingController {
 
+    @Autowired
+    private FlightBookingInterface flightBookingInterface;
+
     @RequestMapping(value = "/bookFlight", method = RequestMethod.GET)
     public String initialiseFlightBooking(ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) {
-        System.out.println("user - " + request.getSession().getAttribute("name"));
-        System.out.println("numPassengers - " + request.getSession().getAttribute("numOfPassengers"));
-        System.out.println("journeyType - " + request.getSession().getAttribute("journeyType"));
+        Integer fromScheduleId = Integer.parseInt(request.getParameter("fromFlightScheduleId"));
+        BigDecimal totalCost = new BigDecimal(request.getParameter("flightCost"));
+        request.getSession().setAttribute("fromFlightScheduleId", fromScheduleId);
+        request.getSession().setAttribute("flightCost", totalCost);
         return "flightBooking";
     }
 
     @RequestMapping(value = "/bookFlight", method = RequestMethod.POST)
-    public String bookFlights(ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) {
-        System.out.println("user - " + request.getSession().getAttribute("name"));
-        System.out.println("numPassengers - " + request.getSession().getAttribute("numOfPassengers"));
-        System.out.println("journeyType - " + request.getSession().getAttribute("journeyType"));
-        System.out.println("Num bags" + request.getParameter("numBaggages"));
-        System.out.println("Meal type" + request.getParameter("mealType"));
+    public String bookFlights(ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) throws SQLException {
+        FlightBookingRequest flightBooking = mapToFlightBookingRequest(request);
+        flightBookingInterface.saveFlightBooking(flightBooking);
         return "payment";
+    }
+
+    private FlightBookingRequest mapToFlightBookingRequest(HttpServletRequest request) {
+        FlightBookingRequest flightBookingRequest = new FlightBookingRequest();
+        flightBookingRequest.setJourneyType(JourneyType.mapToJourneyType((String) request.getSession().getAttribute("journeyType")));
+        flightBookingRequest.setFromFlightScheduleId((Integer) request.getSession().getAttribute("fromFlightScheduleId"));
+        if(flightBookingRequest.getJourneyType() == JourneyType.RETURN) {
+
+        }
+        flightBookingRequest.setUserName((String) request.getSession().getAttribute("name"));
+        flightBookingRequest.setNumOfBaggages(Integer.parseInt(request.getParameter("numBaggages")));
+        flightBookingRequest.setMealType(MealType.mapToMealType(request.getParameter("mealType")));
+        flightBookingRequest.setNumOfPassengers((int)request.getSession().getAttribute("numOfPassengers"));
+        flightBookingRequest.setTotalCost((BigDecimal) request.getSession().getAttribute("flightCost"));
+        return flightBookingRequest;
     }
 
     private void checkIfUserLoggedIn(HttpServletRequest request) {
