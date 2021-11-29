@@ -19,8 +19,8 @@ public class FlightBookingDao implements FlightBookingRepository {
     @Override
     public Integer saveUserBooking(FlightBookingRequest flightBooking) throws SQLException {
         String query = "INSERT INTO USERBOOKING(USERNAME, BOOKINGDATE, TICKETCOST, \n" +
-                "NUMBAGGAGES, MEALPLAN, JOURNEYTYPE, FROMSCHEDULEID) VALUES(\n" +
-                "?,?,?,?,?,?,?)";
+                "NUMBAGGAGES, MEALPLAN, JOURNEYTYPE, FROMSCHEDULEID, NUMPASSENGERS, USEREMAIL) VALUES(\n" +
+                "?,?,?,?,?,?,?,?,?)";
         PreparedStatement preparedStatement = con.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
         preparedStatement.setString(1, flightBooking.getUserName());
         preparedStatement.setString(2, DATE_FORMATTER.format(new Date()));
@@ -29,6 +29,8 @@ public class FlightBookingDao implements FlightBookingRepository {
         preparedStatement.setString(5, flightBooking.getMealType().name());
         preparedStatement.setString(6, flightBooking.getJourneyType().name());
         preparedStatement.setInt(7, flightBooking.getFromFlightScheduleId());
+        preparedStatement.setInt(8, flightBooking.getNumOfPassengers());
+        preparedStatement.setString(9, flightBooking.getUserEmail());
         preparedStatement.executeUpdate();
         ResultSet resultSet = preparedStatement.getGeneratedKeys();
         resultSet.next();

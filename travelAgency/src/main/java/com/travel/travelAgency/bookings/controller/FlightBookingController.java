@@ -34,7 +34,8 @@ public class FlightBookingController {
     @RequestMapping(value = "/bookFlight", method = RequestMethod.POST)
     public String bookFlights(ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) throws SQLException {
         FlightBookingRequest flightBooking = mapToFlightBookingRequest(request);
-        flightBookingInterface.saveFlightBooking(flightBooking);
+        Integer bookingId = flightBookingInterface.saveFlightBooking(flightBooking);
+        request.getSession().setAttribute("bookingId", bookingId);
         return "payment";
     }
 
@@ -46,6 +47,7 @@ public class FlightBookingController {
 
         }
         flightBookingRequest.setUserName((String) request.getSession().getAttribute("name"));
+        flightBookingRequest.setUserEmail("testemail@gmail.com"/*(String) request.getSession().getAttribute("email")*/);
         flightBookingRequest.setNumOfBaggages(Integer.parseInt(request.getParameter("numBaggages")));
         flightBookingRequest.setMealType(MealType.mapToMealType(request.getParameter("mealType")));
         flightBookingRequest.setNumOfPassengers((int)request.getSession().getAttribute("numOfPassengers"));

@@ -3,7 +3,7 @@ package com.travel.travelAgency.bookings.model;
 public enum MealType {
 
     VEGETARIAN("Vegetarian"),
-    NONVEGETARIAN("Non vegetarian");
+    NONVEGETARIAN("Non Vegetarian");
 
     private String description;
 
