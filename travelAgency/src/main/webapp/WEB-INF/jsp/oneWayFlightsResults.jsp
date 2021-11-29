@@ -9,7 +9,7 @@
 </head>
 <body>
 <table border="1" cellpadding="5" style="width:100%">
-    <caption><h2>ProMemberShipDetails</h2></caption>
+    <caption><h2>Search Results</h2></caption>
     <tr>
         <th>Flight Code</th>
         <th>Airline</th>
@@ -33,9 +33,10 @@
             <td><c:out value="${flight.totalHours}" /></td>
             <td><c:out value="${flight.ticketPrice}" /></td>
             <td>
-                <form action="bookFlight" method="post">
-                <input type="hidden" id="flightScheduleId" name="flightScheduleId" value="${flight.flightScheduleId}">
-                <input type="submit" value="Book"/>
+                <form action="bookFlight" method="get">
+                    <input type="hidden" id="fromFlightScheduleId" name="fromFlightScheduleId" value="${flight.flightScheduleId}">
+                    <input type="hidden" id="flightCost" name="flightCost" value="${flight.ticketPrice}">
+                    <input type="submit" value="Book"/>
                 </form>
             </td>
         </tr>

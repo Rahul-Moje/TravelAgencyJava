@@ -74,6 +74,8 @@ public class SearchFlightsController {
 
     }
 
+
+
     private List<ReturnFlightsResults> retrieveReturnFlightResults(SearchFlightForm searchFlightForm) throws SQLException {
         return searchFlightsInterface.retrieveReturnFlightResults(searchFlightForm);
     }
@@ -91,14 +93,22 @@ public class SearchFlightsController {
         searchFlightsInterface.validateSearchRequest(searchFlightForm);
     }
 
-    private SearchFlightForm mapFormData(HttpServletRequest request) throws ParseException {
-        SearchFlightForm searchFlightForm = new SearchFlightForm();
-        searchFlightForm.setSource(request.getParameter("sources"));
-        searchFlightForm.setDestination(request.getParameter("destinations"));
-        searchFlightForm.setFromDate(DATE_FORMATTER.parse(request.getParameter("fromDate")));
-        searchFlightForm.setToDate(DATE_FORMATTER.parse(request.getParameter("toDate")));
-        searchFlightForm.setJourneyType(JourneyType.mapToJourneyType(request.getParameter("oneWayOrReturn")));
-        searchFlightForm.setNumOfPassengers(Integer.parseInt(request.getParameter("numPassengers")));
-        return searchFlightForm;
+    private SearchFlightForm mapFormData(HttpServletRequest request)  {
+        try {
+            SearchFlightForm searchFlightForm = new SearchFlightForm();
+            searchFlightForm.setSource(request.getParameter("sources"));
+            searchFlightForm.setDestination(request.getParameter("destinations"));
+            searchFlightForm.setFromDate(DATE_FORMATTER.parse(request.getParameter("fromDate")));
+            searchFlightForm.setToDate(DATE_FORMATTER.parse(request.getParameter("toDate")));
+            searchFlightForm.setJourneyType(JourneyType.mapToJourneyType(request.getParameter("oneWayOrReturn")));
+            searchFlightForm.setNumOfPassengers(Integer.parseInt(request.getParameter("numPassengers")));
+            return searchFlightForm;
+        } catch (ParseException e) {
+            e.printStackTrace();
+            throw new SearchFlightsException("Invalid date");
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+            throw new SearchFlightsException("Invalid number of passengers");
+        }
     }
 }

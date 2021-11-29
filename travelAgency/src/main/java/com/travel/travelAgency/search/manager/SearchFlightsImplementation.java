@@ -1,7 +1,9 @@
 package com.travel.travelAgency.search.manager;
 
+import com.travel.travelAgency.search.exceptions.SearchFlightsException;
 import com.travel.travelAgency.search.interfaces.SearchFlightsInterface;
 import com.travel.travelAgency.search.interfaces.SearchFlightsRequestValidator;
+import com.travel.travelAgency.search.interfaces.TicketCostCalculator;
 import com.travel.travelAgency.search.models.OneWayFlightResults;
 import com.travel.travelAgency.search.models.ReturnFlightsResults;
 import com.travel.travelAgency.search.models.SearchFlightForm;
@@ -11,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.sql.SQLException;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -21,6 +24,9 @@ public class SearchFlightsImplementation implements SearchFlightsInterface {
 
     @Autowired
     private SearchFlightsRequestValidator searchFlightsRequestValidator;
+
+    @Autowired
+    private TicketCostCalculator ticketCostCalculator;
 
 
     @Override
@@ -46,6 +52,29 @@ public class SearchFlightsImplementation implements SearchFlightsInterface {
 
     @Override
     public List<OneWayFlightResults> retrieveOneWayFlightResults(SearchFlightForm searchFlightForm) throws SQLException, ParseException {
-        return flightRepository.findOneWayFlights(searchFlightForm);
+        List<OneWayFlightResults> oneWayFlights =  flightRepository.findOneWayFlights(searchFlightForm);
+        oneWayFlights = removeFlightsExceedingCapacity(oneWayFlights, searchFlightForm);
+        checkIfFlightsRemaining(oneWayFlights);
+        ticketCostCalculator.calculateOneWayCost(oneWayFlights);
+        return oneWayFlights;
+    }
+
+    private void checkIfFlightsRemaining(List<OneWayFlightResults> oneWayFlights) {
+        if(oneWayFlights.size() == 0) {
+            throw new SearchFlightsException("No flights matching your search. Try again with different criterias");
+        }
+    }
+
+    private List<OneWayFlightResults> removeFlightsExceedingCapacity(List<OneWayFlightResults> oneWayFlights, SearchFlightForm searchFlightForm) {
+        List<OneWayFlightResults> filteredFlights = new ArrayList<>();
+        for(OneWayFlightResults flight : oneWayFlights) {
+            int maxCapacity = flight.getCapacity();
+            int currentlyBooked = flight.getSeatsBooked();
+            int remaining = maxCapacity - currentlyBooked;
+            if(remaining>=searchFlightForm.getNumOfPassengers()) {
+                filteredFlights.add(flight);
+            }
+        }
+        return filteredFlights;
     }
 }
