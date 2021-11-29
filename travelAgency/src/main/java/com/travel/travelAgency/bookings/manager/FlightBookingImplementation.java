@@ -16,10 +16,11 @@ public class FlightBookingImplementation implements FlightBookingInterface {
     private FlightBookingDao flightBookingDao;
 
     @Override
-    public void saveFlightBooking(FlightBookingRequest flightBooking) throws SQLException {
+    public Integer saveFlightBooking(FlightBookingRequest flightBooking) throws SQLException {
         Integer id = flightBookingDao.saveUserBooking(flightBooking);
         flightBookingDao.updateSeatsFilled(flightBooking.getFromFlightScheduleId(), flightBooking.getNumOfPassengers());
         checkAndUpdateReturnJourneyBookingDetails(flightBooking, id);
+        return id;
     }
 
     private void checkAndUpdateReturnJourneyBookingDetails(FlightBookingRequest flightBooking, Integer id) throws SQLException {

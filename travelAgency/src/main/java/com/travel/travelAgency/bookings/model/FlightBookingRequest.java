@@ -14,6 +14,8 @@ public class FlightBookingRequest {
 
     private String userName;
 
+    private String userEmail;
+
     private Integer numOfBaggages;
 
     private MealType mealType;
@@ -84,5 +86,13 @@ public class FlightBookingRequest {
 
     public void setTotalCost(BigDecimal totalCost) {
         this.totalCost = totalCost;
+    }
+
+    public String getUserEmail() {
+        return userEmail;
+    }
+
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
     }
 }

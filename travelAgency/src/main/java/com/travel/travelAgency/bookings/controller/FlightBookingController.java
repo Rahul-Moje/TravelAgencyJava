@@ -1,5 +1,6 @@
 package com.travel.travelAgency.bookings.controller;
 
+import com.travel.travelAgency.bookings.exceptions.FlightBookingException;
 import com.travel.travelAgency.bookings.interfaces.FlightBookingInterface;
 import com.travel.travelAgency.bookings.model.FlightBookingRequest;
 import com.travel.travelAgency.bookings.model.MealType;
@@ -24,33 +25,73 @@ public class FlightBookingController {
 
     @RequestMapping(value = "/bookFlight", method = RequestMethod.GET)
     public String initialiseFlightBooking(ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) {
-        Integer fromScheduleId = Integer.parseInt(request.getParameter("fromFlightScheduleId"));
-        BigDecimal totalCost = new BigDecimal(request.getParameter("flightCost"));
-        request.getSession().setAttribute("fromFlightScheduleId", fromScheduleId);
-        request.getSession().setAttribute("flightCost", totalCost);
-        return "flightBooking";
+        try {
+            Integer fromScheduleId = Integer.parseInt(request.getParameter("fromFlightScheduleId"));
+            BigDecimal totalCost = new BigDecimal(request.getParameter("flightCost"));
+            request.getSession().setAttribute("fromFlightScheduleId", fromScheduleId);
+            request.getSession().setAttribute("flightCost", totalCost);
+            checkAndSetReturnFlightAttributes(request);
+            return "flightBooking";
+        } catch (FlightBookingException e) {
+            e.printStackTrace();
+            modelMap.addAttribute("errorMessage", e.getMessage());
+            return "bookFlightsErrors";
+        } catch (Exception e) {
+            e.printStackTrace();
+            modelMap.addAttribute("errorMessage", "Error occurred while booking flights");
+            return "bookFlightsErrors";
+        }
+
+    }
+
+    private void checkAndSetReturnFlightAttributes(HttpServletRequest request) {
+        if(request.getSession().getAttribute("journeyType").equals(JourneyType.RETURN.getDescription())) {
+            request.getSession().setAttribute("toFlightScheduleId", Integer.parseInt(request.getParameter("toFlightScheduleId")));
+        }
     }
 
     @RequestMapping(value = "/bookFlight", method = RequestMethod.POST)
     public String bookFlights(ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) throws SQLException {
-        FlightBookingRequest flightBooking = mapToFlightBookingRequest(request);
-        flightBookingInterface.saveFlightBooking(flightBooking);
-        return "payment";
+        try {
+            FlightBookingRequest flightBooking = mapToFlightBookingRequest(request);
+            Integer bookingId = flightBookingInterface.saveFlightBooking(flightBooking);
+            request.getSession().setAttribute("bookingId", bookingId);
+            return "payment";
+        } catch (FlightBookingException e) {
+            e.printStackTrace();
+            modelMap.addAttribute("errorMessage", e.getMessage());
+            return "bookFlightsErrors";
+        } catch (Exception e) {
+            e.printStackTrace();
+            modelMap.addAttribute("errorMessage", "Error occurred while booking flights");
+            return "bookFlightsErrors";
+        }
+
     }
 
     private FlightBookingRequest mapToFlightBookingRequest(HttpServletRequest request) {
         FlightBookingRequest flightBookingRequest = new FlightBookingRequest();
         flightBookingRequest.setJourneyType(JourneyType.mapToJourneyType((String) request.getSession().getAttribute("journeyType")));
         flightBookingRequest.setFromFlightScheduleId((Integer) request.getSession().getAttribute("fromFlightScheduleId"));
-        if(flightBookingRequest.getJourneyType() == JourneyType.RETURN) {
-
-        }
         flightBookingRequest.setUserName((String) request.getSession().getAttribute("name"));
-        flightBookingRequest.setNumOfBaggages(Integer.parseInt(request.getParameter("numBaggages")));
+        flightBookingRequest.setUserEmail("testemail@gmail.com"/*(String) request.getSession().getAttribute("email")*/);
+        try {
+            flightBookingRequest.setNumOfBaggages(Integer.parseInt(request.getParameter("numBaggages")));
+        } catch (NumberFormatException e) {
+            throw new FlightBookingException("Invalid number of baggages. Retry entire process");
+        }
+
         flightBookingRequest.setMealType(MealType.mapToMealType(request.getParameter("mealType")));
         flightBookingRequest.setNumOfPassengers((int)request.getSession().getAttribute("numOfPassengers"));
         flightBookingRequest.setTotalCost((BigDecimal) request.getSession().getAttribute("flightCost"));
+        checkAndMapReturnFlight(request, flightBookingRequest);
         return flightBookingRequest;
+    }
+
+    private void checkAndMapReturnFlight(HttpServletRequest request, FlightBookingRequest flightBookingRequest) {
+        if(flightBookingRequest.getJourneyType() == JourneyType.RETURN) {
+            flightBookingRequest.setToFlightScheduleId((Integer) request.getSession().getAttribute("toFlightScheduleId"));
+        }
     }
 
     private void checkIfUserLoggedIn(HttpServletRequest request) {

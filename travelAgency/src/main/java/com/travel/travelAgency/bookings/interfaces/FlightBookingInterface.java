@@ -6,5 +6,5 @@ import java.sql.SQLException;
 
 public interface FlightBookingInterface {
 
-    void saveFlightBooking(FlightBookingRequest flightBooking) throws SQLException;
+    Integer saveFlightBooking(FlightBookingRequest flightBooking) throws SQLException;
 }
