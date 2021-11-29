@@ -45,23 +45,74 @@ public class SearchFlightsImplementation implements SearchFlightsInterface {
     }
 
     @Override
-    public List<ReturnFlightsResults> retrieveReturnFlightResults(SearchFlightForm searchFlightForm) throws SQLException {
-        List<ReturnFlightsResults> oneWayFlightResultsList = flightRepository.findReturnFlights(searchFlightForm);
-        return null;
+    public List<ReturnFlightsResults> retrieveReturnFlightResults(SearchFlightForm searchFlightForm) throws SQLException, ParseException {
+        List<OneWayFlightResults> bothWaysFlights = flightRepository.findBothWayFlights(searchFlightForm);
+        List<OneWayFlightResults> fromFlights = extractFlightsForSource(bothWaysFlights, searchFlightForm.getSource());
+        List<OneWayFlightResults> toFlights = extractFlightsForSource(bothWaysFlights, searchFlightForm.getDestination());
+        fromFlights = removeFlightsExceedingCapacity(fromFlights, searchFlightForm);
+        toFlights = removeFlightsExceedingCapacity(toFlights, searchFlightForm);
+        checkIfFlightsRemaining(fromFlights);
+        checkIfFlightsRemaining(toFlights);
+        List<ReturnFlightsResults> flights = mapToReturnFlightsResults(fromFlights, toFlights);
+        ticketCostCalculator.calculateReturnCost(flights);
+        return flights;
+    }
+
+    private List<ReturnFlightsResults> mapToReturnFlightsResults(List<OneWayFlightResults> fromFlights, List<OneWayFlightResults> toFlights) {
+        List<ReturnFlightsResults> flights = new ArrayList<>();
+        for(OneWayFlightResults fromFlight : fromFlights) {
+            for(OneWayFlightResults toFlight : toFlights) {
+                ReturnFlightsResults flight = new ReturnFlightsResults();
+                flight.setFromFlightCode(fromFlight.getFlightCode());
+                flight.setFromAirLine(fromFlight.getAirLine());
+                flight.setFromFlightScheduleId(fromFlight.getFlightScheduleId());
+                flight.setFromSource(fromFlight.getSource());
+                flight.setFromDestination(fromFlight.getDestination());
+                flight.setFromDepartureTime(fromFlight.getDepartureTime());
+                flight.setFromArrivalTime(fromFlight.getArrivalTime());
+                flight.setFromTotalHours(fromFlight.getTotalHours());
+                flight.setFromTicketPrice(fromFlight.getTicketPrice());
+                flight.setFromSeatsBooked(fromFlight.getSeatsBooked());
+                flight.setFromCapacity(fromFlight.getCapacity());
+                flight.setToFlightCode(toFlight.getFlightCode());
+                flight.setToAirLine(toFlight.getAirLine());
+                flight.setToFlightScheduleId(toFlight.getFlightScheduleId());
+                flight.setToSource(toFlight.getSource());
+                flight.setToDestination(toFlight.getDestination());
+                flight.setToDepartureTime(toFlight.getDepartureTime());
+                flight.setToArrivalTime(toFlight.getArrivalTime());
+                flight.setToTotalHours(toFlight.getTotalHours());
+                flight.setToTicketPrice(toFlight.getTicketPrice());
+                flight.setToSeatsBooked(toFlight.getSeatsBooked());
+                flight.setToCapacity(toFlight.getCapacity());
+                flights.add(flight);
+            }
+        }
+        return flights;
+    }
+
+    private List<OneWayFlightResults> extractFlightsForSource(List<OneWayFlightResults> bothWaysFlights, String source) {
+        List<OneWayFlightResults> oneWayFlightResultsList = new ArrayList<>();
+        for(OneWayFlightResults flight : bothWaysFlights) {
+            if(flight.getSource().equals(source)) {
+                oneWayFlightResultsList.add(flight);
+            }
+        }
+        return oneWayFlightResultsList;
     }
 
     @Override
     public List<OneWayFlightResults> retrieveOneWayFlightResults(SearchFlightForm searchFlightForm) throws SQLException, ParseException {
-        List<OneWayFlightResults> oneWayFlights =  flightRepository.findOneWayFlights(searchFlightForm);
-        oneWayFlights = removeFlightsExceedingCapacity(oneWayFlights, searchFlightForm);
-        checkIfFlightsRemaining(oneWayFlights);
-        ticketCostCalculator.calculateOneWayCost(oneWayFlights);
-        return oneWayFlights;
+        List<OneWayFlightResults> flights =  flightRepository.findOneWayFlights(searchFlightForm);
+        flights = removeFlightsExceedingCapacity(flights, searchFlightForm);
+        checkIfFlightsRemaining(flights);
+        ticketCostCalculator.calculateOneWayCost(flights);
+        return flights;
     }
 
     private void checkIfFlightsRemaining(List<OneWayFlightResults> oneWayFlights) {
         if(oneWayFlights.size() == 0) {
-            throw new SearchFlightsException("No flights matching your search. Try again with different criterias");
+            throw new SearchFlightsException("No flights matching your search. Try again with different criteria");
         }
     }
 

@@ -76,7 +76,7 @@ public class SearchFlightsController {
 
 
 
-    private List<ReturnFlightsResults> retrieveReturnFlightResults(SearchFlightForm searchFlightForm) throws SQLException {
+    private List<ReturnFlightsResults> retrieveReturnFlightResults(SearchFlightForm searchFlightForm) throws SQLException, ParseException {
         return searchFlightsInterface.retrieveReturnFlightResults(searchFlightForm);
     }
 

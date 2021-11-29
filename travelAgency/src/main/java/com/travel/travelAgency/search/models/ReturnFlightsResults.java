@@ -5,6 +5,28 @@ import java.util.Date;
 
 public class ReturnFlightsResults {
 
+    private String fromFlightCode;
+
+    private String fromAirLine;
+
+    private Integer fromFlightScheduleId;
+
+    private String fromSource;
+
+    private String fromDestination;
+
+    private Date fromDepartureTime;
+
+    private Date fromArrivalTime;
+
+    private Long fromTotalHours;
+
+    private BigDecimal fromTicketPrice;
+
+    private Integer fromSeatsBooked;
+
+    private Integer fromCapacity;
+
     private String toFlightCode;
 
     private String toAirLine;
@@ -27,27 +49,95 @@ public class ReturnFlightsResults {
 
     private Integer toCapacity;
 
-    private String fromFlightCode;
+    private BigDecimal totalTicketPrice;
 
-    private String fromAirLine;
+    public String getFromFlightCode() {
+        return fromFlightCode;
+    }
 
-    private Integer fromFlightScheduleId;
+    public void setFromFlightCode(String fromFlightCode) {
+        this.fromFlightCode = fromFlightCode;
+    }
 
-    private String fromSource;
+    public String getFromAirLine() {
+        return fromAirLine;
+    }
 
-    private String fromDestination;
+    public void setFromAirLine(String fromAirLine) {
+        this.fromAirLine = fromAirLine;
+    }
 
-    private Date fromDepartureTime;
+    public Integer getFromFlightScheduleId() {
+        return fromFlightScheduleId;
+    }
 
-    private Date fromArrivalTime;
+    public void setFromFlightScheduleId(Integer fromFlightScheduleId) {
+        this.fromFlightScheduleId = fromFlightScheduleId;
+    }
 
-    private Long fromTotalHours;
+    public String getFromSource() {
+        return fromSource;
+    }
 
-    private BigDecimal fromTicketPrice;
+    public void setFromSource(String fromSource) {
+        this.fromSource = fromSource;
+    }
 
-    private Integer fromSeatsBooked;
+    public String getFromDestination() {
+        return fromDestination;
+    }
 
-    private Integer fromCapacity;
+    public void setFromDestination(String fromDestination) {
+        this.fromDestination = fromDestination;
+    }
+
+    public Date getFromDepartureTime() {
+        return fromDepartureTime;
+    }
+
+    public void setFromDepartureTime(Date fromDepartureTime) {
+        this.fromDepartureTime = fromDepartureTime;
+    }
+
+    public Date getFromArrivalTime() {
+        return fromArrivalTime;
+    }
+
+    public void setFromArrivalTime(Date fromArrivalTime) {
+        this.fromArrivalTime = fromArrivalTime;
+    }
+
+    public Long getFromTotalHours() {
+        return fromTotalHours;
+    }
+
+    public void setFromTotalHours(Long fromTotalHours) {
+        this.fromTotalHours = fromTotalHours;
+    }
+
+    public BigDecimal getFromTicketPrice() {
+        return fromTicketPrice;
+    }
+
+    public void setFromTicketPrice(BigDecimal fromTicketPrice) {
+        this.fromTicketPrice = fromTicketPrice;
+    }
+
+    public Integer getFromSeatsBooked() {
+        return fromSeatsBooked;
+    }
+
+    public void setFromSeatsBooked(Integer fromSeatsBooked) {
+        this.fromSeatsBooked = fromSeatsBooked;
+    }
+
+    public Integer getFromCapacity() {
+        return fromCapacity;
+    }
+
+    public void setFromCapacity(Integer fromCapacity) {
+        this.fromCapacity = fromCapacity;
+    }
 
     public String getToFlightCode() {
         return toFlightCode;
@@ -137,91 +227,11 @@ public class ReturnFlightsResults {
         this.toCapacity = toCapacity;
     }
 
-    public String getFromFlightCode() {
-        return fromFlightCode;
+    public BigDecimal getTotalTicketPrice() {
+        return totalTicketPrice;
     }
 
-    public void setFromFlightCode(String fromFlightCode) {
-        this.fromFlightCode = fromFlightCode;
-    }
-
-    public String getFromAirLine() {
-        return fromAirLine;
-    }
-
-    public void setFromAirLine(String fromAirLine) {
-        this.fromAirLine = fromAirLine;
-    }
-
-    public Integer getFromFlightScheduleId() {
-        return fromFlightScheduleId;
-    }
-
-    public void setFromFlightScheduleId(Integer fromFlightScheduleId) {
-        this.fromFlightScheduleId = fromFlightScheduleId;
-    }
-
-    public String getFromSource() {
-        return fromSource;
-    }
-
-    public void setFromSource(String fromSource) {
-        this.fromSource = fromSource;
-    }
-
-    public String getFromDestination() {
-        return fromDestination;
-    }
-
-    public void setFromDestination(String fromDestination) {
-        this.fromDestination = fromDestination;
-    }
-
-    public Date getFromDepartureTime() {
-        return fromDepartureTime;
-    }
-
-    public void setFromDepartureTime(Date fromDepartureTime) {
-        this.fromDepartureTime = fromDepartureTime;
-    }
-
-    public Date getFromArrivalTime() {
-        return fromArrivalTime;
-    }
-
-    public void setFromArrivalTime(Date fromArrivalTime) {
-        this.fromArrivalTime = fromArrivalTime;
-    }
-
-    public Long getFromTotalHours() {
-        return fromTotalHours;
-    }
-
-    public void setFromTotalHours(Long fromTotalHours) {
-        this.fromTotalHours = fromTotalHours;
-    }
-
-    public BigDecimal getFromTicketPrice() {
-        return fromTicketPrice;
-    }
-
-    public void setFromTicketPrice(BigDecimal fromTicketPrice) {
-        this.fromTicketPrice = fromTicketPrice;
-    }
-
-    public Integer getFromSeatsBooked() {
-        return fromSeatsBooked;
-    }
-
-    public void setFromSeatsBooked(Integer fromSeatsBooked) {
-        this.fromSeatsBooked = fromSeatsBooked;
-    }
-
-    public Integer getFromCapacity() {
-        return fromCapacity;
-    }
-
-    public void setFromCapacity(Integer fromCapacity) {
-        this.fromCapacity = fromCapacity;
+    public void setTotalTicketPrice(BigDecimal totalTicketPrice) {
+        this.totalTicketPrice = totalTicketPrice;
     }
 }

@@ -1,7 +1,5 @@
 package com.travel.travelAgency.search.models;
 
-import java.util.EnumSet;
-
 public enum JourneyType {
 
     ONE_WAY("OneWay"),

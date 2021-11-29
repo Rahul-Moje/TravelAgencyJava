@@ -16,7 +16,7 @@ public interface SearchFlightsInterface {
 
     void validateSearchRequest(SearchFlightForm searchFlightForm);
 
-    List<ReturnFlightsResults> retrieveReturnFlightResults(SearchFlightForm searchFlightForm) throws SQLException;
+    List<ReturnFlightsResults> retrieveReturnFlightResults(SearchFlightForm searchFlightForm) throws SQLException, ParseException;
 
     List<OneWayFlightResults> retrieveOneWayFlightResults(SearchFlightForm searchFlightForm) throws SQLException, ParseException;
 }
