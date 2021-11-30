@@ -1,6 +1,5 @@
 package com.travel.travelAgency.search.manager;
 
-import com.travel.travelAgency.search.exceptions.SearchFlightsException;
 import com.travel.travelAgency.search.interfaces.SearchFlightsInterface;
 import com.travel.travelAgency.search.interfaces.SearchFlightsRequestValidator;
 import com.travel.travelAgency.search.interfaces.TicketCostCalculator;
@@ -111,9 +110,7 @@ public class SearchFlightsImplementation implements SearchFlightsInterface {
     }
 
     private void checkIfFlightsRemaining(List<OneWayFlightResults> oneWayFlights) {
-        if(oneWayFlights.size() == 0) {
-            throw new SearchFlightsException("No flights matching your search. Try again with different criteria");
-        }
+        searchFlightsRequestValidator.checkIfFlightsRemaining(oneWayFlights);
     }
 
     private List<OneWayFlightResults> removeFlightsExceedingCapacity(List<OneWayFlightResults> oneWayFlights, SearchFlightForm searchFlightForm) {
