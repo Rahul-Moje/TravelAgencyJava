@@ -1,13 +1,9 @@
 package com.travel.travelAgency.authentication.manager;
 
-import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-import com.travel.travelAgency.authentication.dao.UserAuthDAO;
 import com.travel.travelAgency.authentication.interfaces.LoginInterface;
-import com.travel.travelAgency.authentication.models.UserAuth;
 import com.travel.travelAgency.authentication.repository.UserAuthRepository;
 
 @Service

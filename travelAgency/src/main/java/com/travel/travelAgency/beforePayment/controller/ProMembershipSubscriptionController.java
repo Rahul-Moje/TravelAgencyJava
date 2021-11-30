@@ -17,7 +17,7 @@ public class ProMembershipSubscriptionController {
 
 	@RequestMapping(value = "/checkoutBooking", method = RequestMethod.POST)
 	public String calculateTotalCost(BeforePaymentModel paymentChecks, ModelMap model) {
-		float finalCost = proMembership.calculateFinalCost(paymentChecks);
+		float finalCost = proMembership.calculateFinalCost();
 		model.addAttribute("displayAMount", finalCost);
 		return "payment";
 	}

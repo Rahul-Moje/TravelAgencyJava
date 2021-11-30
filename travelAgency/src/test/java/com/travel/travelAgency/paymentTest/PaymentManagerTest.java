@@ -1,6 +1,6 @@
 package com.travel.travelAgency.paymentTest;
 
-import static org.mockito.ArgumentMatchers.anyInt;
+import static org.junit.Assert.assertNotNull;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -15,12 +15,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.travel.travelAgency.payment.interfaces.PaymentInterface;
+import com.travel.travelAgency.payment.manager.PaymentManager;
 
 @SpringBootTest
 public class PaymentManagerTest {
 
 	@Autowired
 	PaymentInterface paymentManager;
+	
+	@Test
+	public void paymentExistClassExist() {
+		PaymentManager paymentmanager = new PaymentManager(); 
+		assertNotNull(paymentmanager);
+	}
 	
 	@Test
 	public void processTransactionTest() {
@@ -41,5 +48,7 @@ public class PaymentManagerTest {
 			e.printStackTrace();
 		}
 
-	}
+
+		}
+	
 }

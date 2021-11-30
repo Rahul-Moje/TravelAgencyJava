@@ -1,7 +1,5 @@
 package com.travel.travelAgency.payment.interfaces;
 
-import java.sql.Date;
-
 public interface PaymentInterface {
 
 	public void setUserId(int userId);
