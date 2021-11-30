@@ -1,6 +1,11 @@
 package com.travel.travelAgency.beforePayment.interfaces;
 
-public interface ProMembershipSubscriptionInterface {
+import com.travel.travelAgency.beforePayment.manager.BeforePaymentModel;
+import com.travel.travelAgency.beforePayment.manager.ProMembershipSubscriptionManager;
+import com.travel.travelAgency.beforePayment.repository.ProMembershipSubscriptionRepository;
 
-	public boolean isProMember(int userId);
+public interface ProMembershipSubscriptionInterface {
+	
+	public float calculateFinalCost();
+	public int getPlanCostForProMember(String emailId);
 }

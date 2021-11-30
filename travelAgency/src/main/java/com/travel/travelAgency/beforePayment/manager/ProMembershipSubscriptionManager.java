@@ -9,18 +9,59 @@ import com.travel.travelAgency.beforePayment.repository.ProMembershipSubscriptio
 @Service
 public class ProMembershipSubscriptionManager implements ProMembershipSubscriptionInterface{
 
+	String email;
+	float initialCost;
+	String promoCode;
+	boolean isTravelInsuranceChecked;
+	float weightOfAdditionalBaggage;
+	
 	@Autowired
 	ProMembershipSubscriptionRepository proMembershipSubsciption;
 	
 	@Override
-	public boolean isProMember(int userId) {
-		String emailId = proMembershipSubsciption.getEmailId(userId);
+	public int getPlanCostForProMember(String emailId) {
 		int planCost = proMembershipSubsciption.getPlanCost(emailId);
-		boolean isPro = false;
-		if(planCost != 0) {
-			isPro = true;
-		}
-		return isPro;
+		return planCost;
 	}
 
+	public String getEmail() {
+		return this.email;
+	}
+	
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
+	public float getInitialCost() {
+		return this.initialCost;
+	}
+	
+	public String getPromoCode() {
+		return this.promoCode;
+	}
+	
+	public boolean getIsTravelInsuranceChecked() {
+		return this.isTravelInsuranceChecked;
+	}
+	
+	public float weightOfAdditionalBaggage() {
+		return this.weightOfAdditionalBaggage;
+	}
+	
+	@Override
+	public float calculateFinalCost() {
+		String emailId = this.email;
+		float insuranceFees = 0.0f;
+		if(this.isTravelInsuranceChecked) {
+			insuranceFees = Float.parseFloat(AddOns.valueOf("INSURANCE_CHARGES").toString());
+		}
+		float addOnBaggageCharge = this.weightOfAdditionalBaggage * Float.parseFloat(AddOns.valueOf("CHARGE_PER_KG").toString()) ;
+		int planCost = getPlanCostForProMember(emailId);
+		float finalAmount = (this.initialCost - planCost) + insuranceFees + addOnBaggageCharge;
+		return finalAmount;
+	}
+	
+	
+
+	
 }

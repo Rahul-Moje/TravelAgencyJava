@@ -4,5 +4,5 @@ import com.travel.travelAgency.authentication.models.UserAuth;
 
 public interface UserAuthRepository {
 
-	public int validateUsernamePassword(String username, String password);
+	public int validateUsernamePassword(String email, String password);
 }

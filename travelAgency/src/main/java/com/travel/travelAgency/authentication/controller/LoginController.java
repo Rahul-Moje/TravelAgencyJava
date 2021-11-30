@@ -22,9 +22,9 @@ public class LoginController {
     }
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String login(ModelMap model, @RequestParam String username,
+	public String login(ModelMap model, @RequestParam String email,
 			@RequestParam String password) {
-		String message = loginObj.login(username, password);
+		String message = loginObj.login(email, password);
 		if(message.equals("Failed to login")) {
 			model.addAttribute("errorMessage", "Login Failed. Please check your credentials and try again");
 			return "login";

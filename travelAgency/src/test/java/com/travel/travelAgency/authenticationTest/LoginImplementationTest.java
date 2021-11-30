@@ -27,11 +27,11 @@ class LoginImplementationTest {
 	
 	@Test
 	void loginImplementationTest() {
-		String username = "admin";
+		String email = "admin@dal.ca";
 		String password = "admin";
-		String queryStr = "select count(*) from user_auth where username='"+username+"'"+" and password='"+password+"'";
+		String queryStr = "select count(*) from user_auth where email_id='"+email+"'"+" and password='"+password+"'";
 		Mockito.when(jdbc.queryForObject(queryStr, Integer.class)).thenReturn(1);
-		assertEquals("Success", loginInterface.login(username, password));
+		assertEquals("Success", loginInterface.login(email, password));
 	}
 
 }

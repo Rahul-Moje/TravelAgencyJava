@@ -33,7 +33,7 @@ public class ProMembershipSubscriptionDAO implements ProMembershipSubscriptionRe
 
 	@Override
 	public int getPlanCost(String emailId) {
-		String query = "select plan_cost  from pro_membership where  plan_name  = (select plan_name from subscriptions_works where user_email_id = '"+emailId+"')";
+		String query = "select plan_cost from pro_membership where  plan_name  = (select plan_name from subscriptions_works where user_email_id = '"+emailId+"')";
 		int planCost = 0;
 		try {
 			PreparedStatement ps = con.prepareStatement(query);

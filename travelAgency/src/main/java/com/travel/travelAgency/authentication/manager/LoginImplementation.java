@@ -17,9 +17,9 @@ public class LoginImplementation implements LoginInterface{
 	UserAuthRepository userDAO;
 	
 	@Override
-	public String login(String username, String password) {
+	public String login(String email, String password) {
 
-		int user_id = userDAO.validateUsernamePassword(username, password);
+		int user_id = userDAO.validateUsernamePassword(email, password);
 		if(user_id != 0) {
 			return "Success";
 		}
