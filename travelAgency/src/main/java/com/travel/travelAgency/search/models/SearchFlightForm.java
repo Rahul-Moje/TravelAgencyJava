@@ -16,51 +16,84 @@ public class SearchFlightForm {
 
     private Integer numOfPassengers;
 
-    public String getSource() {
-        return source;
+    public SearchFlightForm(SearchFlightFormBuilder searchFlightFormBuilder) {
+        this.source = searchFlightFormBuilder.source;
+        this.destination = searchFlightFormBuilder.destination;
+        this.fromDate = searchFlightFormBuilder.fromDate;
+        this.toDate = searchFlightFormBuilder.toDate;
+        this.numOfPassengers = searchFlightFormBuilder.numOfPassengers;
+        this.journeyType = searchFlightFormBuilder.journeyType;
     }
 
-    public void setSource(String source) {
-        this.source = source;
+    private SearchFlightForm() {
+
+    }
+
+    public static class SearchFlightFormBuilder {
+
+        private String source;
+
+        private String destination;
+
+        private Date fromDate;
+
+        private Date toDate;
+
+        private JourneyType journeyType;
+
+        private Integer numOfPassengers;
+
+        public SearchFlightFormBuilder(String source, String destination) {
+            this.source = source;
+            this.destination = destination;
+        }
+
+        public SearchFlightFormBuilder withFromDate(Date fromDate) {
+            this.fromDate = fromDate;
+            return this;
+        }
+
+        public SearchFlightFormBuilder withToDate(Date toDate) {
+            this.toDate = toDate;
+            return this;
+        }
+
+        public SearchFlightFormBuilder withNumberOfPassengers(Integer numOfPassengers) {
+            this.numOfPassengers = numOfPassengers;
+            return this;
+        }
+
+        public SearchFlightFormBuilder withJourneyType(JourneyType journeyType) {
+            this.journeyType = journeyType;
+            return this;
+        }
+
+        public SearchFlightForm build() {
+            return new SearchFlightForm(this);
+        }
+    }
+
+    public String getSource() {
+        return source;
     }
 
     public String getDestination() {
         return destination;
     }
 
-    public void setDestination(String destination) {
-        this.destination = destination;
-    }
-
     public Date getFromDate() {
         return fromDate;
-    }
-
-    public void setFromDate(Date fromDate) {
-        this.fromDate = fromDate;
     }
 
     public Date getToDate() {
         return toDate;
     }
 
-    public void setToDate(Date toDate) {
-        this.toDate = toDate;
-    }
-
     public JourneyType getJourneyType() {
         return journeyType;
     }
 
-    public void setJourneyType(JourneyType journeyType) {
-        this.journeyType = journeyType;
-    }
-
     public Integer getNumOfPassengers() {
         return numOfPassengers;
-    }
-
-    public void setNumOfPassengers(Integer numOfPassengers) {
-        this.numOfPassengers = numOfPassengers;
     }
 }

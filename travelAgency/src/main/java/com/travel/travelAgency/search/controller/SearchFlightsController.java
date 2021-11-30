@@ -1,6 +1,7 @@
 package com.travel.travelAgency.search.controller;
 
 import com.travel.travelAgency.search.exceptions.SearchFlightsException;
+import com.travel.travelAgency.search.interfaces.SearchFlightFormMapperInterface;
 import com.travel.travelAgency.search.interfaces.SearchFlightsInterface;
 import com.travel.travelAgency.search.models.JourneyType;
 import com.travel.travelAgency.search.models.OneWayFlightResults;
@@ -16,16 +17,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.sql.SQLException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.List;
 
 @Controller
 public class SearchFlightsController {
 
-    private static final SimpleDateFormat DATE_FORMATTER = new SimpleDateFormat("yyyy-MM-dd");
-
     @Autowired
     private SearchFlightsInterface searchFlightsInterface;
+
+    @Autowired
+    private SearchFlightFormMapperInterface searchFlightFormMapperInterface;
 
     @RequestMapping(value="/searchFlights", method = RequestMethod.GET)
     public String initialisePage(ModelMap model, HttpServletRequest request){
@@ -47,17 +48,9 @@ public class SearchFlightsController {
             SearchFlightForm searchFlightForm = mapFormData(request);
             validateSearchRequest(searchFlightForm);
             if(isOneWayRequest(searchFlightForm)) {
-                List<OneWayFlightResults> oneWayFlightResultsList = retrieveOneWayFlightResults(searchFlightForm);
-                model.put("flights", oneWayFlightResultsList);
-                request.getSession().setAttribute("numOfPassengers", searchFlightForm.getNumOfPassengers());
-                request.getSession().setAttribute("journeyType", JourneyType.ONE_WAY.getDescription());
-                return "oneWayFlightsResults";
+                return retrieveOneWayFlightRequestData(searchFlightForm, request, model);
             } else {
-                List<ReturnFlightsResults> returnFlightsResultsList = retrieveReturnFlightResults(searchFlightForm);
-                model.put("flights", returnFlightsResultsList);
-                request.getSession().setAttribute("numOfPassengers", searchFlightForm.getNumOfPassengers());
-                request.getSession().setAttribute("journeyType", JourneyType.RETURN.getDescription());
-                return "returnFlightsResults";
+                return retrieveReturnFlightRequestData(searchFlightForm, request, model);
             }
 
         } catch (SearchFlightsException e) {
@@ -67,13 +60,28 @@ public class SearchFlightsController {
         }
         catch (Exception e) {
             e.printStackTrace();
-            model.addAttribute("errorMessage", "Error occurred. Check logs");
+            model.addAttribute("errorMessage", "Error occurred while searching flights");
             return "searchFlightsErrors";
         }
 
 
     }
 
+    private String retrieveReturnFlightRequestData(SearchFlightForm searchFlightForm, HttpServletRequest request, ModelMap model) throws SQLException, ParseException {
+        List<ReturnFlightsResults> returnFlightsResultsList = retrieveReturnFlightResults(searchFlightForm);
+        model.put("flights", returnFlightsResultsList);
+        request.getSession().setAttribute("numOfPassengers", searchFlightForm.getNumOfPassengers());
+        request.getSession().setAttribute("journeyType", JourneyType.RETURN.getDescription());
+        return "returnFlightsResults";
+    }
+
+    private String retrieveOneWayFlightRequestData(SearchFlightForm searchFlightForm, HttpServletRequest request, ModelMap model) throws SQLException, ParseException {
+        List<OneWayFlightResults> oneWayFlightResultsList = retrieveOneWayFlightResults(searchFlightForm);
+        model.put("flights", oneWayFlightResultsList);
+        request.getSession().setAttribute("numOfPassengers", searchFlightForm.getNumOfPassengers());
+        request.getSession().setAttribute("journeyType", JourneyType.ONE_WAY.getDescription());
+        return "oneWayFlightsResults";
+    }
 
 
     private List<ReturnFlightsResults> retrieveReturnFlightResults(SearchFlightForm searchFlightForm) throws SQLException, ParseException {
@@ -93,22 +101,7 @@ public class SearchFlightsController {
         searchFlightsInterface.validateSearchRequest(searchFlightForm);
     }
 
-    private SearchFlightForm mapFormData(HttpServletRequest request)  {
-        try {
-            SearchFlightForm searchFlightForm = new SearchFlightForm();
-            searchFlightForm.setSource(request.getParameter("sources"));
-            searchFlightForm.setDestination(request.getParameter("destinations"));
-            searchFlightForm.setFromDate(DATE_FORMATTER.parse(request.getParameter("fromDate")));
-            searchFlightForm.setToDate(DATE_FORMATTER.parse(request.getParameter("toDate")));
-            searchFlightForm.setJourneyType(JourneyType.mapToJourneyType(request.getParameter("oneWayOrReturn")));
-            searchFlightForm.setNumOfPassengers(Integer.parseInt(request.getParameter("numPassengers")));
-            return searchFlightForm;
-        } catch (ParseException e) {
-            e.printStackTrace();
-            throw new SearchFlightsException("Invalid date");
-        } catch (NumberFormatException e) {
-            e.printStackTrace();
-            throw new SearchFlightsException("Invalid number of passengers");
-        }
+    private SearchFlightForm mapFormData(HttpServletRequest request) {
+        return searchFlightFormMapperInterface.mapFormData(request);
     }
 }
