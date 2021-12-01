@@ -18,6 +18,19 @@ public class FareInterval {
         this.percentageIncrease = fareIntervalBuilder.percentageIncrease;
     }
 
+    public boolean isDayWithinInterval(Integer days) {
+        return this.intervalStart <= days && days <= this.intervalEnd;
+    }
+
+    @Override
+    public String toString() {
+        return "FareInterval{" +
+                "intervalStart=" + intervalStart +
+                ", intervalEnd=" + intervalEnd +
+                ", percentageIncrease=" + percentageIncrease +
+                '}';
+    }
+
     public static class FareIntervalBuilder {
 
         private Integer intervalStart;
@@ -54,23 +67,12 @@ public class FareInterval {
         return intervalStart;
     }
 
-    public void setIntervalStart(Integer intervalStart) {
-        this.intervalStart = intervalStart;
-    }
-
     public Integer getIntervalEnd() {
         return intervalEnd;
-    }
-
-    public void setIntervalEnd(Integer intervalEnd) {
-        this.intervalEnd = intervalEnd;
     }
 
     public Integer getPercentageIncrease() {
         return percentageIncrease;
     }
 
-    public void setPercentageIncrease(Integer percentageIncrease) {
-        this.percentageIncrease = percentageIncrease;
-    }
 }

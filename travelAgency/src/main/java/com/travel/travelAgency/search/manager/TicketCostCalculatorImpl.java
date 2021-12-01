@@ -64,7 +64,7 @@ public class TicketCostCalculatorImpl implements TicketCostCalculator {
 
     private FareInterval findMatchingInterval(List<FareInterval> fareIntervals, Integer days) {
         for(FareInterval fareInterval : fareIntervals) {
-            if(fareInterval.getIntervalStart() <= days && days <= fareInterval.getIntervalEnd()) {
+            if(fareInterval.isDayWithinInterval(days)) {
                 return fareInterval;
             }
         }
