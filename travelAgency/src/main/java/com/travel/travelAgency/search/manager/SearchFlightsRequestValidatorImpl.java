@@ -2,7 +2,6 @@ package com.travel.travelAgency.search.manager;
 
 import com.travel.travelAgency.search.exceptions.SearchFlightsException;
 import com.travel.travelAgency.search.interfaces.SearchFlightsRequestValidator;
-import com.travel.travelAgency.search.models.JourneyType;
 import com.travel.travelAgency.search.models.OneWayFlightResults;
 import com.travel.travelAgency.search.models.SearchFlightForm;
 import org.springframework.stereotype.Service;
@@ -23,7 +22,7 @@ public class SearchFlightsRequestValidatorImpl implements SearchFlightsRequestVa
 
     @Override
     public void checkIfFlightsRemaining(List<OneWayFlightResults> oneWayFlights) {
-        if(oneWayFlights.size() == 0) {
+        if(oneWayFlights.isEmpty()) {
             throw new SearchFlightsException("No flights matching your search. Try again with different criteria");
         }
     }
@@ -43,6 +42,6 @@ public class SearchFlightsRequestValidatorImpl implements SearchFlightsRequestVa
     }
 
     private boolean isReturnOptionSelected(SearchFlightForm searchFlightForm) {
-        return searchFlightForm.getJourneyType().equals(JourneyType.RETURN);
+        return searchFlightForm.isReturnRequest();
     }
 }

@@ -234,4 +234,10 @@ public class ReturnFlightsResults {
     public void setTotalTicketPrice(BigDecimal totalTicketPrice) {
         this.totalTicketPrice = totalTicketPrice;
     }
+
+    public void increaseFare(Integer percentage) {
+        BigDecimal baseFare = this.totalTicketPrice;
+        BigDecimal amountToAdd = baseFare.multiply(new BigDecimal(percentage).divide(new BigDecimal(100)));
+        this.totalTicketPrice = baseFare.add(amountToAdd);
+    }
 }
