@@ -22,12 +22,12 @@ public class FlightDAO implements FlightRepository {
 
 
     private static final SimpleDateFormat DATE_FORMATTER = new SimpleDateFormat("yyy-MM-dd HH:mm:ss");
-    Connection con = DatabaseConnection.getSQLConnection();
+    private Connection dbConnection = DatabaseConnection.getSQLConnection();
 
     @Override
     public List<String> findSourceAirports() throws SQLException {
         String query = "SELECT DISTINCT SOURCE FROM FLIGHTS";
-        PreparedStatement ps = con.prepareStatement(query);
+        PreparedStatement ps = dbConnection.prepareStatement(query);
         ResultSet rs = ps.executeQuery(query);
         List<String> sourceAirports = new ArrayList<>();
         while (rs.next()) {
@@ -39,7 +39,7 @@ public class FlightDAO implements FlightRepository {
     @Override
     public List<String> findDestinationAirports() throws SQLException {
         String query = "SELECT DISTINCT DESTINATION FROM FLIGHTS";
-        PreparedStatement ps = con.prepareStatement(query);
+        PreparedStatement ps = dbConnection.prepareStatement(query);
         ResultSet rs = ps.executeQuery(query);
         List<String> destinationAirports = new ArrayList<>();
         while (rs.next()) {
@@ -59,7 +59,7 @@ public class FlightDAO implements FlightRepository {
                 "AND FL.SOURCE=? AND FL.DESTINATION=?\n" +
                 "AND FLSCH.DEPARTURETIME>=? \n" +
                 "AND FLSCH.DEPARTURETIME<=?";
-        PreparedStatement oneWaySearchStatement = con.prepareStatement(query);
+        PreparedStatement oneWaySearchStatement = dbConnection.prepareStatement(query);
         oneWaySearchStatement.setString(1,searchFlightForm.getSource());
         oneWaySearchStatement.setString(2, searchFlightForm.getDestination());
         oneWaySearchStatement.setString(3, DATE_FORMATTER.format(DateUtil.calculateStartOfDay(searchFlightForm.getFromDate())));
@@ -105,7 +105,7 @@ public class FlightDAO implements FlightRepository {
                 "AND FL.SOURCE=? AND FL.DESTINATION=? \n" +
                 "AND FLSCH.DEPARTURETIME>=? \n" +
                 "AND FLSCH.DEPARTURETIME<=? ";
-        PreparedStatement oneWaySearchStatement = con.prepareStatement(query);
+        PreparedStatement oneWaySearchStatement = dbConnection.prepareStatement(query);
         oneWaySearchStatement.setString(1,searchFlightForm.getSource());
         oneWaySearchStatement.setString(2, searchFlightForm.getDestination());
         oneWaySearchStatement.setString(3, DATE_FORMATTER.format(DateUtil.calculateStartOfDay(searchFlightForm.getFromDate())));

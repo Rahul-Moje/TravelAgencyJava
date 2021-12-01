@@ -1,6 +1,5 @@
 package com.travel.travelAgency.search.dao;
 
-import com.travel.travelAgency.search.models.JourneyType;
 import com.travel.travelAgency.search.models.OneWayFlightResults;
 import com.travel.travelAgency.search.models.SearchFlightForm;
 import com.travel.travelAgency.search.repository.FlightRepository;
@@ -10,9 +9,9 @@ import org.junit.Test;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
+
+import static com.travel.travelAgency.search.util.TestDataUtil.buildFormForTest;
 
 public class FlightDAOTest {
 
@@ -55,22 +54,6 @@ public class FlightDAOTest {
             Assert.assertTrue(expectedSourceAndDestination.contains(actualResult.getSource()));
             Assert.assertTrue(expectedSourceAndDestination.contains(actualResult.getDestination()));
         }
-    }
-
-    private SearchFlightForm buildFormForTest() {
-        Date todaysDate = new Date();
-
-        Calendar endDateCalendar = Calendar.getInstance();
-        endDateCalendar.setTime(todaysDate);
-        endDateCalendar.add(Calendar.DATE, 1);
-
-        SearchFlightForm.SearchFlightFormBuilder searchFlightFormBuilder =
-                new SearchFlightForm.SearchFlightFormBuilder("BOM", "YYZ");
-        searchFlightFormBuilder.withFromDate(todaysDate);
-        searchFlightFormBuilder.withToDate(endDateCalendar.getTime());
-        searchFlightFormBuilder.withJourneyType(JourneyType.ONE_WAY);
-        searchFlightFormBuilder.withNumberOfPassengers(2);
-        return searchFlightFormBuilder.build();
     }
 
 }

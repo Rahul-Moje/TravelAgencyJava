@@ -2,8 +2,8 @@ package com.travel.travelAgency.bookings.controller;
 
 import com.travel.travelAgency.bookings.exceptions.FlightBookingException;
 import com.travel.travelAgency.bookings.interfaces.FlightBookingInterface;
+import com.travel.travelAgency.bookings.interfaces.FlightBookingRequestMapperInterface;
 import com.travel.travelAgency.bookings.model.FlightBookingRequest;
-import com.travel.travelAgency.bookings.model.MealType;
 import com.travel.travelAgency.search.exceptions.SearchFlightsException;
 import com.travel.travelAgency.search.models.JourneyType;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +22,9 @@ public class FlightBookingController {
 
     @Autowired
     private FlightBookingInterface flightBookingInterface;
+
+    @Autowired
+    private FlightBookingRequestMapperInterface flightBookingRequestMapperInterface;
 
     @RequestMapping(value = "/bookFlight", method = RequestMethod.GET)
     public String initialiseFlightBooking(ModelMap modelMap, HttpServletRequest request, HttpServletResponse response) {
@@ -70,28 +73,7 @@ public class FlightBookingController {
     }
 
     private FlightBookingRequest mapToFlightBookingRequest(HttpServletRequest request) {
-        FlightBookingRequest flightBookingRequest = new FlightBookingRequest();
-        flightBookingRequest.setJourneyType(JourneyType.mapToJourneyType((String) request.getSession().getAttribute("journeyType")));
-        flightBookingRequest.setFromFlightScheduleId((Integer) request.getSession().getAttribute("fromFlightScheduleId"));
-        flightBookingRequest.setUserName((String) request.getSession().getAttribute("name"));
-        flightBookingRequest.setUserEmail("testemail@gmail.com"/*(String) request.getSession().getAttribute("email")*/);
-        try {
-            flightBookingRequest.setNumOfBaggages(Integer.parseInt(request.getParameter("numBaggages")));
-        } catch (NumberFormatException e) {
-            throw new FlightBookingException("Invalid number of baggages. Retry entire process");
-        }
-
-        flightBookingRequest.setMealType(MealType.mapToMealType(request.getParameter("mealType")));
-        flightBookingRequest.setNumOfPassengers((int)request.getSession().getAttribute("numOfPassengers"));
-        flightBookingRequest.setTotalCost((BigDecimal) request.getSession().getAttribute("flightCost"));
-        checkAndMapReturnFlight(request, flightBookingRequest);
-        return flightBookingRequest;
-    }
-
-    private void checkAndMapReturnFlight(HttpServletRequest request, FlightBookingRequest flightBookingRequest) {
-        if(flightBookingRequest.getJourneyType() == JourneyType.RETURN) {
-            flightBookingRequest.setToFlightScheduleId((Integer) request.getSession().getAttribute("toFlightScheduleId"));
-        }
+        return flightBookingRequestMapperInterface.mapToFlightBookingRequest(request);
     }
 
     private void checkIfUserLoggedIn(HttpServletRequest request) {

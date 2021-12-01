@@ -29,8 +29,9 @@ public class SearchFlightsController {
     private SearchFlightFormMapperInterface searchFlightFormMapperInterface;
 
     @RequestMapping(value="/searchFlights", method = RequestMethod.GET)
-    public String initialisePage(ModelMap model, HttpServletRequest request){
+    public String initialisePage(ModelMap model, HttpServletRequest request, HttpServletResponse response){
         try {
+            response.setContentType("text/html");
             model.put("sources", searchFlightsInterface.findSourceAirports());
             model.put("destinations", searchFlightsInterface.findDestinationAirports());
             return "searchFlights";
@@ -52,19 +53,15 @@ public class SearchFlightsController {
             } else {
                 return retrieveReturnFlightRequestData(searchFlightForm, request, model);
             }
-
         } catch (SearchFlightsException e) {
             e.printStackTrace();
             model.addAttribute("errorMessage", e.getMessage());
             return "searchFlightsErrors";
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
             model.addAttribute("errorMessage", "Error occurred while searching flights");
             return "searchFlightsErrors";
         }
-
-
     }
 
     private String retrieveReturnFlightRequestData(SearchFlightForm searchFlightForm, HttpServletRequest request, ModelMap model) throws SQLException, ParseException {
@@ -94,7 +91,7 @@ public class SearchFlightsController {
     }
 
     private boolean isOneWayRequest(SearchFlightForm searchFlightForm) {
-        return searchFlightForm.getJourneyType() == JourneyType.ONE_WAY;
+        return searchFlightForm.isOneWayRequest();
     }
 
     private void validateSearchRequest(SearchFlightForm searchFlightForm) {

@@ -27,6 +27,29 @@ public class OneWayFlightResults {
 
     private Integer capacity;
 
+    public void increaseFare(Integer percentage) {
+        BigDecimal baseFare = this.ticketPrice;
+        BigDecimal amountToAdd = baseFare.multiply(new BigDecimal(percentage).divide(new BigDecimal(100)));
+        this.ticketPrice = baseFare.add(amountToAdd);
+    }
+
+    @Override
+    public String toString() {
+        return "OneWayFlightResults{" +
+                "flightCode='" + flightCode + '\'' +
+                ", airLine='" + airLine + '\'' +
+                ", flightScheduleId=" + flightScheduleId +
+                ", source='" + source + '\'' +
+                ", destination='" + destination + '\'' +
+                ", departureTime=" + departureTime +
+                ", arrivalTime=" + arrivalTime +
+                ", totalHours=" + totalHours +
+                ", ticketPrice=" + ticketPrice +
+                ", seatsBooked=" + seatsBooked +
+                ", capacity=" + capacity +
+                '}';
+    }
+
     public String getFlightCode() {
         return flightCode;
     }
