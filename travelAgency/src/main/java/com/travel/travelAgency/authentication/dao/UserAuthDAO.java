@@ -9,12 +9,12 @@ import java.sql.Statement;
 import org.springframework.stereotype.Repository;
 
 import com.travel.travelAgency.authentication.repository.UserAuthRepository;
-import com.travel.travelAgency.util.DatabaseConnection;
+import com.travel.travelAgency.util.SingletonDatabaseConnection;
 
 @Repository
 public class UserAuthDAO implements UserAuthRepository{
 
-	Connection con = DatabaseConnection.getSQLConnection();
+	Connection con = SingletonDatabaseConnection.getSQLConnection();
 	
 	@Override
 	public int validateUsernamePassword(String email, String password) {

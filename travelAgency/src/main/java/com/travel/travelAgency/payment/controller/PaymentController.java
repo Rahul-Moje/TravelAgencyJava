@@ -1,5 +1,7 @@
 package com.travel.travelAgency.payment.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,20 +18,22 @@ public class PaymentController {
 	PaymentInterface paymentManager;
 		
 	@RequestMapping(value = "/payment", method = RequestMethod.GET)
-	public String showPaymentsPage(Model model, float displayAmount) {
-		model.addAttribute("displayAmount", displayAmount);
+	public String showPaymentsPage(Model model, Float displayAmount, HttpServletRequest request) {
+		displayAmount = (float) 102021.2;
+		request.getSession().setAttribute("email", "admin@dal.ca");
+		model.addAttribute("amount", displayAmount);
 		return "payment";
 	}
 
 	@RequestMapping(value = "/payment", method = RequestMethod.POST)
-	public String payment(PaymentManager payment) {
-		float displayAmount = payment.getDisplayAmount();
-		int userId = payment.getUserId();
-		String response = paymentManager.processPayment(displayAmount, userId);
+	public String payment(HttpServletRequest request) {
+		Float displayAmount = Float.parseFloat(request.getParameter("displayAmount").toString());
+		String userEmail =  (String) request.getSession().getAttribute("email");
+		String response = paymentManager.processPayment(displayAmount, userEmail);
 		if(response.equalsIgnoreCase("Success")) {
-			return "welcome"; 
+			return "paymentSuccess"; 
 		}else {
-			return "login";
+			return "paymentFailure";
 		}
 	}
 

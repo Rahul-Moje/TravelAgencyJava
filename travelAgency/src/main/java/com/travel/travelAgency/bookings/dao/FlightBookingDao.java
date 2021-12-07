@@ -2,7 +2,7 @@ package com.travel.travelAgency.bookings.dao;
 
 import com.travel.travelAgency.bookings.model.FlightBookingRequest;
 import com.travel.travelAgency.bookings.repository.FlightBookingRepository;
-import com.travel.travelAgency.util.DatabaseConnection;
+import com.travel.travelAgency.util.SingletonDatabaseConnection;
 import org.springframework.stereotype.Repository;
 
 import java.math.BigDecimal;
@@ -14,7 +14,7 @@ import java.util.Date;
 public class FlightBookingDao implements FlightBookingRepository {
 
     private static final SimpleDateFormat DATE_FORMATTER = new SimpleDateFormat("yyy-MM-dd HH:mm:ss");
-    Connection con = DatabaseConnection.getSQLConnection();
+    Connection con = SingletonDatabaseConnection.getSQLConnection();
 
     @Override
     public Integer saveUserBooking(FlightBookingRequest flightBooking) throws SQLException {

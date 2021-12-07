@@ -8,11 +8,11 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
 
 import com.travel.travelAgency.authentication.repository.ForgotPasswordRepository;
-import com.travel.travelAgency.util.DatabaseConnection;
+import com.travel.travelAgency.util.SingletonDatabaseConnection;
 
 @Repository
 public class ForgotPasswordDAO implements ForgotPasswordRepository {
-	Connection con = DatabaseConnection.getSQLConnection();
+	Connection con = SingletonDatabaseConnection.getSQLConnection();
 
 	@Override
 	public Boolean isEmailValid(String email) throws Exception {

@@ -9,7 +9,7 @@
 </head>
 <body>
 <form action="bookFlight" method="post">
-    Select number of baggages
+    Select number of additional baggages
     <input type="text" name="numBaggages" id="numBaggages"/>
     <br>
     Select meal type

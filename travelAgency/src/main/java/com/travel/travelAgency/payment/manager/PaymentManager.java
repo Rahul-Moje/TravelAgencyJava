@@ -39,8 +39,8 @@ public class PaymentManager implements PaymentInterface {
 	}
 
 	@Override
-	public String processPayment(float displayAmount, int userId) {
-		int n = paymentDao.savePaymentDetails(displayAmount, userId);
+	public String processPayment(float displayAmount, String email) {
+		int n = paymentDao.savePaymentDetails(displayAmount, email);
 		String response = "";
 		if (n != 0) {
 			response = "Success";

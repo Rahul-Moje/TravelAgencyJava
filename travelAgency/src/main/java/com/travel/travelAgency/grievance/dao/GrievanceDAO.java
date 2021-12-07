@@ -7,12 +7,12 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
 
 import com.travel.travelAgency.grievance.repository.GrievanceRepository;
-import com.travel.travelAgency.util.DatabaseConnection;
+import com.travel.travelAgency.util.SingletonDatabaseConnection;
 
 @Repository
 public class GrievanceDAO implements GrievanceRepository{
 
-	Connection con = DatabaseConnection.getSQLConnection();
+	Connection con = SingletonDatabaseConnection.getSQLConnection();
 	
 	
 

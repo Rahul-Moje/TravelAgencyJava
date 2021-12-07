@@ -3,7 +3,7 @@ package com.travel.travelAgency.search.dao;
 import com.travel.travelAgency.search.models.OneWayFlightResults;
 import com.travel.travelAgency.search.models.SearchFlightForm;
 import com.travel.travelAgency.search.repository.FlightRepository;
-import com.travel.travelAgency.util.DatabaseConnection;
+import com.travel.travelAgency.util.SingletonDatabaseConnection;
 import com.travel.travelAgency.util.DateUtil;
 import org.springframework.stereotype.Repository;
 
@@ -22,7 +22,7 @@ public class FlightDAO implements FlightRepository {
 
 
     private static final SimpleDateFormat DATE_FORMATTER = new SimpleDateFormat("yyy-MM-dd HH:mm:ss");
-    Connection con = DatabaseConnection.getSQLConnection();
+    Connection con = SingletonDatabaseConnection.getSQLConnection();
 
     @Override
     public List<String> findSourceAirports() throws SQLException {

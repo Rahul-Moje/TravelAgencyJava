@@ -11,4 +11,5 @@ public interface FlightBookingRepository {
     void updateSeatsFilled(Integer fromFlightScheduleId, Integer numOfPassengers) throws SQLException;
 
     void updateUserBookingWithReturnJourney(Integer toFlightScheduleId, Integer id) throws SQLException;
+    
 }

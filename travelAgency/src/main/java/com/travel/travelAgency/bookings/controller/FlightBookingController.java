@@ -56,7 +56,7 @@ public class FlightBookingController {
             FlightBookingRequest flightBooking = mapToFlightBookingRequest(request);
             Integer bookingId = flightBookingInterface.saveFlightBooking(flightBooking);
             request.getSession().setAttribute("bookingId", bookingId);
-            return "payment";
+            return "checkoutToPayment";
         } catch (FlightBookingException e) {
             e.printStackTrace();
             modelMap.addAttribute("errorMessage", e.getMessage());
@@ -74,9 +74,11 @@ public class FlightBookingController {
         flightBookingRequest.setJourneyType(JourneyType.mapToJourneyType((String) request.getSession().getAttribute("journeyType")));
         flightBookingRequest.setFromFlightScheduleId((Integer) request.getSession().getAttribute("fromFlightScheduleId"));
         flightBookingRequest.setUserName((String) request.getSession().getAttribute("name"));
-        flightBookingRequest.setUserEmail("testemail@gmail.com"/*(String) request.getSession().getAttribute("email")*/);
+        flightBookingRequest.setUserEmail((String) request.getSession().getAttribute("email"));
         try {
+        	int noOfBags = Integer.parseInt(request.getParameter("numBaggages"));
             flightBookingRequest.setNumOfBaggages(Integer.parseInt(request.getParameter("numBaggages")));
+            request.getSession().setAttribute("numBaggages", noOfBags);
         } catch (NumberFormatException e) {
             throw new FlightBookingException("Invalid number of baggages. Retry entire process");
         }

@@ -18,7 +18,7 @@ import com.travel.travelAgency.payment.interfaces.PaymentInterface;
 import com.travel.travelAgency.payment.manager.PaymentManager;
 
 @SpringBootTest
-public class PaymentManagerTest {
+public class PaymentImplementationTest {
 
 	@Autowired
 	PaymentInterface paymentManager;
@@ -33,10 +33,10 @@ public class PaymentManagerTest {
 	public void processTransactionTest() {
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 		LocalDateTime now = LocalDateTime.now();
-		int userId = 1;
+		String email = "admin@dal.ca";
 		float displayAmount = 1000.0f;
 		String datetime = now.toString();
-		String query = "insert into user_payments (user_id, date_of_payment, paid_amt) values (" + userId + ",'"
+		String query =  "insert into user_payments (user_email, date_of_payment, paid_amt) values ('"+ email +"','"
 				+ datetime + "', " + displayAmount + ")";
 		Connection conn = Mockito.mock(Connection.class);
 	    ResultSet resultSet = Mockito.mock(ResultSet.class);
