@@ -8,6 +8,9 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * @author rahulmoje
+ */
 @Service
 public class SearchFlightsRequestValidatorImpl implements SearchFlightsRequestValidator {
     

@@ -3,6 +3,9 @@ package com.travel.travelAgency.search.models;
 import java.io.Serializable;
 import java.util.Date;
 
+/**
+ * @author rahulmoje
+ */
 public class SearchFlightForm implements Serializable {
 
     private String source;

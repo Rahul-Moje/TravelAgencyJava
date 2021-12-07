@@ -1,5 +1,8 @@
 package com.travel.travelAgency.search.models;
 
+/**
+ * @author rahulmoje
+ */
 public class FareInterval {
 
     private Integer intervalStart;
