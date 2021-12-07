@@ -1,4 +1,4 @@
-package com.travel.travelAgency.search.controller;
+package com.travel.travelAgency.userprofile.controller;
 
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -9,17 +9,16 @@ import org.springframework.ui.ModelMap;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 /**
  * @author rahulmoje
  */
 @SpringBootTest
-public class SearchFlightsControllerTest {
+public class UserProfileControllerTest {
 
     @Autowired
-    private SearchFlightsController searchFlightsController;
+    private UserProfileController userProfileController;
 
     @Mock
     private ModelMap modelMap;
@@ -31,14 +30,13 @@ public class SearchFlightsControllerTest {
     HttpServletResponse httpServletResponse;
 
     @Test
-    public void testCheckSearchFlightsControllerExists() {
-        assertNotNull(searchFlightsController);
+    public void testCheckUserProfileControllerExists() {
+        assertNotNull(userProfileController);
     }
 
-    @Test
-    public void testInitialisePage() {
-        String result = searchFlightsController.initialisePage(modelMap, httpServletRequest, httpServletResponse);
-        assertNotNull(result);
-        assertEquals("searchFlights", result);
-    }
+
+
+
+
+
 }

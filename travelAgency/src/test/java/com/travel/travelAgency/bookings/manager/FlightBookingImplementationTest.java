@@ -14,6 +14,9 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import java.sql.SQLException;
 
+/**
+ * @author rahulmoje
+ */
 @RunWith(MockitoJUnitRunner.class)
 public class FlightBookingImplementationTest {
 
