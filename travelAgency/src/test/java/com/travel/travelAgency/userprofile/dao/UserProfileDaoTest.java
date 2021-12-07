@@ -18,7 +18,7 @@ public class UserProfileDaoTest {
 
     @Test
     public void testRetrieveUserDetail() throws SQLException {
-        User actualUser = userProfileRepository.retrieveUserDetail("user");
+        User actualUser = userProfileRepository.retrieveUserDetail("user@dal.ca");
         Assertions.assertNotNull(actualUser);
         Assertions.assertNotNull(actualUser.getUserName());
         Assertions.assertNotNull(actualUser.getUserEmail());
@@ -26,7 +26,7 @@ public class UserProfileDaoTest {
 
     @Test
     public void retrieveUserBookings() throws SQLException {
-        List<UserBooking> userBookingList = userProfileRepository.retrieveUserBookings("user");
+        List<UserBooking> userBookingList = userProfileRepository.retrieveUserBookings("user@dal.ca");
         Assertions.assertNotNull(userBookingList);
         Assertions.assertFalse(userBookingList.isEmpty());
         for(UserBooking booking : userBookingList) {
