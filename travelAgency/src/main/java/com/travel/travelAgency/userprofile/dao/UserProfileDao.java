@@ -30,7 +30,7 @@ public class UserProfileDao implements UserProfileRepository {
                 "ua.username, ua.email_id, sw.plan_name, sw.date_of_purchase\n" +
                 "FROM user_auth ua LEFT JOIN subscriptions_works sw\n" +
                 "on ua.email_id = sw.user_email_id\n" +
-                "WHERE ua.username = ?\n" +
+                "WHERE ua.email_id = ?\n" +
                 "LIMIT 1";
         PreparedStatement preparedStatement = con.prepareStatement(query);
         preparedStatement.setString(1 , email);
@@ -66,7 +66,7 @@ public class UserProfileDao implements UserProfileRepository {
                 "LEFT JOIN FLIGHTS FFROM ON FSFROM.FLIGHTCODE = FFROM.FLIGHTCODE\n" +
                 "LEFT JOIN FLIGHTSCHEDULES FSTO ON UB.TOSCHEDULEID = FSTO.ID\n" +
                 "LEFT JOIN FLIGHTS FTO ON FSTO.FLIGHTCODE = FTO.FLIGHTCODE\n" +
-                "WHERE UB.USERNAME = ?\n";
+                "WHERE UB.USEREMAIL = ?\n";
         PreparedStatement preparedStatement = con.prepareStatement(query);
         preparedStatement.setString(1 , email);
         ResultSet resultSet = preparedStatement.executeQuery();

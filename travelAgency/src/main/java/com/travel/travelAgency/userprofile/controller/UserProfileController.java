@@ -44,10 +44,10 @@ public class UserProfileController {
     }
 
     private List<UserBooking> retrieveUserBookings(HttpServletRequest request) throws SQLException {
-        return userProfileInterface.retrieveUserBookings((String) request.getSession().getAttribute("name"));
+        return userProfileInterface.retrieveUserBookings((String) request.getSession().getAttribute("emailId"));
     }
 
     private User retrieveUserDetail(HttpServletRequest request) throws SQLException {
-        return userProfileInterface.retrieveUserDetail((String) request.getSession().getAttribute("name"));
+        return userProfileInterface.retrieveUserDetail((String) request.getSession().getAttribute("emailId"));
     }
 }
