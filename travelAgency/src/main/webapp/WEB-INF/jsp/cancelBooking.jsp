@@ -8,6 +8,8 @@
     <title>Flight Cancellation</title>
 </head>
 <body>
-Cancellation goes here
+Sucessfully cancelled your booking
+<br>
+<a href="/searchFlights">Back to Search Flights</a>
 </body>
 </html>

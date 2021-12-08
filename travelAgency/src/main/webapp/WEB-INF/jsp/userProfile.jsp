@@ -81,12 +81,19 @@
                 </c:otherwise>
             </c:choose>
             <td><c:out value="${userBooking.finalCost}" /></td>
-            <td>
-                <form action="cancelBooking" method="post">
-                    <input type="hidden" id="bookingId" name="bookingId" value="${userBooking.bookingId}">
-                    <input type="submit" value="CANCEL"/>
-                </form>
-            </td>
+            <c:choose>
+                <c:when test="${userBooking.userBookingStatus=='UPCOMING'}">
+                    <td>
+                        <form action="cancelBooking" method="post">
+                            <input type="hidden" id="bookingId" name="bookingId" value="${userBooking.bookingId}">
+                            <input type="submit" value="CANCEL"/>
+                        </form>
+                    </td>
+                </c:when>
+                <c:otherwise>
+                    <td>-</td>
+                </c:otherwise>
+            </c:choose>
         </tr>
     </c:forEach>
 </table>
