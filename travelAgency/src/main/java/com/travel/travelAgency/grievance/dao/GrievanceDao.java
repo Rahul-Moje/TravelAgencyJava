@@ -14,7 +14,7 @@ import com.travel.travelAgency.util.DatabaseConnection;
  */
 
 @Repository
-public class GrievanceDAO implements GrievanceRepository {
+public class GrievanceDao implements GrievanceRepository {
 
 	Connection con = DatabaseConnection.getSQLConnection();
 

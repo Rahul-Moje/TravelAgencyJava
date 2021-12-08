@@ -13,7 +13,7 @@ import com.travel.travelAgency.grievance.repository.GrievanceRepository;
 @Service
 public class GrievanceImplementation implements GrievanceInterface {
 	@Override
-	public Boolean RegisterGrievanceComplaint(Grievancerequest request, GrievanceRepository repo) throws Exception {
+	public Boolean registerGrievanceComplaint(Grievancerequest request, GrievanceRepository repo) throws Exception {
 		String email = request.getEmail();
 		String complaint = request.getComplaint();
 		if (request.isComplaintNull(complaint)) {

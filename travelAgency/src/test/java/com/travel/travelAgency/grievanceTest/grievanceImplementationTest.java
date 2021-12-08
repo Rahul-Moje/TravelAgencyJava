@@ -33,7 +33,7 @@ public class grievanceImplementationTest {
 	}
 
 	@Test
-	public void RegisterGrievanceComplaint1Test() throws Exception 
+	public void registerGrievanceComplaintTest() throws Exception 
 	{
 		String email = "user1@dal.ca";
 		String complaint = "clean the flight";

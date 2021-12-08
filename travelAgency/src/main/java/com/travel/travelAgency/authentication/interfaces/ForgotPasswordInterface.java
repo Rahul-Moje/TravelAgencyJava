@@ -13,10 +13,10 @@ import com.travel.travelAgency.authentication.repository.ForgotPasswordRepositor
 public interface ForgotPasswordInterface 
 {
 
-	public ForgotPassGetEmailResp verifyEmailAndGetSecurityQues(ForgotPassGetEmailRequest request,
+	public ForgotPassGetEmailResp verifyEmailAndGetSecurityQuestion(ForgotPassGetEmailRequest request,
 			ForgotPasswordRepository repo) throws Exception;
 
-	public UpdatePasswordReponse verifySecurityAnswerandUpdatePass(SecurityAnswerRequest request,
+	public UpdatePasswordReponse verifySecurityAnswerandUpdatePassword(SecurityAnswerRequest request,
 			ForgotPasswordRepository repo) throws Exception;
 
 }

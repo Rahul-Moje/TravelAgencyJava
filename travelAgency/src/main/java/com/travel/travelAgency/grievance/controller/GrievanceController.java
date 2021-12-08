@@ -33,7 +33,7 @@ public class GrievanceController {
 	@RequestMapping(value = "/grievance", method = RequestMethod.POST)
 	public String registerGrievancePage(ModelMap model, Grievancerequest request) throws Exception 
 	{
-		Boolean value = grievanceInterface.RegisterGrievanceComplaint(request, grievanceRepository);
+		Boolean value = grievanceInterface.registerGrievanceComplaint(request, grievanceRepository);
 		if (value != true) 
 		{
 			model.addAttribute("errorMessage", "Error submitting the grievance!!");

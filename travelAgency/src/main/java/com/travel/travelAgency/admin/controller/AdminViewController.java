@@ -24,7 +24,7 @@ public class AdminViewController {
 	AdminViewRepository adminViewRepository;
 
 	@RequestMapping(value = "/showGrievanceDetails", method = RequestMethod.GET)
-	public String showRegistration(ModelMap model) throws Exception {
+	public String showGrievances(ModelMap model) throws Exception {
 		List<Map<String, Object>> list = adminViewInterface.viewGrievance();
 		if (list == null) {
 			model.addAttribute("errorMessage", "No plans available!");
