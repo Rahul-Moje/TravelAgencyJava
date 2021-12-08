@@ -20,6 +20,7 @@ import com.travel.travelAgency.util.DatabaseConnection;
 
 @Repository
 public class AdminViewDao implements AdminViewRepository {
+	
 	Connection con = DatabaseConnection.getSQLConnection();
 
 	public List<Map<String, Object>> getListofGrievances() throws Exception {
