@@ -12,14 +12,9 @@ import org.springframework.stereotype.Component;
 //Singleton pattern
 public class SingletonDatabaseConnection {
 	
-	@Autowired
-	Environment env;
 	
-//	@Value( "${spring.datasource.url}" )
 	static String url="jdbc:mysql://db-5308.cs.dal.ca:3306/CSCI5308_21_DEVINT";
-//	@Value( "${spring.datasource.username}" )
     static String user="CSCI5308_21_DEVINT_USER";
-//	@Value( "${spring.datasource.password}" )
     static String pass="eiBiequeir8Ukofi";
     
 	private static SingletonDatabaseConnection instance;
@@ -41,11 +36,4 @@ public class SingletonDatabaseConnection {
 		return con;
 	}
 	
-	public static SingletonDatabaseConnection getInstance() throws SQLException {
-        if (instance == null) {
-            instance = new SingletonDatabaseConnection();
-        }
-
-        return instance;
-    }
 }
