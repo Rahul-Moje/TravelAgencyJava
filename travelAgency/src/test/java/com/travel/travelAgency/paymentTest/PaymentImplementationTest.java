@@ -1,6 +1,8 @@
 package com.travel.travelAgency.paymentTest;
 
 import static org.junit.Assert.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.when;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,25 +12,32 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.Spy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.travel.travelAgency.payment.dao.PaymentDAO;
 import com.travel.travelAgency.payment.interfaces.PaymentInterface;
 import com.travel.travelAgency.payment.manager.PaymentManager;
+import com.travel.travelAgency.payment.repository.PaymentRepository;
 
 @SpringBootTest
 public class PaymentImplementationTest {
 
 	@Autowired
 	PaymentInterface paymentManager;
-	
+
+	PaymentRepository paymentRepository = Mockito.mock(PaymentDAO.class);
+
 	@Test
 	public void paymentExistClassExist() {
-		PaymentManager paymentmanager = new PaymentManager(); 
+		PaymentManager paymentmanager = new PaymentManager();
 		assertNotNull(paymentmanager);
 	}
-	
+
 	@Test
 	public void processTransactionTest() {
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
@@ -36,19 +45,9 @@ public class PaymentImplementationTest {
 		String email = "admin@dal.ca";
 		float displayAmount = 1000.0f;
 		String datetime = now.toString();
-		String query =  "insert into user_payments (user_email, date_of_payment, paid_amt) values ('"+ email +"','"
-				+ datetime + "', " + displayAmount + ")";
-		Connection conn = Mockito.mock(Connection.class);
-	    ResultSet resultSet = Mockito.mock(ResultSet.class);
-	    PreparedStatement statement = Mockito.mock(PreparedStatement.class);
-	    try {
-			Mockito.when(statement.executeUpdate(query)).thenReturn(1);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		when(paymentRepository.savePaymentDetails(displayAmount, email)).thenReturn(1);
+		String response = paymentManager.processPayment(displayAmount, email);
+		assertEquals(response, "Success");
+	}
 
-
-		}
-	
 }
