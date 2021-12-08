@@ -6,7 +6,9 @@ import com.travel.travelAgency.search.models.JourneyType;
 import com.travel.travelAgency.search.models.OneWayFlightResults;
 import com.travel.travelAgency.search.models.SearchFlightForm;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -15,6 +17,10 @@ import java.util.List;
 
 import static com.travel.travelAgency.search.util.TestDataUtil.buildFormForTest;
 
+/**
+ * @author rahulmoje
+ */
+@RunWith(MockitoJUnitRunner.class)
 public class SearchFlightsRequestValidatorImplTest {
 
     @InjectMocks

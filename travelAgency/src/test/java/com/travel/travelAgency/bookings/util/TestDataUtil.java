@@ -6,6 +6,9 @@ import com.travel.travelAgency.search.models.JourneyType;
 
 import java.math.BigDecimal;
 
+/**
+ * @author rahulmoje
+ */
 public final class TestDataUtil {
 
     private TestDataUtil() {

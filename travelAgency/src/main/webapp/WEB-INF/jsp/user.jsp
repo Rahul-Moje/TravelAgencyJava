@@ -13,6 +13,8 @@
 		<a href="/searchFlights">Search Flights</a>
 		<br>
 		<a href="/grievance">File a Grievance!!</a>
+		<br>
+		<a href="/userProfile">My Bookings</a>
 		
 		 
 		

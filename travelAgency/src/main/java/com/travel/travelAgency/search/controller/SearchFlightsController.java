@@ -19,6 +19,9 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.List;
 
+/**
+ * @author rahulmoje
+ */
 @Controller
 public class SearchFlightsController {
 

@@ -1,5 +1,8 @@
 package com.travel.travelAgency.bookings.model;
 
+/**
+ * @author rahulmoje
+ */
 public enum MealType {
 
     VEGETARIAN("Vegetarian"),

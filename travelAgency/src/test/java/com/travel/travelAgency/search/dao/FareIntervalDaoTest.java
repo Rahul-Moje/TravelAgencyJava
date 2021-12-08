@@ -8,6 +8,9 @@ import org.junit.Test;
 import java.sql.SQLException;
 import java.util.List;
 
+/**
+ * @author rahulmoje
+ */
 public class FareIntervalDaoTest {
 
     private FareIntervalRepository fareIntervalRepository = new FareIntervalDAO();

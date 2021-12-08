@@ -12,6 +12,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author rahulmoje
+ */
 @Repository
 public class FareIntervalDAO implements FareIntervalRepository {
 
