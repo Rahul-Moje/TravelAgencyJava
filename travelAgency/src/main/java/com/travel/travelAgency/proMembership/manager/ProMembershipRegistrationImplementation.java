@@ -10,6 +10,10 @@ import com.travel.travelAgency.proMembership.interfaces.ProMembershipRegistratio
 import com.travel.travelAgency.proMembership.models.promembershipregistrationrequest;
 import com.travel.travelAgency.proMembership.repository.ProMembershipRegistrationRepository;
 
+/**
+ * @author sowjanyamani
+ */
+
 @Service
 public class ProMembershipRegistrationImplementation implements ProMembershipRegistrationInterface {
 

@@ -6,6 +6,10 @@ import java.util.Map;
 import com.travel.travelAgency.proMembership.models.promembershipregistrationrequest;
 import com.travel.travelAgency.proMembership.repository.ProMembershipRegistrationRepository;
 
+/**
+ * @author sowjanyamani
+ */
+
 public interface ProMembershipRegistrationInterface {
 
 	public List<Map<String, Object>> verifyPlans() throws Exception;

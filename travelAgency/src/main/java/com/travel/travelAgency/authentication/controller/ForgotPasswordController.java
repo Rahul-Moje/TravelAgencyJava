@@ -5,13 +5,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
 import com.travel.travelAgency.authentication.interfaces.ForgotPasswordInterface;
 import com.travel.travelAgency.authentication.models.ForgotPassGetEmailRequest;
 import com.travel.travelAgency.authentication.models.ForgotPassGetEmailResp;
 import com.travel.travelAgency.authentication.models.SecurityAnswerRequest;
 import com.travel.travelAgency.authentication.models.UpdatePasswordReponse;
 import com.travel.travelAgency.authentication.repository.ForgotPasswordRepository;
+
+/**
+ * @author sowjanyamani
+ */
 
 @Controller
 public class ForgotPasswordController {

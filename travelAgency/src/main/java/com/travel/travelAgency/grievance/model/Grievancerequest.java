@@ -1,5 +1,9 @@
 package com.travel.travelAgency.grievance.model;
 
+/**
+ * @author sowjanyamani
+ */
+
 public class Grievancerequest {
 	
 	private String email;

@@ -14,11 +14,13 @@ import org.springframework.stereotype.Repository;
 import com.travel.travelAgency.proMembership.repository.ProMembershipRegistrationRepository;
 import com.travel.travelAgency.util.DatabaseConnection;
 
+/**
+ * @author sowjanyamani
+ */
+
 @Repository
 public class ProMembershipRegistrationDAO implements ProMembershipRegistrationRepository {
 	Connection con = DatabaseConnection.getSQLConnection();
-
-	
 
 	@Override
 	public List<Map<String, Object>> getListofMembership() throws Exception {

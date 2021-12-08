@@ -9,6 +9,10 @@ import org.springframework.stereotype.Repository;
 import com.travel.travelAgency.grievance.repository.GrievanceRepository;
 import com.travel.travelAgency.util.DatabaseConnection;
 
+/**
+ * @author sowjanyamani
+ */
+
 @Repository
 public class GrievanceDAO implements GrievanceRepository
 {

@@ -2,6 +2,10 @@ package com.travel.travelAgency.authentication.models;
 
 import java.io.Serializable;
 
+/**
+ * @author sowjanyamani
+ */
+
 public class SecurityAnswerRequest implements Serializable {
 
 	private static final long serialVersionUID = 1L;

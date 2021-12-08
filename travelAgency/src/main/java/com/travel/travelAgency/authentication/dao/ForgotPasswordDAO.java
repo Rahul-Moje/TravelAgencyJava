@@ -10,6 +10,10 @@ import org.springframework.stereotype.Repository;
 import com.travel.travelAgency.authentication.repository.ForgotPasswordRepository;
 import com.travel.travelAgency.util.DatabaseConnection;
 
+/**
+ * @author sowjanyamani
+ */
+
 @Repository
 public class ForgotPasswordDAO implements ForgotPasswordRepository {
 	Connection con = DatabaseConnection.getSQLConnection();

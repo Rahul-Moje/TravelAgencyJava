@@ -1,5 +1,9 @@
 package com.travel.travelAgency.authentication.repository;
 
+/**
+ * @author sowjanyamani
+ */
+
 public interface ForgotPasswordRepository 
 {
 
