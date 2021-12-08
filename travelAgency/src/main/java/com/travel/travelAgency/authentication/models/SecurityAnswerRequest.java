@@ -46,7 +46,7 @@ public class SecurityAnswerRequest implements Serializable {
 
 	}
 
-	public Boolean checkPassword(String new_password) {
+	public Boolean checkPasswordRegx(String new_password) {
 
 		return new_password.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$");
 	}

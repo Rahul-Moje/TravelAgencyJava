@@ -17,7 +17,7 @@ public class ForgotPassGetEmailRequest implements Serializable {
 		this.email = email;
 	}
 	
-	public Boolean checkEmailValid (String email) {
+	public Boolean checkEmailValidRegx (String email) {
 		
 		String emailReg = "^[a-zA-Z0-9_+&*-]+(?:\\."+
                 "[a-zA-Z0-9_+&*-]+)*@" +

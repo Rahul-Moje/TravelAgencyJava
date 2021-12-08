@@ -20,23 +20,23 @@ public class GrievanceController {
 	GrievanceRepository grievanceRepository;
 	
 	@RequestMapping(value = "/grievance", method = RequestMethod.GET)
-	public String show(ModelMap model) throws Exception {
-
+	public String showGrievancePage(ModelMap model) throws Exception 
+	{
 		return "grievance";
-
 	}
 	
 
 	@RequestMapping(value = "/grievance", method = RequestMethod.POST)
-	public String getSecurityAnswer(ModelMap model, Grievancerequest request) throws Exception {
-		String value = grievanceInterface.RegisterGrievanceComplaint(request, grievanceRepository);
-		if (value == "Complaint not Filed!!") {
+	public String registerGrievancePage(ModelMap model, Grievancerequest request) throws Exception 
+	{
+		Boolean value = grievanceInterface.RegisterGrievanceComplaint(request, grievanceRepository);
+		if (value != true) 
+		{
 			model.addAttribute("errorMessage", "Error submitting the grievance!!");
-			return "welcome";
+			return "grievance";
 		}
 		model.put("status", value);
 		return "welcome";
-
 	}
 
 }

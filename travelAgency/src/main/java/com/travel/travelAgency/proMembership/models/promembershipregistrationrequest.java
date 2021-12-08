@@ -38,4 +38,10 @@ public class promembershipregistrationrequest implements Serializable {
 		this.plan_name = plan_name;
 	}
 
+	public boolean isPlanNameNull(String plan_name) {
+		if(plan_name==null) {
+			return false;
+		}
+		return true;
+	}
 }

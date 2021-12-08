@@ -52,7 +52,7 @@ public class ProMembershipRegistrationDAO implements ProMembershipRegistrationRe
 		try {
 			PreparedStatement ps = con.prepareStatement(SQL);
 			ps.executeUpdate();
-			// con.close();
+			
 		} catch (DataAccessException e) {
 			e.printStackTrace();
 		}

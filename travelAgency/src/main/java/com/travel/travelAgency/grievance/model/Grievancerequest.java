@@ -1,6 +1,10 @@
 package com.travel.travelAgency.grievance.model;
 
 public class Grievancerequest {
+	
+	private String email;
+	private String complaint;
+	
 public String getEmail() {
 		return email;
 	}
@@ -13,6 +17,13 @@ public String getEmail() {
 	public void setComplaint(String complaint) {
 		this.complaint = complaint;
 	}
-private String email;
-private String complaint;
+
+
+public boolean isComplaintNull(String complaint) {
+	if(complaint==null || complaint=="") {
+		return false;
+	}
+	return true;
+}
+
 }

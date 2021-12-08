@@ -29,15 +29,17 @@ public class grievanceImplementationTest {
 	}
 
 	@Test
-	public void RegisterGrievanceComplaint1Test() throws Exception {
+	public void RegisterGrievanceComplaint1Test() throws Exception 
+	{
 		String email = "user1@dal.ca";
 		String complaint = "clean the flight";
 		String SQL = "INSERT INTO grievance (user_email_id,complaint) VALUES ('" + email + "','" + complaint + "')";
 		Connection conn = Mockito.mock(Connection.class);
 		ResultSet resultSet = Mockito.mock(ResultSet.class);
 		PreparedStatement statement = Mockito.mock(PreparedStatement.class);
-		try {
-			Mockito.when(statement.executeUpdate(SQL)).thenReturn(1);
+		try 
+		{
+		  Mockito.when(statement.executeUpdate(SQL)).thenReturn(1);
 		} catch (SQLException e) {
 
 			e.printStackTrace();

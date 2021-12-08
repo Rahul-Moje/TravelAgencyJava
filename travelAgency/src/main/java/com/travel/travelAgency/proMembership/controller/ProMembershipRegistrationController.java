@@ -36,7 +36,7 @@ public class ProMembershipRegistrationController {
 	}
 
 	@RequestMapping(value = "/registerMemberShipDetails", method = RequestMethod.GET)
-	public String show(ModelMap model) throws Exception {
+	public String showProMembershiRegisterPage(ModelMap model) throws Exception {
 		List<Map<String, Object>> list = promembershipregistrationinterface.verifyPlans();
 		model.put("list", list);
 		return "registerMemberShipDetails";
@@ -44,7 +44,7 @@ public class ProMembershipRegistrationController {
 	}
 
 	@RequestMapping(path = "/registerMemberShipDetails", method = RequestMethod.POST)
-	public String UpdatePlanname(ModelMap model, promembershipregistrationrequest request) throws Exception {
+	public String updatePlanName(ModelMap model, promembershipregistrationrequest request) throws Exception {
 
 		String value = promembershipregistrationinterface.verifyEmailandUpdatePlan(request,
 				promembershipregistrationrepository);

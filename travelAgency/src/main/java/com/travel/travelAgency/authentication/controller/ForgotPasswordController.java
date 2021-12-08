@@ -23,19 +23,22 @@ public class ForgotPasswordController {
 	ForgotPasswordRepository forgotPasswordRepository;
 
 	@RequestMapping(value = "/forgotpassword", method = RequestMethod.GET)
-	public String show(ModelMap model) throws Exception {
+	public String showForgotPasswordView(ModelMap model) throws Exception 
+	{
 
 		return "forgotpassword";
 
 	}
 
 	@RequestMapping(value = "/forgotpassword", method = RequestMethod.POST)
-	public String getEmail(ModelMap model, ForgotPassGetEmailRequest request) throws Exception {
+	public String getEmail(ModelMap model, ForgotPassGetEmailRequest request) throws Exception 
+	{
 		ForgotPassGetEmailResp getEmailResp = forgotPasswordInterface.verifyEmailAndGetSecurityQues(request,
 				forgotPasswordRepository);
 		String value1 = request.getEmail();
 		String value2 = getEmailResp.getSecurity_question();
-		if (value2 == null) {
+		if (value2 == null) 
+		{
 			model.addAttribute("errorMessage", "Invalid email id!!");
 			return "forgotpassword";
 		}
@@ -45,21 +48,14 @@ public class ForgotPasswordController {
 
 	}
 	
-//	@PostMapping(path = "/updatepass")
-//	public UpdatePasswordReponse getSecurityAnswer(@RequestBody SecurityAnswerRequest request) throws Exception {
-//
-//		return forgotPasswordInterface.verifySecurityAnswerandUpdatePass(request, forgotPasswordRepository);
-//	}
-
-
-
-
 	@RequestMapping(value = "/verifysecurityandupdatepass", method = RequestMethod.POST)
-	public String getSecurityAnswer(ModelMap model, SecurityAnswerRequest request) throws Exception {
+	public String getSecurityAnswer(ModelMap model, SecurityAnswerRequest request) throws Exception 
+	{
 		UpdatePasswordReponse getSecurityansResp = forgotPasswordInterface.verifySecurityAnswerandUpdatePass(request,
 				forgotPasswordRepository);
 		String value1 = getSecurityansResp.getStatus();
-		if (value1 != "Password Updated") {
+		if (value1 != "Password Updated") 
+		{
 			model.addAttribute("errorMessage", "check if your security answer is correct or new and confirm password are same");
 			model.put("email", request.getEmail());
 			model.put("securityquestion", request.getSecurity_question());
