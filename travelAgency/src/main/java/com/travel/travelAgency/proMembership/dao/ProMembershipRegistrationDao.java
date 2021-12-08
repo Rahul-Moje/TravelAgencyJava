@@ -19,7 +19,7 @@ import com.travel.travelAgency.util.DatabaseConnection;
  */
 
 @Repository
-public class ProMembershipRegistrationDAO implements ProMembershipRegistrationRepository {
+public class ProMembershipRegistrationDao implements ProMembershipRegistrationRepository {
 	Connection con = DatabaseConnection.getSQLConnection();
 
 	@Override

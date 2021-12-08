@@ -27,7 +27,7 @@ public class ProMembershipRegistrationController {
 	ProMembershipRegistrationRepository promembershipregistrationrepository;
 
 	@RequestMapping(value = "/showMemberShipDetails", method = RequestMethod.GET)
-	public String showRegistration(ModelMap model) throws Exception {
+	public String showProMembershipPlans(ModelMap model) throws Exception {
 		List<Map<String, Object>> list = promembershipregistrationinterface.verifyPlans();
 		if (list == null) {
 			model.addAttribute("errorMessage", "No plans available!");

@@ -24,7 +24,7 @@ public class AdminViewImplementationTest {
 	AdminViewInterface adminViewInterface;
 	
 	@Test
-	public void AdminViewImplementationClassExist() {
+	public void adminViewImplementationClassExist() {
 		AdminViewImplementation adminViewImplementation = new AdminViewImplementation();
 		assertNotNull(adminViewImplementation);
 
