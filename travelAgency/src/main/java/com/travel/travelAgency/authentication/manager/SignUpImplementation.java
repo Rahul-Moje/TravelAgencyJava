@@ -13,7 +13,7 @@ public class SignUpImplementation implements SignUpInterface{
 		SignUpRepository signUpDAO;
 		
 		@Override
-		public String signUp(String username, String password, String email, int SecurityQuestionId, String securityAnswer) {
+		public String signUp(String username, String password, String email, String SecurityQuestionId, String securityAnswer) {
 
 			signUpDAO.signUpUser(username, password, email, SecurityQuestionId, securityAnswer, securityAnswer);
 
