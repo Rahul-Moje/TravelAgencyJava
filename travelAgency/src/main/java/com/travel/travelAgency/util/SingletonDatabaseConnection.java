@@ -44,8 +44,6 @@ public class SingletonDatabaseConnection {
 	public static SingletonDatabaseConnection getInstance() throws SQLException {
         if (instance == null) {
             instance = new SingletonDatabaseConnection();
-        } else if (instance.getSQLConnection().isClosed()) {
-            instance = new SingletonDatabaseConnection();
         }
 
         return instance;
