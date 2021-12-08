@@ -22,9 +22,9 @@ public class AdminViewImplementation implements AdminViewInterface {
 	@Override
 	public List<Map<String, Object>> viewGrievance() throws Exception {
 		
-		List<Map<String, Object>> list = repo.getListofGrievances();
+		List<Map<String, Object>> listofGrievances = repo.getListofGrievances();
 
-		return list;
+		return listofGrievances;
 	}
 	
 	

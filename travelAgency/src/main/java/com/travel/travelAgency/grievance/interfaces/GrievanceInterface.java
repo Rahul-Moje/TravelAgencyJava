@@ -7,10 +7,8 @@ import com.travel.travelAgency.grievance.repository.GrievanceRepository;
  * @author sowjanyamani
  */
 
-public interface GrievanceInterface 
-{
-	
-	public  Boolean RegisterGrievanceComplaint(Grievancerequest request,
-			GrievanceRepository repo) throws Exception;
-	
+public interface GrievanceInterface {
+
+	public Boolean RegisterGrievanceComplaint(Grievancerequest request, GrievanceRepository repo) throws Exception;
+
 }

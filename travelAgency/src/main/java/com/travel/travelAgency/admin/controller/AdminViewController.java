@@ -16,29 +16,23 @@ import com.travel.travelAgency.admin.repository.AdminViewRepository;
 
 @Controller
 public class AdminViewController {
-	
-	
+
 	@Autowired
 	AdminViewInterface adminViewInterface;
-	
+
 	@Autowired
 	AdminViewRepository adminViewRepository;
-	
-	
+
 	@RequestMapping(value = "/showGrievanceDetails", method = RequestMethod.GET)
 	public String showRegistration(ModelMap model) throws Exception {
 		List<Map<String, Object>> list = adminViewInterface.viewGrievance();
 		if (list == null) {
 			model.addAttribute("errorMessage", "No plans available!");
 			return "showGrievanceDetails";
-
 		}
+		
 		model.put("listofGrievance", list);
 		return "showGrievanceDetails";
-
 	}
-	
-	
-	
-	
+
 }
