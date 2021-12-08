@@ -1,4 +1,4 @@
-package com.travel.travelAgency.grievanceTest;
+package com.travel.travelAgency.adminTest;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
@@ -6,21 +6,20 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.travel.travelAgency.grievance.controller.GrievanceController;
+import com.travel.travelAgency.admin.controller.AdminViewController;
 
 /**
  * @author sowjanyamani
  */
 
 @SpringBootTest
-public class grievanceControllerTest {
+public class adminViewControllerTest {
 
 	@Autowired
-	GrievanceController grievancecontroller;
-
+	AdminViewController adminViewController;
 	@Test
-	public void testgrievanceController() {
-		assertNotNull(grievancecontroller);
+	public void testAdminViewController() {
+		assertNotNull(adminViewController);
 	}
-
+	
 }

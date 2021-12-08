@@ -8,6 +8,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.travel.travelAgency.authentication.controller.ForgotPasswordController;
 
+/**
+ * @author sowjanyamani
+ */
+
 @SpringBootTest
 public class ForgotPasswordControllerTest {
 	

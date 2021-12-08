@@ -15,6 +15,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.travel.travelAgency.proMembership.interfaces.ProMembershipRegistrationInterface;
 import com.travel.travelAgency.proMembership.manager.ProMembershipRegistrationImplementation;
 
+/**
+ * @author sowjanyamani
+ */
+
 @SpringBootTest
 public class ProMembershipRegistrationImplementationTest {
 
@@ -22,7 +26,7 @@ public class ProMembershipRegistrationImplementationTest {
 	ProMembershipRegistrationInterface promembershipService;
 
 	@Test
-	public void proMembershipClassExistClassExist() {
+	public void proMembershipClassExist() {
 		ProMembershipRegistrationImplementation promembershipregistrationimplementation = new ProMembershipRegistrationImplementation();
 		assertNotNull(promembershipregistrationimplementation);
 

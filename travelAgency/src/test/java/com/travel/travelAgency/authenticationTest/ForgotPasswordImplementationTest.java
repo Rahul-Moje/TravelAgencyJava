@@ -18,6 +18,10 @@ import com.travel.travelAgency.authentication.models.SecurityAnswerRequest;
 import com.travel.travelAgency.authentication.models.UpdatePasswordReponse;
 import com.travel.travelAgency.authentication.repository.ForgotPasswordRepository;
 
+/**
+ * @author sowjanyamani
+ */
+
 @RunWith(MockitoJUnitRunner.class)
 @SpringBootTest
 public class ForgotPasswordImplementationTest {

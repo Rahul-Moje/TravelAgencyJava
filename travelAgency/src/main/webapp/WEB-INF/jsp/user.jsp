@@ -15,7 +15,8 @@
 		<a href="/grievance">File a Grievance!!</a>
 		<br>
 		<a href="/userProfile">My Bookings</a>
-		
+		<br>
+		<a href="/showGrievanceDetails">Grievances Filed</a>
 		 
 		
 	</form>
