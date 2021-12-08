@@ -10,6 +10,10 @@ import org.springframework.stereotype.Repository;
 import com.travel.travelAgency.authentication.repository.ForgotPasswordRepository;
 import com.travel.travelAgency.util.SingletonDatabaseConnection;
 
+/**
+ * @author sowjanyamani
+ */
+
 @Repository
 public class ForgotPasswordDAO implements ForgotPasswordRepository {
 	Connection con = SingletonDatabaseConnection.getSQLConnection();
@@ -18,13 +22,14 @@ public class ForgotPasswordDAO implements ForgotPasswordRepository {
 	public Boolean isEmailValid(String email) throws Exception {
 
 		String SQL = "select email_id from user_auth where email_id='" + email + "'";
+
 		try {
-			PreparedStatement ps = con.prepareStatement(SQL);
-			ResultSet rs = ps.executeQuery(SQL);
-			while (rs.next()) {
+			PreparedStatement preparedStatement = con.prepareStatement(SQL);
+			ResultSet resultSet = preparedStatement.executeQuery(SQL);
+			while (resultSet.next()) {
 				return Boolean.TRUE;
 			}
-			// con.close();
+
 		} catch (DataAccessException e) {
 			e.printStackTrace();
 		}
@@ -32,18 +37,18 @@ public class ForgotPasswordDAO implements ForgotPasswordRepository {
 	}
 
 	@Override
-	public String getSecurityQues(String email) throws Exception {
+	public String getSecurityQuestion(String email) throws Exception {
 
 		String SQL = "select sq.question from user_auth ua join security_questions sq on ua.security_question_id = sq.question_id where email_id= '"
 				+ email + "'";
 		String question = "";
 		try {
-			PreparedStatement ps = con.prepareStatement(SQL);
-			ResultSet rs = ps.executeQuery(SQL);
-			while (rs.next()) {
-				question = rs.getString("question");
+			PreparedStatement preparedStatement = con.prepareStatement(SQL);
+			ResultSet resultSet = preparedStatement.executeQuery(SQL);
+			while (resultSet.next()) {
+				question = resultSet.getString("question");
 			}
-			// con.close();
+
 		} catch (DataAccessException e) {
 			e.printStackTrace();
 		}
@@ -56,17 +61,17 @@ public class ForgotPasswordDAO implements ForgotPasswordRepository {
 		String SQL = "select security_answer from user_auth  where email_id='" + email + "'";
 		String answer = "";
 		try {
-			PreparedStatement ps = con.prepareStatement(SQL);
-			ResultSet rs = ps.executeQuery(SQL);
-			while (rs.next()) {
-				answer = rs.getString("security_answer");
+			PreparedStatement preparedStatement = con.prepareStatement(SQL);
+			ResultSet resultSet = preparedStatement.executeQuery(SQL);
+			while (resultSet.next()) {
+				answer = resultSet.getString("security_answer");
 				if (!(answer.equalsIgnoreCase(security_answer))) {
 					throw new Exception("Check the answer");
 
 				}
 				return Boolean.TRUE;
 			}
-			// con.close();
+
 		} catch (DataAccessException e) {
 			e.printStackTrace();
 		}
@@ -79,13 +84,13 @@ public class ForgotPasswordDAO implements ForgotPasswordRepository {
 		String SQL = "UPDATE user_auth SET password = '" + newPassword + "' where email_id='" + email + "'";
 
 		try {
-			PreparedStatement ps = con.prepareStatement(SQL);
-			ps.executeUpdate();
-			// con.close();
+			PreparedStatement preparedStatement = con.prepareStatement(SQL);
+			preparedStatement.executeUpdate();
+
 		} catch (DataAccessException e) {
 			e.printStackTrace();
 		}
-		
+
 	}
-      //con.close();
+
 }

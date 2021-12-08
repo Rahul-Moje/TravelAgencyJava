@@ -5,6 +5,9 @@ import com.travel.travelAgency.search.models.SearchFlightForm;
 
 import java.util.List;
 
+/**
+ * @author rahulmoje
+ */
 public interface SearchFlightsRequestValidator {
 
     void validateSearchRequest(SearchFlightForm searchFlightForm);

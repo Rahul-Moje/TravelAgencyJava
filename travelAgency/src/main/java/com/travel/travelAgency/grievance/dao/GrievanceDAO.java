@@ -9,27 +9,27 @@ import org.springframework.stereotype.Repository;
 import com.travel.travelAgency.grievance.repository.GrievanceRepository;
 import com.travel.travelAgency.util.SingletonDatabaseConnection;
 
+/**
+ * @author sowjanyamani
+ */
+
 @Repository
-public class GrievanceDAO implements GrievanceRepository{
+public class GrievanceDAO implements GrievanceRepository {
 
 	Connection con = SingletonDatabaseConnection.getSQLConnection();
-	
-	
 
 	@Override
 	public void registerGrievance(String email, String complaint) throws Exception {
 
-		String SQL = "INSERT INTO grievance (user_email_id,complaint) VALUES ('" + email
-				+ "','" + complaint + "')";
+		String SQL = "INSERT INTO grievance (user_email_id,complaint) VALUES ('" + email + "','" + complaint + "')";
 		try {
-			PreparedStatement ps = con.prepareStatement(SQL);
-			ps.executeUpdate();
-			// con.close();
+			PreparedStatement preparedStatement = con.prepareStatement(SQL);
+			preparedStatement.executeUpdate();
+
 		} catch (DataAccessException e) {
 			e.printStackTrace();
 		}
-		
-	}
 
 	}
 
+}

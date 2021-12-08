@@ -1,5 +1,8 @@
 package com.travel.travelAgency.search.models;
 
+/**
+ * @author rahulmoje
+ */
 public enum JourneyType {
 
     ONE_WAY("OneWay"),

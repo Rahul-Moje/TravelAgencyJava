@@ -2,6 +2,10 @@ package com.travel.travelAgency.authentication.models;
 
 import java.io.Serializable;
 
+/**
+ * @author sowjanyamani
+ */
+
 public class SecurityAnswerRequest implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -46,7 +50,7 @@ public class SecurityAnswerRequest implements Serializable {
 
 	}
 
-	public Boolean checkPassword(String new_password) {
+	public Boolean checkPasswordRegx(String new_password) {
 
 		return new_password.matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$");
 	}

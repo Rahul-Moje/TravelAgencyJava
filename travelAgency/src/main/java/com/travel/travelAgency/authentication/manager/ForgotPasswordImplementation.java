@@ -9,6 +9,10 @@ import com.travel.travelAgency.authentication.models.SecurityAnswerRequest;
 import com.travel.travelAgency.authentication.models.UpdatePasswordReponse;
 import com.travel.travelAgency.authentication.repository.ForgotPasswordRepository;
 
+/**
+ * @author sowjanyamani
+ */
+
 @Service
 public class ForgotPasswordImplementation implements ForgotPasswordInterface {
 
@@ -19,14 +23,12 @@ public class ForgotPasswordImplementation implements ForgotPasswordInterface {
 		try {
 			String email = request.getEmail();
 
-			if (request.checkEmailValid(email)) {
+			if (request.checkEmailValidRegx(email)) {
 
 				if (repo.isEmailValid(email)) {
 
-					String securityQues = repo.getSecurityQues(email);
-
+					String securityQues = repo.getSecurityQuestion(email);
 					resp.setSecurity_question(securityQues);
-
 					return resp;
 				}
 
@@ -50,15 +52,15 @@ public class ForgotPasswordImplementation implements ForgotPasswordInterface {
 			String security_answer = request.getSecurity_answer();
 			String email = request.getEmail();
 			String newPassword = request.getNew_password();
-			// check if the Security Answer is Valid;
+
 			if (repo.isSecurityAnswerValid(security_answer, email)) {
 
-				if (request.checkPassword(newPassword)) {
+				if (request.checkPasswordRegx(newPassword)) {
 
 					if (!request.getNew_password().equalsIgnoreCase(request.getUpdate_password())) {
 						throw new Exception("check if the password are same");
 					}
-					// Update the new password in database;
+
 					repo.updatePassword(email, request.getNew_password());
 
 					response.setStatus("Password Updated");

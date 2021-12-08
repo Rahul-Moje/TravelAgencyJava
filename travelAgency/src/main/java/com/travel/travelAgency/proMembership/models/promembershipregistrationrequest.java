@@ -4,6 +4,10 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * @author sowjanyamani
+ */
+
 public class promembershipregistrationrequest implements Serializable {
 
 	private static final long serialVersionUID = 268932201854209904L;
@@ -38,4 +42,10 @@ public class promembershipregistrationrequest implements Serializable {
 		this.plan_name = plan_name;
 	}
 
+	public boolean isPlanNameNull(String plan_name) {
+		if(plan_name==null) {
+			return false;
+		}
+		return true;
+	}
 }

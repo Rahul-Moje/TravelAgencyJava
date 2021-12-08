@@ -18,6 +18,10 @@ import com.travel.travelAgency.authentication.models.SecurityAnswerRequest;
 import com.travel.travelAgency.authentication.models.UpdatePasswordReponse;
 import com.travel.travelAgency.authentication.repository.ForgotPasswordRepository;
 
+/**
+ * @author sowjanyamani
+ */
+
 @RunWith(MockitoJUnitRunner.class)
 @SpringBootTest
 public class ForgotPasswordImplementationTest {
@@ -35,7 +39,7 @@ public class ForgotPasswordImplementationTest {
 		req.setEmail("user1@dal.ca");
 
 		Mockito.when(repo.isEmailValid(req.getEmail())).thenReturn(Boolean.TRUE);
-		Mockito.when(repo.getSecurityQues(req.getEmail())).thenReturn("Some question");
+		Mockito.when(repo.getSecurityQuestion(req.getEmail())).thenReturn("Some question");
 
 		ForgotPassGetEmailResp resp = forgotPasswordService.verifyEmailAndGetSecurityQues(req, repo);
 		assertEquals("Some question", resp.getSecurity_question());

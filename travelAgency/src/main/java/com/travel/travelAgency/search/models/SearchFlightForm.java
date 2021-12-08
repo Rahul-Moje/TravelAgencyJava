@@ -1,8 +1,12 @@
 package com.travel.travelAgency.search.models;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class SearchFlightForm {
+/**
+ * @author rahulmoje
+ */
+public class SearchFlightForm implements Serializable {
 
     private String source;
 
@@ -16,7 +20,27 @@ public class SearchFlightForm {
 
     private Integer numOfPassengers;
 
-    public SearchFlightForm(SearchFlightFormBuilder searchFlightFormBuilder) {
+    public boolean isOneWayRequest() {
+        return this.journeyType == JourneyType.ONE_WAY;
+    }
+
+    public boolean isReturnRequest() {
+        return !isOneWayRequest();
+    }
+
+    @Override
+    public String toString() {
+        return "SearchFlightForm{" +
+                "source='" + source + '\'' +
+                ", destination='" + destination + '\'' +
+                ", fromDate=" + fromDate +
+                ", toDate=" + toDate +
+                ", journeyType=" + journeyType +
+                ", numOfPassengers=" + numOfPassengers +
+                '}';
+    }
+
+    private SearchFlightForm(SearchFlightFormBuilder searchFlightFormBuilder) {
         this.source = searchFlightFormBuilder.source;
         this.destination = searchFlightFormBuilder.destination;
         this.fromDate = searchFlightFormBuilder.fromDate;

@@ -3,6 +3,9 @@ package com.travel.travelAgency.search.models;
 import java.math.BigDecimal;
 import java.util.Date;
 
+/**
+ * @author rahulmoje
+ */
 public class ReturnFlightsResults {
 
     private String fromFlightCode;
@@ -50,6 +53,41 @@ public class ReturnFlightsResults {
     private Integer toCapacity;
 
     private BigDecimal totalTicketPrice;
+
+    public void increaseFare(Integer percentage) {
+        BigDecimal baseFare = this.totalTicketPrice;
+        BigDecimal amountToAdd = baseFare.multiply(new BigDecimal(percentage).divide(new BigDecimal(100)));
+        this.totalTicketPrice = baseFare.add(amountToAdd);
+    }
+
+    @Override
+    public String toString() {
+        return "ReturnFlightsResults{" +
+                "fromFlightCode='" + fromFlightCode + '\'' +
+                ", fromAirLine='" + fromAirLine + '\'' +
+                ", fromFlightScheduleId=" + fromFlightScheduleId +
+                ", fromSource='" + fromSource + '\'' +
+                ", fromDestination='" + fromDestination + '\'' +
+                ", fromDepartureTime=" + fromDepartureTime +
+                ", fromArrivalTime=" + fromArrivalTime +
+                ", fromTotalHours=" + fromTotalHours +
+                ", fromTicketPrice=" + fromTicketPrice +
+                ", fromSeatsBooked=" + fromSeatsBooked +
+                ", fromCapacity=" + fromCapacity +
+                ", toFlightCode='" + toFlightCode + '\'' +
+                ", toAirLine='" + toAirLine + '\'' +
+                ", toFlightScheduleId=" + toFlightScheduleId +
+                ", toSource='" + toSource + '\'' +
+                ", toDestination='" + toDestination + '\'' +
+                ", toDepartureTime=" + toDepartureTime +
+                ", toArrivalTime=" + toArrivalTime +
+                ", toTotalHours=" + toTotalHours +
+                ", toTicketPrice=" + toTicketPrice +
+                ", toSeatsBooked=" + toSeatsBooked +
+                ", toCapacity=" + toCapacity +
+                ", totalTicketPrice=" + totalTicketPrice +
+                '}';
+    }
 
     public String getFromFlightCode() {
         return fromFlightCode;

@@ -1,14 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+         pageEncoding="ISO-8859-1" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Welcome after login</title>
+    <meta charset="ISO-8859-1">
+    <title>Welcome</title>
 </head>
 <body>
 
-Hello CSCI 5308!
+Welcome to the travel agency application
+<br>
+<a href="login">Proceed to LoginPage</a>
+<br>
+<a href="signup">Proceed to SignupPage</a>
 
 </body>
 </html>

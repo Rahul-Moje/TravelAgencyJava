@@ -26,14 +26,12 @@
     <br>
     Select From Date
     <input type="date" id="fromDate" name="fromDate"
-           value="2021-11-01"
-           min="2021-11-01" max="2023-12-31">
+           min="2021-12-01" max="2023-12-31">
     <br>
     <div id="toDateDiv">
     Select To Date
     <input type="date" id="toDate" name="toDate"
-           value="2021-11-01"
-           min="2021-11-01" max="2023-12-31">
+           min="2021-12-01" max="2023-12-31">
     <br>
     </div>
     One Way or a Return Flight ?
@@ -50,6 +48,8 @@
 
 </form>
 <script>
+    document.getElementById("fromDate").valueAsDate = new Date();
+    document.getElementById("toDate").valueAsDate = new Date();
     function myFunction() {
         if(document.getElementById("oneWayOrReturn").value == "Return") {
             document.getElementById("toDateDiv").style.display = "block"
@@ -57,6 +57,7 @@
             document.getElementById("toDateDiv").style.display = "none"
         }
     }
+
 </script>
 </body>
 </html>

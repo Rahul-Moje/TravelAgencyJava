@@ -1,5 +1,9 @@
 package com.travel.travelAgency.authentication.models;
 
+/**
+ * @author sowjanyamani
+ */
+
 public class UpdatePasswordReponse {
 
 	private String status;

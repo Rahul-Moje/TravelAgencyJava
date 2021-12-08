@@ -12,6 +12,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author rahulmoje
+ */
 @Repository
 public class FareIntervalDAO implements FareIntervalRepository {
 
@@ -24,11 +27,11 @@ public class FareIntervalDAO implements FareIntervalRepository {
         ResultSet rs = ps.executeQuery(query);
         List<FareInterval> fareIntervals = new ArrayList<>();
         while (rs.next()) {
-            FareInterval fareInterval = new FareInterval();
-            fareInterval.setIntervalStart(rs.getInt("INTERVALSTART"));
-            fareInterval.setIntervalEnd(rs.getInt("INTERVALEND"));
-            fareInterval.setPercentageIncrease(rs.getInt("PERCENTAGEINCREASE"));
-            fareIntervals.add(fareInterval);
+            FareInterval.FareIntervalBuilder fareIntervalBuilder = new FareInterval.FareIntervalBuilder();
+            fareIntervalBuilder.withIntervalStart(rs.getInt("INTERVALSTART"));
+            fareIntervalBuilder.withIntervalEnd(rs.getInt("INTERVALEND"));
+            fareIntervalBuilder.withPercentageIncrease(rs.getInt("PERCENTAGEINCREASE"));
+            fareIntervals.add(fareIntervalBuilder.build());
         }
         return fareIntervals;
     }
