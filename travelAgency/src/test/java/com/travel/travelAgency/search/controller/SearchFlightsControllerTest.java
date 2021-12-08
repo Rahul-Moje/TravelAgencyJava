@@ -12,6 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+/**
+ * @author rahulmoje
+ */
 @SpringBootTest
 public class SearchFlightsControllerTest {
 

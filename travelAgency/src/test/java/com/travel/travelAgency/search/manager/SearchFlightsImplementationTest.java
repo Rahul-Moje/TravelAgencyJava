@@ -7,9 +7,11 @@ import com.travel.travelAgency.search.models.SearchFlightForm;
 import com.travel.travelAgency.search.repository.FlightRepository;
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import java.sql.SQLException;
 import java.util.Arrays;
@@ -18,6 +20,10 @@ import java.util.List;
 import static com.travel.travelAgency.search.util.TestDataUtil.buildFormForTest;
 
 
+/**
+ * @author rahulmoje
+ */
+@RunWith(MockitoJUnitRunner.class)
 public class SearchFlightsImplementationTest {
 
     @Mock

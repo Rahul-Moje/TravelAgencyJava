@@ -4,6 +4,9 @@ import com.travel.travelAgency.search.models.JourneyType;
 
 import java.math.BigDecimal;
 
+/**
+ * @author rahulmoje
+ */
 public class FlightBookingRequest {
 
     private JourneyType journeyType;

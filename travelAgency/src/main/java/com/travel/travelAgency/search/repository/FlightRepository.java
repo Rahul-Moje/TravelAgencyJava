@@ -7,6 +7,9 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.List;
 
+/**
+ * @author rahulmoje
+ */
 public interface FlightRepository {
 
     List<String> findSourceAirports() throws SQLException;

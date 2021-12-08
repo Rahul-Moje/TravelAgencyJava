@@ -3,6 +3,9 @@ package com.travel.travelAgency.search.models;
 import java.math.BigDecimal;
 import java.util.Date;
 
+/**
+ * @author rahulmoje
+ */
 public class OneWayFlightResults {
 
     private String flightCode;
