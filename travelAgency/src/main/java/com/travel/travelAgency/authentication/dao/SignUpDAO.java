@@ -7,13 +7,13 @@ import java.sql.SQLException;
 import org.springframework.stereotype.Repository;
 
 import com.travel.travelAgency.authentication.repository.SignUpRepository;
-import com.travel.travelAgency.util.SingletonDatabaseConnection;
+import com.travel.travelAgency.util.DatabaseConnection;
 
 
 @Repository
 public class SignUpDAO implements SignUpRepository{
 	
-	Connection con = SingletonDatabaseConnection.getSQLConnection();
+	Connection con = DatabaseConnection.getSQLConnection();
 	
 	@Override
 	public void signUpUser(String username, String password, String email, String securityQuestionId, String securityAnswer, String roleName) {

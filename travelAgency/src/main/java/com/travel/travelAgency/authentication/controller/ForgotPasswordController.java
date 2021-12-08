@@ -36,7 +36,7 @@ public class ForgotPasswordController {
 	@RequestMapping(value = "/forgotpassword", method = RequestMethod.POST)
 	public String getEmail(ModelMap model, ForgotPassGetEmailRequest request) throws Exception 
 	{
-		ForgotPassGetEmailResp getEmailResp = forgotPasswordInterface.verifyEmailAndGetSecurityQues(request,
+		ForgotPassGetEmailResp getEmailResp = forgotPasswordInterface.verifyEmailAndGetSecurityQuestion(request,
 				forgotPasswordRepository);
 		String value1 = request.getEmail();
 		String value2 = getEmailResp.getSecurity_question();
@@ -54,7 +54,7 @@ public class ForgotPasswordController {
 	@RequestMapping(value = "/verifysecurityandupdatepass", method = RequestMethod.POST)
 	public String getSecurityAnswer(ModelMap model, SecurityAnswerRequest request) throws Exception 
 	{
-		UpdatePasswordReponse getSecurityansResp = forgotPasswordInterface.verifySecurityAnswerandUpdatePass(request,
+		UpdatePasswordReponse getSecurityansResp = forgotPasswordInterface.verifySecurityAnswerandUpdatePassword(request,
 				forgotPasswordRepository);
 		String value1 = getSecurityansResp.getStatus();
 		if (value1 != "Password Updated") 

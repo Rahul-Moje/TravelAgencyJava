@@ -12,7 +12,7 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
 
 import com.travel.travelAgency.admin.repository.AdminViewRepository;
-import com.travel.travelAgency.util.SingletonDatabaseConnection;
+import com.travel.travelAgency.util.DatabaseConnection;
 
 /**
  * @author sowjanyamani
@@ -21,7 +21,7 @@ import com.travel.travelAgency.util.SingletonDatabaseConnection;
 @Repository
 public class AdminViewDao implements AdminViewRepository {
 	
-	Connection con = SingletonDatabaseConnection.getSQLConnection();
+	Connection con = DatabaseConnection.getSQLConnection();
 
 	public List<Map<String, Object>> getListofGrievances() throws Exception {
 		String SQL = "select * from grievance";

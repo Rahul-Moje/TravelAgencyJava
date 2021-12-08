@@ -8,12 +8,12 @@ import java.sql.SQLException;
 import org.springframework.stereotype.Repository;
 
 import com.travel.travelAgency.beforePayment.repository.BeforePaymentsRepository;
-import com.travel.travelAgency.util.SingletonDatabaseConnection;
+import com.travel.travelAgency.util.DatabaseConnection;
 
 @Repository
 public class BeforePaymentsDAO implements BeforePaymentsRepository{
 
-	Connection con = SingletonDatabaseConnection.getSQLConnection();
+	Connection con = DatabaseConnection.getSQLConnection();
 	
 	@Override
 	public String getEmailId(int userId) {

@@ -9,6 +9,6 @@ import com.travel.travelAgency.grievance.repository.GrievanceRepository;
 
 public interface GrievanceInterface {
 
-	public Boolean RegisterGrievanceComplaint(Grievancerequest request, GrievanceRepository repo) throws Exception;
+	public Boolean registerGrievanceComplaint(Grievancerequest request, GrievanceRepository repo) throws Exception;
 
 }

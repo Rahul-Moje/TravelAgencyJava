@@ -9,12 +9,12 @@ import java.time.format.DateTimeFormatter;
 import org.springframework.stereotype.Repository;
 
 import com.travel.travelAgency.payment.repository.PaymentRepository;
-import com.travel.travelAgency.util.SingletonDatabaseConnection;
+import com.travel.travelAgency.util.DatabaseConnection;
 
 @Repository
 public class PaymentDAO implements PaymentRepository {
 
-	Connection con = SingletonDatabaseConnection.getSQLConnection();
+	Connection con = DatabaseConnection.getSQLConnection();
 
 	@Override
 	public int savePaymentDetails(float amount, String email) {

@@ -6,7 +6,7 @@ import com.travel.travelAgency.userprofile.model.ProMember;
 import com.travel.travelAgency.userprofile.model.User;
 import com.travel.travelAgency.userprofile.model.UserBooking;
 import com.travel.travelAgency.userprofile.repository.UserProfileRepository;
-import com.travel.travelAgency.util.SingletonDatabaseConnection;
+import com.travel.travelAgency.util.DatabaseConnection;
 
 import org.springframework.stereotype.Repository;
 
@@ -23,7 +23,7 @@ import java.util.List;
 @Repository
 public class UserProfileDao implements UserProfileRepository {
 
-    Connection con = SingletonDatabaseConnection.getSQLConnection();
+    Connection con = DatabaseConnection.getSQLConnection();
 
     @Override
     public User retrieveUserDetail(String email) throws SQLException {

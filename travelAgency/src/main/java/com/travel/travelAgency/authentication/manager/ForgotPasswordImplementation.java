@@ -17,7 +17,7 @@ import com.travel.travelAgency.authentication.repository.ForgotPasswordRepositor
 public class ForgotPasswordImplementation implements ForgotPasswordInterface {
 
 	@Override
-	public ForgotPassGetEmailResp verifyEmailAndGetSecurityQues(ForgotPassGetEmailRequest request,
+	public ForgotPassGetEmailResp verifyEmailAndGetSecurityQuestion(ForgotPassGetEmailRequest request,
 			ForgotPasswordRepository repo) throws Exception {
 		ForgotPassGetEmailResp resp = new ForgotPassGetEmailResp();
 		try {
@@ -44,7 +44,7 @@ public class ForgotPasswordImplementation implements ForgotPasswordInterface {
 	}
 
 	@Override
-	public UpdatePasswordReponse verifySecurityAnswerandUpdatePass(SecurityAnswerRequest request,
+	public UpdatePasswordReponse verifySecurityAnswerandUpdatePassword(SecurityAnswerRequest request,
 			ForgotPasswordRepository repo) throws Exception {
 		UpdatePasswordReponse response = new UpdatePasswordReponse();
 		try {

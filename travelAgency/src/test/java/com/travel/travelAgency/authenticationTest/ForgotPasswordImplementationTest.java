@@ -41,7 +41,7 @@ public class ForgotPasswordImplementationTest {
 		Mockito.when(repo.isEmailValid(req.getEmail())).thenReturn(Boolean.TRUE);
 		Mockito.when(repo.getSecurityQuestion(req.getEmail())).thenReturn("Some question");
 
-		ForgotPassGetEmailResp resp = forgotPasswordService.verifyEmailAndGetSecurityQues(req, repo);
+		ForgotPassGetEmailResp resp = forgotPasswordService.verifyEmailAndGetSecurityQuestion(req, repo);
 		assertEquals("Some question", resp.getSecurity_question());
 
 	}
@@ -60,7 +60,7 @@ public class ForgotPasswordImplementationTest {
 
 		Mockito.when(repo.isSecurityAnswerValid(req.getSecurity_answer(), req.getEmail())).thenReturn(Boolean.TRUE);
 		doNothing().when(repo).updatePassword(req.getEmail(), req.getNew_password());
-		response = forgotPasswordService.verifySecurityAnswerandUpdatePass(req, repo);
+		response = forgotPasswordService.verifySecurityAnswerandUpdatePassword(req, repo);
 		assertEquals("Password Updated", response.getStatus());
 
 	}

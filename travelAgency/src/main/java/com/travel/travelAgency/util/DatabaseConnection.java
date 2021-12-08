@@ -10,18 +10,14 @@ import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
 //Singleton pattern
-public class SingletonDatabaseConnection {
-	
-	
-	static String url="jdbc:mysql://db-5308.cs.dal.ca:3306/CSCI5308_21_DEVINT";
-    static String user="CSCI5308_21_DEVINT_USER";
-    static String pass="eiBiequeir8Ukofi";
+public class DatabaseConnection {
     
-	private static SingletonDatabaseConnection instance;
-	private static Connection con = null;
-	
+    private static Connection con = null;
 	static
     {
+        String url = "jdbc:mysql://db-5308.cs.dal.ca:3306/CSCI5308_21_DEVINT";
+        String user = "CSCI5308_21_DEVINT_USER";
+        String pass = "eiBiequeir8Ukofi";
         try {
             Class.forName("com.mysql.jdbc.Driver");
             con = DriverManager.getConnection(url, user, pass);
@@ -35,5 +31,6 @@ public class SingletonDatabaseConnection {
 	public static Connection getSQLConnection() {
 		return con;
 	}
+
 	
 }

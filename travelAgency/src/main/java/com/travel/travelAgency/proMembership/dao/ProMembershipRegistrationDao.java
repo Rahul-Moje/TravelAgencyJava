@@ -12,15 +12,16 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Repository;
 
 import com.travel.travelAgency.proMembership.repository.ProMembershipRegistrationRepository;
-import com.travel.travelAgency.util.SingletonDatabaseConnection;
+import com.travel.travelAgency.util.DatabaseConnection;
 
 /**
  * @author sowjanyamani
  */
 
 @Repository
-public class ProMembershipRegistrationDAO implements ProMembershipRegistrationRepository {
-	Connection con = SingletonDatabaseConnection.getSQLConnection();
+
+public class ProMembershipRegistrationDao implements ProMembershipRegistrationRepository {
+	Connection con = DatabaseConnection.getSQLConnection();
 
 	@Override
 	public List<Map<String, Object>> getListofMembership() throws Exception {

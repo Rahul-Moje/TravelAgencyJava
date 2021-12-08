@@ -2,7 +2,7 @@ package com.travel.travelAgency.search.dao;
 
 import com.travel.travelAgency.search.models.FareInterval;
 import com.travel.travelAgency.search.repository.FareIntervalRepository;
-import com.travel.travelAgency.util.SingletonDatabaseConnection;
+import com.travel.travelAgency.util.DatabaseConnection;
 import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;
@@ -18,7 +18,7 @@ import java.util.List;
 @Repository
 public class FareIntervalDAO implements FareIntervalRepository {
 
-    Connection con = SingletonDatabaseConnection.getSQLConnection();
+    Connection con = DatabaseConnection.getSQLConnection();
 
     @Override
     public List<FareInterval> retrieveFareIntervals() throws SQLException {

@@ -2,7 +2,7 @@ package com.travel.travelAgency.cancellations.dao;
 
 import com.travel.travelAgency.cancellations.exceptions.BookingCancellationException;
 import com.travel.travelAgency.cancellations.repository.BookingCancellationRepository;
-import com.travel.travelAgency.util.SingletonDatabaseConnection;
+import com.travel.travelAgency.util.DatabaseConnection;
 import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;
@@ -16,7 +16,7 @@ import java.sql.SQLException;
 @Repository
 public class BookingCancellationDao implements BookingCancellationRepository {
 
-    Connection connection = SingletonDatabaseConnection.getSQLConnection();
+    Connection connection = DatabaseConnection.getSQLConnection();
 
     @Override
     public Boolean isBookingCancelledForBookingId(Integer bookingId) throws SQLException {

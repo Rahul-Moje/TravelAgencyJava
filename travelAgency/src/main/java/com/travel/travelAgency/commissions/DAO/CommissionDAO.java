@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.travel.travelAgency.commissions.repository.CommissionRepository;
-import com.travel.travelAgency.util.SingletonDatabaseConnection;
+import com.travel.travelAgency.util.DatabaseConnection;
 import org.springframework.stereotype.Repository;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -18,7 +18,7 @@ import static com.travel.travelAgency.commissions.DAO.CommissionCons.*;
 @Repository
 public class CommissionDAO implements CommissionRepository {
 
-    static Connection conn = SingletonDatabaseConnection.getSQLConnection();
+    static Connection conn = DatabaseConnection.getSQLConnection();
 
      CommissionCons[] cons = CommissionCons.values();
 
