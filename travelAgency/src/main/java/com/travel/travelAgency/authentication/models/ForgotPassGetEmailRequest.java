@@ -3,6 +3,10 @@ package com.travel.travelAgency.authentication.models;
 import java.io.Serializable;
 import java.util.regex.Pattern;
 
+/**
+ * @author sowjanyamani
+ */
+
 public class ForgotPassGetEmailRequest implements Serializable {
 
 	private static final long serialVersionUID = 4169344436150052963L;
@@ -17,7 +21,7 @@ public class ForgotPassGetEmailRequest implements Serializable {
 		this.email = email;
 	}
 	
-	public Boolean checkEmailValid (String email) {
+	public Boolean checkEmailValidRegx (String email) {
 		
 		String emailReg = "^[a-zA-Z0-9_+&*-]+(?:\\."+
                 "[a-zA-Z0-9_+&*-]+)*@" +

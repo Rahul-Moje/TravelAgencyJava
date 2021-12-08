@@ -7,7 +7,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
-
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +15,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.travel.travelAgency.proMembership.interfaces.ProMembershipRegistrationInterface;
 import com.travel.travelAgency.proMembership.manager.ProMembershipRegistrationImplementation;
 
+/**
+ * @author sowjanyamani
+ */
+
 @SpringBootTest
 public class ProMembershipRegistrationImplementationTest {
 
@@ -23,7 +26,7 @@ public class ProMembershipRegistrationImplementationTest {
 	ProMembershipRegistrationInterface promembershipService;
 
 	@Test
-	public void proMembershipClassExistClassExist() {
+	public void proMembershipClassExist() {
 		ProMembershipRegistrationImplementation promembershipregistrationimplementation = new ProMembershipRegistrationImplementation();
 		assertNotNull(promembershipregistrationimplementation);
 

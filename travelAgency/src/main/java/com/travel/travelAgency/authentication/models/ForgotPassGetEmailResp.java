@@ -2,6 +2,10 @@ package com.travel.travelAgency.authentication.models;
 
 import java.io.Serializable;
 
+/**
+ * @author sowjanyamani
+ */
+
 public class ForgotPassGetEmailResp implements Serializable {
 
 	private static final long serialVersionUID = -4852379021777260662L;

@@ -10,6 +10,10 @@ import com.travel.travelAgency.proMembership.interfaces.ProMembershipRegistratio
 import com.travel.travelAgency.proMembership.models.promembershipregistrationrequest;
 import com.travel.travelAgency.proMembership.repository.ProMembershipRegistrationRepository;
 
+/**
+ * @author sowjanyamani
+ */
+
 @Service
 public class ProMembershipRegistrationImplementation implements ProMembershipRegistrationInterface {
 
@@ -33,7 +37,7 @@ public class ProMembershipRegistrationImplementation implements ProMembershipReg
 		String email = request.getEmail();
 		String date = request.getDate();
 		String amount = "";
-		if (plan_name != "" && date != "") {
+		if (request.isPlanNameNull(plan_name)) {
 			repo.updateMembership(email, plan_name, date);
 			amount = repo.returnPlanAmount(plan_name);
 		}

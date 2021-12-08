@@ -1,10 +1,15 @@
 package com.travel.travelAgency.authentication.repository;
 
-public interface ForgotPasswordRepository {
+/**
+ * @author sowjanyamani
+ */
+
+public interface ForgotPasswordRepository 
+{
 
 	public Boolean isEmailValid(String email) throws Exception;
 
-	public String getSecurityQues(String email) throws Exception;
+	public String getSecurityQuestion(String email) throws Exception;
 
 	public Boolean isSecurityAnswerValid(String security_answer, String email) throws Exception;
 	

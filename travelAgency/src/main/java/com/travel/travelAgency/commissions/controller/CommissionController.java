@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.travel.travelAgency.commissions.interfaces.ICommission;;
+import com.travel.travelAgency.commissions.interfaces.ICommission;
 
 import org.springframework.web.servlet.ModelAndView;
 
