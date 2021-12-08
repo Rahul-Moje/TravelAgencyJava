@@ -26,7 +26,7 @@ public class SignUpImplementationTest {
 		String username = "user";
 		String password = "userpass";
 		String email= "user@dal.ca";
-		int SecurityQuestionId =1; 
+		String SecurityQuestionId ="1";
 		String securityAnswer = "Red";
 		String queryStr = "Insert into user_auth(username, password , email_id, security_question_id, security_answer) values ('"+username+"','"+password+"','"+email+"',"+SecurityQuestionId+",'"+securityAnswer+"')";
 		Mockito.when(jdbc.update(queryStr)).thenReturn(1);
