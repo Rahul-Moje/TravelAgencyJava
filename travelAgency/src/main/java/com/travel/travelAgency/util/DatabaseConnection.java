@@ -8,7 +8,7 @@ public class DatabaseConnection {
 	private static Connection con = null;
 	static
     {
-        String url = "jdbc:mysql://db-5308.cs.dal.ca:3306/CSCI5308_21_DEVINT";
+        String url = "jdbc:mysql://db-5308.cs.dal.ca:3306/CSCI5308_21_TEST";
         String user = "CSCI5308_21_TEST_USER";
         String pass = "ooru0eiFaed4aa9i";
         try {
