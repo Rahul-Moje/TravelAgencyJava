@@ -22,7 +22,7 @@ public class SignUpDAO implements SignUpRepository{
 			PreparedStatement ps = con.prepareStatement(queryStr);
 			ps.executeUpdate(queryStr);
 
-			//con.close();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

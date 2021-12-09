@@ -40,7 +40,7 @@ public class GrievanceController {
 			return "grievance";
 		}
 		model.put("status", value);
-		return "welcome";
+		return "user";
 	}
 
 }
