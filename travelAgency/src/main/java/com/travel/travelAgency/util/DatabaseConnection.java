@@ -9,8 +9,8 @@ public class DatabaseConnection {
 	static
     {
         String url = "jdbc:mysql://db-5308.cs.dal.ca:3306/CSCI5308_21_DEVINT";
-        String user = "CSCI5308_21_DEVINT_USER";
-        String pass = "eiBiequeir8Ukofi";
+        String user = "CSCI5308_21_TEST_USER";
+        String pass = "ooru0eiFaed4aa9i";
         try {
             Class.forName("com.mysql.jdbc.Driver");
             con = DriverManager.getConnection(url, user, pass);
