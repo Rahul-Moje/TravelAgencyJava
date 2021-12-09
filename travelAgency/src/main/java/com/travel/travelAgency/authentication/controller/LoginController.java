@@ -25,21 +25,23 @@ public class LoginController {
     }
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String login(ModelMap model, @RequestParam String username,
+	public String login(ModelMap model, @RequestParam String emailId,
 			@RequestParam String password,HttpServletRequest request,HttpServletResponse response) {
 	response.setContentType("text/html");
-	String setusername =request.getParameter("username");
-		String message = loginObj.login(username, password);
+	String email = request.getParameter("emailId");	
+	request.getSession().setAttribute("setusername", email);
+	String message = loginObj.login(email, password);
 		if(message.equals("Failed to login")) {
 			model.addAttribute("errorMessage", "Login Failed. Please check your credentials and try again");
 			return "login";
 		}
 
-		model.put("name", username);
+		model.put("name", email);
         model.put("password", password);
-        model.put("setusername", setusername);
+        model.put("setusername", email);
         HttpSession session=request.getSession();  
-        session.setAttribute("name",setusername);
+        session.setAttribute("name",email);
+        session.setAttribute("email",email);
         session.setAttribute("currentdate", java.time.LocalDate.now());
 		return "user";
  

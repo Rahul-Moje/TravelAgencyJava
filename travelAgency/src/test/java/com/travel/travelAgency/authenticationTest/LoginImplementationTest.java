@@ -1,33 +1,43 @@
 package com.travel.travelAgency.authenticationTest;
 
+import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.when;
 
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.jdbc.core.JdbcTemplate;
 
+import com.travel.travelAgency.authentication.dao.UserAuthDAO;
 import com.travel.travelAgency.authentication.interfaces.LoginInterface;
+import com.travel.travelAgency.authentication.manager.LoginImplementation;
+import com.travel.travelAgency.authentication.repository.UserAuthRepository;
 
+/**
+ * @author ruchishinde
+ */
 
 @SpringBootTest
 class LoginImplementationTest {
 
-	@Mock
-	JdbcTemplate jdbc;
-	
 	@Autowired
 	LoginInterface loginInterface;
 	
+	UserAuthRepository userAuthRepository = Mockito.mock(UserAuthDAO.class);
+	
+	@Test
+	public void checkClassNotNull() {
+		assertNotNull(loginInterface);
+	}
+
 	@Test
 	void loginImplementationTest() {
-		String username = "admin";
+		String email = "admin@dal.ca";
 		String password = "admin";
-		String queryStr = "select count(*) from user_auth where username='"+username+"'"+" and password='"+password+"'";
-		Mockito.when(jdbc.queryForObject(queryStr, Integer.class)).thenReturn(1);
-		assertEquals("Success", loginInterface.login(username, password));
+		// Mockito.when(jdbc.queryForObject(queryStr, Integer.class)).thenReturn(1);
+		when(userAuthRepository.validateUsernamePassword(email, password)).thenReturn(1);
+		assertEquals("Success", loginInterface.login(email, password));
 	}
 
 }
