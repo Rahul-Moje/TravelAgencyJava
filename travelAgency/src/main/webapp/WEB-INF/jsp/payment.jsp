@@ -9,7 +9,7 @@
 <body>
 	<div>
 
-		<form method="post">
+		<form method="post" action="/payment">
 			<input name="userId" hidden=true value= ${userId} /> <label> Amount:
 			</label> <input name="displayAmount" value = ${amount} } readonly /> </br> Enter your Credit Card Number: <input
 				type="text" name="creditCardNumber" /> </br> Expiry date: <input
