@@ -6,6 +6,10 @@ import org.springframework.stereotype.Service;
 import com.travel.travelAgency.payment.dao.PaymentDAO;
 import com.travel.travelAgency.payment.interfaces.PaymentInterface;
 
+/**
+ * @author ruchishinde
+ */
+
 @Service
 public class PaymentManager implements PaymentInterface {
 
@@ -38,8 +42,8 @@ public class PaymentManager implements PaymentInterface {
 	}
 
 	@Override
-	public String processPayment(float displayAmount, int userId) {
-		int n = paymentDao.savePaymentDetails(displayAmount, userId);
+	public String processPayment(float displayAmount, String email) {
+		int n = paymentDao.savePaymentDetails(displayAmount, email);
 		String response = "";
 		if (n != 0) {
 			response = "Success";
