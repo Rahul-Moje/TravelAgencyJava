@@ -17,9 +17,9 @@ public class UserAuthDAO implements UserAuthRepository{
 	Connection con = DatabaseConnection.getSQLConnection();
 	
 	@Override
-	public int validateUsernamePassword(String username, String password) {
+	public int validateUsernamePassword(String email, String password) {
 		int user_id = 0;
-		String queryStr = "select count(*) as total from user_auth where username='"+username+"'"+" and password='"+password+"'";
+		String queryStr = "select count(*) as total from user_auth where email_id='"+email+"'"+" and password='"+password+"'";
 		Statement stmt;
 		try {
 			PreparedStatement ps = con.prepareStatement(queryStr);
@@ -28,7 +28,6 @@ public class UserAuthDAO implements UserAuthRepository{
 				user_id = rs.getInt(1);
 
 			}
-			//con.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

@@ -9,7 +9,7 @@
 <body>
 	<font color="red">${errorMessage}</font>
 	<form action="login" method="post">
-		Username : <input type="text" name="username" /> Password : <input
+		Username : <input type="text" name="emailId" /> Password : <input
 			type="password" name="password" /> <input type="submit" />
 		<a href="/forgotpassword">Forgot your password?</a>
 		
