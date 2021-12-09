@@ -17,6 +17,7 @@ public class SecurityAnswerRequest implements Serializable {
 	private String new_password;
 	private String update_password;
 	private String security_question;
+	
 	public String getSecurity_answer() {
 		return security_answer;
 	}
