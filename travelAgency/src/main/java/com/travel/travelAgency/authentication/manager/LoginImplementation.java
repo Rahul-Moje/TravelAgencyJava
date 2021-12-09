@@ -6,6 +6,10 @@ import org.springframework.stereotype.Service;
 import com.travel.travelAgency.authentication.interfaces.LoginInterface;
 import com.travel.travelAgency.authentication.repository.UserAuthRepository;
 
+/**
+ * @author ruchishinde
+ */
+
 @Service
 public class LoginImplementation implements LoginInterface{
 

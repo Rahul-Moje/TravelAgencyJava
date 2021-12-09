@@ -62,7 +62,8 @@ public class FlightBookingController {
             FlightBookingRequest flightBooking = mapToFlightBookingRequest(request);
             Integer bookingId = flightBookingInterface.saveFlightBooking(flightBooking);
             request.getSession().setAttribute("bookingId", bookingId);
-            return "payment";
+            request.getSession().setAttribute("numBaggages", Integer.parseInt(request.getParameter("numBaggages"))); 
+            return "checkoutToPayment";
         } catch (FlightBookingException e) {
             e.printStackTrace();
             modelMap.addAttribute("errorMessage", e.getMessage());
