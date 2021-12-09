@@ -51,8 +51,9 @@ public class BeforePaymentsDAO implements BeforePaymentsRepository{
 	public int updateFinalCost(float finalCost, int bookingId, float baggageWeight) {
 		String query = "UPDATE USERBOOKING SET BAGGAGECOST="+baggageWeight+", FINALCOST="+finalCost+ "where ID="+bookingId;
 		int updatedRecord = 0;
+		PreparedStatement ps;
 		try {
-			PreparedStatement ps = con.prepareStatement(query);
+			ps = con.prepareStatement(query);
 			updatedRecord = ps.executeUpdate();
 		}
 		catch (SQLException e) {
