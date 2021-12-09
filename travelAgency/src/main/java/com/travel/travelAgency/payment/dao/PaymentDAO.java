@@ -31,7 +31,6 @@ public class PaymentDAO implements PaymentRepository {
 		try {
 			PreparedStatement ps = con.prepareStatement(query);
 			n = ps.executeUpdate();
-			con.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
