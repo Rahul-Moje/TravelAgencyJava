@@ -17,7 +17,7 @@
 		<br>
 		<a href="/userProfile">My Bookings</a>
 		<br>
-		<c:if test="${name == 'admin'}">
+		<c:if test="${name == 'admin@dal.ca'}">
 		<a href="/showGrievanceDetails">View all Grievances Filed</a>
 		<br>
 		<a href="/commission">View Commissions</a>
