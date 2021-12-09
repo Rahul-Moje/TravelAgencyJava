@@ -1,5 +1,6 @@
 package com.travel.travelAgency.cancellations.dao;
 
+import com.travel.travelAgency.cancellations.exceptions.BookingCancellationException;
 import com.travel.travelAgency.cancellations.repository.BookingCancellationRepository;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
@@ -20,7 +21,17 @@ public class BookingCancellationDaoTest {
 
     @Test
     public void testIsBookingCancelledForBookingIdWhenFalse() throws SQLException {
-        Assert.assertTrue(bookingCancellationRepository.isBookingCancelledForBookingId(-1));
+        Assert.assertTrue(bookingCancellationRepository.isBookingCancelledForBookingId(1));
+    }
+
+    @Test
+    public void testIsBookingCancelledForInvalidBookingId() throws SQLException {
+        try {
+            Assert.assertTrue(bookingCancellationRepository.isBookingCancelledForBookingId(-1));
+        } catch (Exception e) {
+            Assert.assertTrue(e instanceof BookingCancellationException);
+        }
+
     }
 
 
