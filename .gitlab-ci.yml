@@ -35,6 +35,8 @@ test-travel-agency-job:
         - travelAgency/target/failsafe-reports/TEST-*.xml #Reports are generated in target folder by surefire plugin.
   tags:
     - ugrad
+  except:
+    - main
 
 #Package the project to an executable jar file
 package-travel-agency-job:
