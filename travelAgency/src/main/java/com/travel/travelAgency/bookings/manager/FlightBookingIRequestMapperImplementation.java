@@ -23,7 +23,7 @@ public class FlightBookingIRequestMapperImplementation implements FlightBookingR
         flightBookingRequestBuilder.withJourneyType(JourneyType.mapToJourneyType((String) request.getSession().getAttribute("journeyType")));
         flightBookingRequestBuilder.withFromFlightScheduleId((Integer) request.getSession().getAttribute("fromFlightScheduleId"));
         flightBookingRequestBuilder.withUserName((String) request.getSession().getAttribute("name"));
-        flightBookingRequestBuilder.withUserEmail("testemail@gmail.com"/*(String) request.getSession().getAttribute("email")*/);
+        flightBookingRequestBuilder.withUserEmail((String) request.getSession().getAttribute("email"));
         try {
             flightBookingRequestBuilder.withNumOfBaggages(Integer.parseInt(request.getParameter("numBaggages")));
         } catch (NumberFormatException e) {
