@@ -1,3 +1,4 @@
-# CSCI5308-Group21
+# Travel Agency Web Application
 
-Group project for CSCI5308
+## About the project
+A web application developed using Java, Spring Boot and rendered using JSP. Followed clean coding principles, code modularization and design principles.
